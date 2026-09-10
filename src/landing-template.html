@@ -7,7 +7,7 @@
   --black:#000000; --ink:#0A0A0B; --ink-2:#141416;
   --cream:#ECEBE9; --white:#FFFFFF; --grey-card:#E3E2DF; --grey-line:#D5D4D0;
   --dk-grad:linear-gradient(152deg,#3E3E48 0%,#22222A 45%,#101014 100%);
-  --dk-grad-2:linear-gradient(152deg,#4A4A57 0%,#26262F 50%,#131318 100%);
+  --dk-grad-2:linear-gradient(145deg,#5C5C6B 0%,#3A3A46 32%,#1E1E26 68%,#0D0D11 100%);
   --glass:rgba(255,255,255,.13); --glass-b:rgba(255,255,255,.22);
   --t-w:#FFFFFF; --t-w2:rgba(255,255,255,.58); --t-w3:rgba(255,255,255,.36);
   --t-b:#0A0A0B; --t-b2:#6C6C68; --t-b3:#9B9B96;
@@ -28,6 +28,10 @@ button{cursor:pointer;border:none;background:none}
 ::-webkit-scrollbar-thumb{background:#2C2C33;border-radius:4px}
 :focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 .wrap{max-width:1300px;margin:0 auto;padding-inline:var(--gut)}
+/* full-bleed block: spans the viewport, content still centred on a 1600px measure */
+.full{width:100%}
+.full>.bigcard,.full>.panel,.full>.cta{border-radius:0;padding-inline:max(var(--gut),calc((100% - 1600px) / 2))}
+.full>.bigcard::before{display:none}
 
 /* type */
 .hd{font-family:var(--fd);font-weight:800;text-transform:uppercase;letter-spacing:-.015em;line-height:1.06;text-wrap:balance}
@@ -72,7 +76,7 @@ button{cursor:pointer;border:none;background:none}
 .hdr__in{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo{font-family:var(--fd);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;text-transform:uppercase}
 .logo i{font-style:normal;font-weight:500;color:var(--t-w2)}
-.nav{display:flex;gap:clamp(16px,2.4vw,34px)}
+.nav{display:flex;flex:1;justify-content:space-evenly;gap:clamp(12px,2vw,28px);padding-inline:clamp(20px,4vw,64px)}
 .nav a{font-size:.8rem;font-weight:600;color:var(--t-w2);letter-spacing:.01em;transition:color .25s}
 .nav a:hover{color:#fff}
 .hdr__r{display:flex;align-items:center;gap:10px}
@@ -89,7 +93,7 @@ button{cursor:pointer;border:none;background:none}
 .hero__sc{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(10,10,11,.82) 0%,rgba(10,10,11,.30) 32%,rgba(10,10,11,.74) 72%,var(--ink) 100%)}
 .hero__in{position:relative;z-index:4;width:100%;display:grid;grid-template-columns:1.35fr auto;gap:32px;align-items:end}
 .hero__t{font-size:clamp(1.6rem,4.2vw,3.4rem);max-width:19ch}
-.hero__cta{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.hero__cta{display:flex;flex-direction:column;align-items:flex-end;gap:28px}
 .hero__cta .small{max-width:24ch;text-align:right;color:var(--t-w2)}
 
 /* ============ BIG CREAM CARD ============ */
@@ -164,7 +168,8 @@ button{cursor:pointer;border:none;background:none}
 .stp.on .stp__k{font-size:1.15rem}
 .stp.on .stp__bd{grid-template-rows:1fr}
 .stp.on:hover{background:#0B0B0D}
-.stp .sq{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff}
+.stp .sq{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff;transition:transform .45s var(--e),background .3s}
+.stp.on .sq{transform:rotate(180deg);background:rgba(255,255,255,.2)}
 .stp.on .stp__top .sq{position:absolute;top:26px;right:24px}
 .stp.on{position:relative}
 
@@ -243,9 +248,11 @@ button{cursor:pointer;border:none;background:none}
 .fq__a>div{overflow:hidden}
 .fq__a p{padding-top:14px;font-size:.84rem;line-height:1.65;color:var(--t-b2);max-width:70ch}
 .fq__a ul{margin:10px 0 0 18px;font-size:.84rem;line-height:1.8;color:var(--t-b2)}
-.fq__t{width:46px;height:46px;border-radius:var(--rmd);background:var(--white);color:var(--t-b);display:grid;place-items:center;flex-shrink:0;transition:.35s var(--e)}
+.fq__t{width:42px;height:42px;border-radius:var(--rmd);background:var(--white);color:var(--t-b);display:grid;place-items:center;flex-shrink:0;transition:.35s var(--e)}
 .fq.on .fq__t{background:var(--black);color:#fff}
-.fq__t svg{width:17px;height:17px}
+.fq__t svg{width:24px;height:24px}
+.fq__t .pl{transition:opacity .3s var(--e),transform .35s var(--e);transform-origin:center}
+.fq.on .fq__t .pl{opacity:0;transform:rotate(90deg)}
 
 /* ============ CTA ============ */
 .cta{background:var(--black);border-radius:var(--rxl);padding:clamp(28px,4vw,60px);display:grid;grid-template-columns:1fr .82fr;gap:clamp(24px,3.5vw,52px);align-items:center}
@@ -264,30 +271,23 @@ button{cursor:pointer;border:none;background:none}
 .cta__note{font-size:.68rem;color:var(--t-w3);line-height:1.5;margin-top:4px}
 
 /* ============ FOOTER ============ */
-.foot{position:relative;border-radius:var(--rxl) var(--rxl) 0 0;overflow:hidden;margin-top:clamp(40px,6vw,80px);min-height:440px;display:flex;align-items:flex-end}
-.foot__ph{position:absolute;inset:0;z-index:0}
-.foot__ph img{width:100%;height:100%;object-fit:cover}
-.foot__sc{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,11,.5) 0%,rgba(10,10,11,.2) 40%,rgba(10,10,11,.92) 100%)}
-.foot__in{position:relative;z-index:3;width:100%;padding:clamp(24px,3vw,44px)}
-.foot__top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:22px}
+.foot{border-top:1px solid rgba(255,255,255,.12);padding-block:clamp(30px,4vw,48px)}
+.foot__top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:26px}
 .foot__nav{display:flex;gap:clamp(14px,2.2vw,30px);flex-wrap:wrap}
-.foot__nav a{font-size:.76rem;font-weight:600;color:var(--t-w2);transition:.25s}
+.foot__nav a{font-size:.78rem;font-weight:600;color:var(--t-w2);transition:.25s}
 .foot__nav a:hover{color:#fff}
-.foot__bar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:.72rem;color:var(--t-w3)}
-.foot__soc{display:flex;gap:9px}
-.foot__soc a{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.12);display:grid;place-items:center;transition:.25s}
-.foot__soc a:hover{background:rgba(255,255,255,.24)}
-.foot__soc svg{width:15px;height:15px}
+.foot__bar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(255,255,255,.10);font-size:.74rem;color:var(--t-w3)}
 
 /* ============ MODAL ============ */
 .ov{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(9px);display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:.35s}
 .ov.on{opacity:1;visibility:visible}
-.md{position:relative;width:min(760px,100%);background:var(--cream);color:var(--t-b);border-radius:var(--rxl);padding:clamp(22px,3vw,38px);transform:translateY(18px) scale(.98);transition:transform .42s var(--e);max-height:92vh;overflow:auto}
+.md{position:relative;width:min(860px,100%);background:var(--cream);color:var(--t-b);border-radius:var(--rxl);padding:clamp(22px,3vw,38px);transform:translateY(18px) scale(.98);transition:transform .42s var(--e);max-height:92vh;overflow:auto}
+.md .small,.md .dim{color:var(--t-b2)}
 .ov.on .md{transform:none}
 .md__x{position:absolute;top:18px;right:18px;width:42px;height:42px;border-radius:var(--rsm);background:var(--white);display:grid;place-items:center;transition:.25s}
 .md__x:hover{background:var(--black);color:#fff}
 .md__x svg{width:17px;height:17px}
-.md__g{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+.md__g{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
 .md__ph{border-radius:var(--rlg);overflow:hidden;aspect-ratio:4/3;background:var(--grey-card)}
 .md__ph img{width:100%;height:100%;object-fit:cover}
 .md__t{font-family:var(--fd);font-weight:800;font-size:1.3rem;text-transform:uppercase;line-height:1.2;padding-right:46px}
@@ -336,13 +336,10 @@ button{cursor:pointer;border:none;background:none}
       <a href="#steps">Условия аренды</a><a href="#trust">О нас</a><a href="#contact">Контакты</a>
     </nav>
     <div class="hdr__r">
-      <button class="btn btn--w" onclick="openModal()">Забронировать</button>
+      <button class="btn btn--w" onclick="go('contact')">Забронировать</button>
       <button class="sq sq--gl" aria-label="Личный кабинет" onclick="openModal('','Вход в личный кабинет','Личный кабинет скоро будет доступен — оставьте номер, и мы сообщим о запуске')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21v-1.8a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4V21"/><circle cx="12" cy="7" r="4"/></svg>
       </button>
-      <a class="sq sq--w" href="tel:+74232000000" aria-label="Позвонить">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1.2 1.2 0 0 1 1.2-.3 13 13 0 0 0 4 .7 1.2 1.2 0 0 1 1.2 1.2V20a1.2 1.2 0 0 1-1.2 1.2A17.8 17.8 0 0 1 2.8 3.4 1.2 1.2 0 0 1 4 2.2h3.4a1.2 1.2 0 0 1 1.2 1.2 13 13 0 0 0 .7 4 1.2 1.2 0 0 1-.3 1.2z"/></svg>
-      </a>
     </div>
   </div>
 </header>
@@ -360,10 +357,10 @@ button{cursor:pointer;border:none;background:none}
   <div class="wrap hero__in">
     <h1 class="hd hero__t reveal">Найди машину за 30 секунд! Простые условия, мгновенный результат</h1>
     <div class="hero__cta reveal">
-      <p class="small">Японские авто в наличии во Владивостоке и Находке</p>
+      <p class="small">Японские авто в наличии<br>во Владивостоке и Находке</p>
       <button class="btn btn--w" onclick="go('catalog')">
         Смотреть каталог
-        <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </button>
     </div>
   </div>
@@ -371,7 +368,7 @@ button{cursor:pointer;border:none;background:none}
 
 <!-- ======== ХИТЫ ПРОКАТА ======== -->
 <section class="section" id="hits">
-  <div class="wrap">
+  <div class="full">
     <div class="bigcard on-light reveal">
       <div class="hits">
         <div class="hits__ph">
@@ -411,7 +408,7 @@ button{cursor:pointer;border:none;background:none}
 
 <!-- ======== АРЕНДУЙ ЗА 3 ШАГА ======== -->
 <section class="section" id="steps">
-  <div class="wrap">
+  <div class="full">
     <div class="panel reveal">
       <div class="panel__ph"><img src="{{STEPS_IMG}}" alt=""></div>
       <div class="panel__sc"></div>
@@ -426,17 +423,17 @@ button{cursor:pointer;border:none;background:none}
       <div class="panel__r" data-steps>
         <div class="stp on" onclick="tglStep(this)">
           <div class="stp__top"><div class="stp__n">1</div><div class="stp__k">Выбери <span class="dim">авто</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 7L7 17M15 17H7V9"/></svg></div></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
           <div class="stp__bd"><div><p>Перейди в каталог и отфильтруй авто по модели, цене или типу кузова. Выбери машину, которая подходит именно тебе.</p></div></div>
         </div>
         <div class="stp" onclick="tglStep(this)">
           <div class="stp__top"><div class="stp__n">2</div><div class="stp__k">Оформи <span class="dim">аренду</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
           <div class="stp__bd"><div><p>Оставь заявку — перезвоним за 10 минут, подтвердим наличие и согласуем время подачи. Из документов нужны только паспорт и права.</p></div></div>
         </div>
         <div class="stp" onclick="tglStep(this)">
           <div class="stp__top"><div class="stp__n">3</div><div class="stp__k">Катайся <span class="dim">на здоровье</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
           <div class="stp__bd"><div><p>Подпишем договор за 10 минут и передадим вымытое, заправленное авто. Подадим машину туда, куда тебе удобно.</p></div></div>
         </div>
       </div>
@@ -446,7 +443,7 @@ button{cursor:pointer;border:none;background:none}
 
 <!-- ======== АУКЦИОН ======== -->
 <section class="section" id="auction">
-  <div class="wrap">
+  <div class="full">
     <div class="panel reveal">
       <div class="panel__ph"><img src="{{AUCTION_IMG}}" alt=""></div>
       <div class="panel__sc"></div>
@@ -461,17 +458,17 @@ button{cursor:pointer;border:none;background:none}
       <div class="panel__r" data-steps>
         <div class="stp on" onclick="tglStep(this)">
           <div class="stp__top"><div class="stp__n">1</div><div class="stp__k">Выбери <span class="dim">автомобиль</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 7L7 17M15 17H7V9"/></svg></div></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
           <div class="stp__bd"><div><p>Скажите марку, модель и бюджет — подберём варианты с аукционов Японии и покажем аукционные листы с реальным состоянием.</p></div></div>
         </div>
         <div class="stp" onclick="tglStep(this)">
           <div class="stp__top"><div class="stp__n">2</div><div class="stp__k">Сделай <span class="dim">ставку</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
           <div class="stp__bd"><div><p>Фиксируем смету: ставка, доставка, растаможка. Выставляем ставку на торгах от вашего имени и держим в курсе на каждом этапе.</p></div></div>
         </div>
         <div class="stp" onclick="tglStep(this)">
           <div class="stp__top"><div class="stp__n">3</div><div class="stp__k">Забирай <span class="dim">автомобиль</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
           <div class="stp__bd"><div><p>Доставим авто во Владивосток, оформим документы и передадим машину вам. Полное сопровождение до постановки на учёт.</p></div></div>
         </div>
       </div>
@@ -511,7 +508,7 @@ button{cursor:pointer;border:none;background:none}
 
 <!-- ======== ОТЗЫВЫ ======== -->
 <section class="section" id="reviews">
-  <div class="wrap">
+  <div class="full">
     <div class="bigcard on-light reveal">
       <div class="rv-head">
         <h2 class="hd hd-lg">Реальные отзывы<br>наших клиентов</h2>
@@ -527,7 +524,7 @@ button{cursor:pointer;border:none;background:none}
 
 <!-- ======== FAQ ======== -->
 <section class="section" id="faq" style="padding-top:0">
-  <div class="wrap">
+  <div class="full">
     <div class="bigcard on-light reveal" style="padding-block:clamp(30px,4vw,56px)">
       <h2 class="hd hd-xl faq-t">FAQ</h2>
       <div class="faq">
@@ -581,16 +578,11 @@ button{cursor:pointer;border:none;background:none}
 
 <!-- ======== CTA ======== -->
 <section class="section" id="contact" style="padding-top:0">
-  <div class="wrap">
+  <div class="full">
     <div class="cta reveal">
       <div class="cta__l">
         <h2 class="hd hd-xl">Не знаете,<br>какое авто выбрать?</h2>
         <p class="small">Укажите контакты — свяжемся с вами в ближайшее время, подберём машину под задачу и бюджет и подадим её туда, куда вам удобно.</p>
-        <div class="cta__soc">
-          <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.2.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 12.5 1.7 11c-1-.3-1-1 .2-1.5l19-7.3c.8-.3 1.5.2 1 2.1z"/></svg></a>
-          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5 0a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.5c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 5.3 5.3 0 0 0 3.3.7 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-        </div>
       </div>
       <form class="cta__f" onsubmit="send(event)">
         <input class="inp" id="cn" type="text" placeholder="Имя и фамилия" required>
@@ -607,28 +599,19 @@ button{cursor:pointer;border:none;background:none}
 
 <!-- ======== FOOTER ======== -->
 <footer class="foot">
-  <div class="foot__ph"><img src="{{FOOTER_IMG}}" alt=""></div>
-  <div class="foot__sc"></div>
-  <div class="gb" style="left:8%;top:34%">Двигатель эмоций <span>под капотом</span></div>
-  <div class="gb" style="right:9%;top:26%">Уверенность <span>в каждой поездке</span></div>
-  <div class="gb" style="right:22%;top:52%">Выбери авто <span>премиум-класса</span></div>
-  <div class="foot__in">
+  <div class="wrap foot__in">
     <div class="foot__top">
       <a class="logo" href="#top">GRAND <i>AVTO</i></a>
       <nav class="foot__nav">
-        <a href="#top">Главная</a><a href="#catalog">Автопарк</a><a href="#steps">Услуги</a>
+        <a href="#hits">Главная</a><a href="#catalog">Автопарк</a><a href="#steps">Услуги</a>
         <a href="#auction">Аукционы</a><a href="#trust">О нас</a><a href="#contact">Контакты</a>
       </nav>
-      <div class="foot__soc">
-        <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.2.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 12.5 1.7 11c-1-.3-1-1 .2-1.5l19-7.3c.8-.3 1.5.2 1 2.1z"/></svg></a>
-        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
-      </div>
+      <a class="btn btn--w" href="tel:+74232000000">+7 (423) 200-00-00</a>
     </div>
     <div class="foot__bar">
       <span>© 2026 GRAND AVTO. Все права защищены.</span>
       <span>Владивосток, ул. Светланская, 1 · Находка, ул. Портовая, 12</span>
-      <a href="tel:+74232000000">+7 (423) 200-00-00</a>
+      <span>Ежедневно 08:00 — 22:00</span>
     </div>
   </div>
 </footer>
@@ -673,9 +656,6 @@ function tglFq(el){
   var it=el.closest('.fq');var was=it.classList.contains('on');
   document.querySelectorAll('.fq.on').forEach(function(f){f.classList.remove('on')});
   if(!was)it.classList.add('on');
-  document.querySelectorAll('.fq').forEach(function(f){
-    var pl=f.querySelector('.pl'); if(pl)pl.style.display=f.classList.contains('on')?'none':'';
-  });
 }
 function tglCar(b){b.closest('.pc').classList.toggle('on')}
 
@@ -708,7 +688,9 @@ function openModal(car,title,sub,price,img,specs){
   document.getElementById('mT').textContent=title||(car?('Аренда: '+car):'Заявка на аренду');
   document.getElementById('mS').textContent=sub||'Оставьте данные — перезвоним в течение 10 минут';
   var p=document.getElementById('mP');
-  if(price){p.hidden=false;p.innerHTML=price+' ₽ <small>/ сутки</small>'}else{p.hidden=true}
+  if(price){var num=String(price).replace(/\s/g,'');
+    var shown=/^\d+$/.test(num)?Number(num).toLocaleString('ru-RU'):price;
+    p.hidden=false;p.innerHTML=shown+' ₽ <small>/ сутки</small>'}else{p.hidden=true}
   var ph=document.getElementById('mPh'),im=document.getElementById('mImg');
   if(img){ph.hidden=false;im.src=img}else{ph.hidden=true}
   var sp=document.getElementById('mSpecs');
@@ -717,6 +699,10 @@ function openModal(car,title,sub,price,img,specs){
 }
 function rentFrom(btn){
   var c=btn.closest('.pc');
+  openModal(c.dataset.full,'Аренда: '+c.dataset.full,'Перезвоним и подтвердим наличие',c.dataset.price,c.querySelector('img').src,c.dataset.specs);
+}
+function rentFromHit(btn){
+  var c=btn.closest('.cc');
   openModal(c.dataset.full,'Аренда: '+c.dataset.full,'Перезвоним и подтвердим наличие',c.dataset.price,c.querySelector('img').src,c.dataset.specs);
 }
 function closeModal(){document.getElementById('ov').classList.remove('on');document.body.style.overflow=''}

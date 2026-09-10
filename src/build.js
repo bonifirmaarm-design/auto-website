@@ -42,15 +42,16 @@ const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 // ---- ХИТЫ: 3 cards (brand top black, model grey, photo, specs, price + black square arrow) ----
 const hits = cars.slice(0,3).map(c => {
   const s = split(c.name), sp = specsOf(c);
+  const specHtml = Object.entries(sp).map(([k,v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
   return `
-        <article class="cc">
+        <article class="cc" data-full="${c.name}" data-price="${fmt(c.price)}" data-specs='${specHtml.replace(/'/g,"&#39;")}'>
           <div class="cc__nm">${s.brand}</div>
           <div class="cc__md">${s.model} ${s.year}</div>
           <div class="cc__ph"><img src="${c.dataUri}" alt="${c.name} в прокат"></div>
           <div class="cc__sp"><span>${sp['Коробка']}</span><span>${sp['Двигатель']}</span><span>${sp['Мест']} мест</span></div>
           <div class="cc__ft">
             <div class="cc__pr">${fmt(c.price)} ₽<small>в сутки</small></div>
-            <button class="sq sq--k" aria-label="Забронировать ${c.name}" onclick="openModal('${c.name}','Аренда: ${c.name}','Перезвоним и подтвердим наличие','${fmt(c.price)}')">${ARROW}</button>
+            <button class="sq sq--k" aria-label="Забронировать ${c.name}" onclick="rentFromHit(this)">${ARROW}</button>
           </div>
         </article>`;
 }).join('');
