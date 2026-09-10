@@ -28,9 +28,10 @@ button{cursor:pointer;border:none;background:none}
 ::-webkit-scrollbar-thumb{background:#2C2C33;border-radius:4px}
 :focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 .wrap{max-width:1300px;margin:0 auto;padding-inline:var(--gut)}
+.edge{width:100%;padding-inline:clamp(16px,2.4vw,40px)}
 /* full-bleed block: spans the viewport, content still centred on a 1600px measure */
 .full{width:100%}
-.full>.bigcard,.full>.panel,.full>.cta{border-radius:0;padding-inline:max(var(--gut),calc((100% - 1600px) / 2))}
+.full>.bigcard,.full>.panel{border-radius:0;padding-inline:max(var(--gut),calc((100% - 1600px) / 2))}
 .full>.bigcard::before{display:none}
 
 /* type */
@@ -199,19 +200,6 @@ button{cursor:pointer;border:none;background:none}
 .pc__ft{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:auto}
 .pc__pr{font-family:var(--fd);font-weight:800;font-size:.95rem;line-height:1.1}
 .pc__pr small{display:block;font-family:var(--fb);font-weight:500;font-size:.66rem;color:var(--t-b2);margin-top:2px}
-.pc .sq svg{transition:transform .42s var(--e)}
-.pc.on .sq svg{transform:rotate(180deg)}
-.pc__det{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e)}
-.pc.on .pc__det{grid-template-rows:1fr}
-.pc__det>div{overflow:hidden}
-.pc__inner{padding-top:14px}
-.pc__desc{font-size:.74rem;line-height:1.58;color:var(--t-b2);margin-bottom:12px}
-.specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--grey-line);border-radius:10px;overflow:hidden;margin-bottom:12px}
-.specs div{background:var(--white);padding:9px 11px}
-.specs dt{font-size:.62rem;color:var(--t-b3);font-weight:600}
-.specs dd{font-size:.78rem;font-weight:700;margin-top:2px}
-.pc__rent{width:100%;padding:13px;border-radius:var(--rsm);background:var(--black);color:#fff;font-family:var(--fb);font-weight:700;font-size:.8rem;transition:.25s}
-.pc__rent:hover{background:#26262e}
 .cat-empty{grid-column:1/-1;text-align:center;padding:50px;color:var(--t-w3)}
 
 /* ============ REVIEWS ============ */
@@ -254,57 +242,58 @@ button{cursor:pointer;border:none;background:none}
 .fq.on .fq__t .pl{opacity:0;transform:rotate(90deg)}
 
 /* ============ CTA ============ */
-.cta{background:var(--black);border-radius:var(--rxl);padding:clamp(28px,4vw,60px);display:grid;grid-template-columns:1fr .82fr;gap:clamp(24px,3.5vw,52px);align-items:center}
 .cta__l .hd{margin-bottom:16px}
 .cta__l .small{max-width:42ch}
-.cta__soc{display:flex;gap:10px;margin-top:26px}
-.cta__soc a{width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.10);display:grid;place-items:center;transition:.25s}
-.cta__soc a:hover{background:rgba(255,255,255,.2)}
-.cta__soc svg{width:16px;height:16px}
 .cta__f{display:flex;flex-direction:column;gap:11px}
 .inp{width:100%;background:var(--white);border:none;border-radius:var(--rmd);padding:17px 20px;font-size:.9rem;font-weight:500;color:var(--t-b);outline:none}
 .inp::placeholder{color:var(--t-b3)}
 .inp:focus{box-shadow:0 0 0 2px var(--cream)}
 .cta__row{display:inline-flex;align-self:flex-start;align-items:center;gap:14px;background:var(--white);border-radius:var(--rmd);padding:6px 6px 6px 18px;margin-top:4px}
 .cta__row span{font-family:var(--fd);font-weight:800;font-size:.76rem;text-transform:uppercase;letter-spacing:.01em;color:var(--t-b)}
-.cta__note{font-size:.68rem;color:var(--t-w3);line-height:1.5;margin-top:4px}
+.cta__note{font-size:.68rem;color:rgba(255,255,255,.55);line-height:1.5;margin-top:4px}
 
 
 /* ============ MARQUEE (fills the dark gaps between blocks) ============ */
 .mq{overflow:hidden;border-block:1px solid rgba(255,255,255,.10);padding-block:clamp(14px,1.6vw,20px)}
 .mq__t{display:flex;width:max-content;animation:mqs 42s linear infinite}
-.mq:hover .mq__t{animation-play-state:paused}
 .mq__g{display:flex;align-items:center;gap:clamp(26px,3.6vw,58px);padding-right:clamp(26px,3.6vw,58px)}
-.mq__i{display:flex;align-items:center;gap:clamp(26px,3.6vw,58px);font-family:var(--fd);font-weight:800;font-size:clamp(.86rem,1.5vw,1.25rem);text-transform:uppercase;letter-spacing:.015em;color:rgba(255,255,255,.30);white-space:nowrap}
+.mq__i{display:flex;align-items:center;gap:clamp(26px,3.6vw,58px);font-family:var(--fd);font-weight:400;font-size:clamp(.72rem,1.1vw,.95rem);text-transform:uppercase;letter-spacing:.34em;color:rgba(255,255,255,.42);white-space:nowrap}
 .mq__i::after{content:'';width:6px;height:6px;border-radius:2px;background:rgba(255,255,255,.20);flex-shrink:0}
 @keyframes mqs{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.mq__t{animation:none}}
 
-/* ============ RENTAL CONDITIONS ============ */
-.cond{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.cnd{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:var(--rlg);padding:clamp(20px,2vw,28px);background:rgba(255,255,255,.035);display:flex;flex-direction:column;min-height:190px;transition:border-color .4s,background .4s,transform .5s var(--e)}
-.cnd:hover{border-color:rgba(255,255,255,.26);background:rgba(255,255,255,.06);transform:translateY(-4px)}
-.cnd__n{font-family:var(--fd);font-weight:800;font-size:.78rem;color:var(--t-w3);letter-spacing:.06em;margin-bottom:auto}
-.cnd__v{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1;margin:20px 0 8px;letter-spacing:-.02em}
-.cnd__k{font-size:.82rem;line-height:1.55;color:var(--t-w2)}
+/* ============ CAR STRIP (translates with scroll) ============ */
+.cstrip{overflow:hidden;padding-block:clamp(26px,3vw,44px)}
+.cstrip__t{display:flex;gap:14px;width:max-content;will-change:transform}
+.csi{position:relative;width:clamp(210px,20vw,300px);aspect-ratio:16/11;border-radius:var(--rlg);overflow:hidden;flex-shrink:0}
+.csi img{width:100%;height:100%;object-fit:cover}
+.csi::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 46%,rgba(10,10,11,.82) 100%)}
+.csi__c{position:absolute;left:14px;right:14px;bottom:12px;z-index:2}
+.csi__n{font-family:var(--fd);font-weight:800;font-size:.76rem;text-transform:uppercase;letter-spacing:.02em;color:#fff}
+.csi__p{font-size:.7rem;color:rgba(255,255,255,.62);margin-top:2px}
 
-/* ============ MOUNTAIN BAND ============ */
-.mtn{position:relative;width:100%;aspect-ratio:16/6.4;overflow:hidden;min-height:220px}
-.mtn img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
-.mtn::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--cream) 0%,rgba(236,235,233,0) 22%,rgba(10,10,11,0) 54%,var(--ink) 99%)}
+/* ============ CTA ON THE ROAD ============ */
+.road{position:relative;overflow:hidden;min-height:clamp(560px,82svh,860px);display:flex;align-items:flex-end;padding-block:clamp(34px,5vw,72px)}
+.road__ph{position:absolute;inset:0;z-index:0}
+.road__ph img{width:100%;height:100%;object-fit:cover;object-position:center 58%}
+.road__sc{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(180deg,var(--cream) 0%,rgba(236,235,233,0) 15%,rgba(10,10,11,0) 40%,rgba(10,10,11,.72) 78%,rgba(10,10,11,.92) 100%)}
+.road__in{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .8fr;gap:clamp(24px,4vw,64px);align-items:end;width:100%}
+.road__l .hd{margin-bottom:16px}
+.road__l .small{max-width:42ch;color:rgba(255,255,255,.72)}
+.road__f{display:flex;flex-direction:column;gap:11px}
 
-/* ============ FOOTER BANNER ============ */
-.fbanner{position:relative;width:100%;aspect-ratio:16/7.4;overflow:hidden;min-height:240px}
-.fbanner img{width:100%;height:100%;object-fit:cover;object-position:center 56%}
-.fbanner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0%,rgba(10,10,11,.12) 26%,rgba(10,10,11,.5) 74%,var(--ink) 100%)}
-
-/* ============ FOOTER ============ */
-.foot{border-top:1px solid rgba(255,255,255,.12);padding-block:clamp(30px,4vw,48px)}
-.foot__top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+/* ============ FOOTER ON THE PHOTO ============ */
+.foot{position:relative;overflow:hidden;min-height:clamp(360px,52vw,620px);display:flex;align-items:flex-end}
+.foot__ph{position:absolute;inset:0;z-index:0}
+.foot__ph img{width:100%;height:100%;object-fit:cover;object-position:center 52%}
+.foot__sc{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,var(--ink) 0%,rgba(10,10,11,.15) 24%,rgba(10,10,11,.62) 72%,rgba(10,10,11,.94) 100%)}
+.foot__in{position:relative;z-index:3;width:100%;padding-bottom:clamp(20px,2.4vw,34px)}
+.foot__top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:22px}
 .foot__nav{display:flex;gap:clamp(14px,2.2vw,30px);flex-wrap:wrap}
-.foot__nav a{font-size:.78rem;font-weight:600;color:var(--t-w2);transition:.25s}
+.foot__nav a{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.72);transition:.25s}
 .foot__nav a:hover{color:#fff}
-.foot__bar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(255,255,255,.10);font-size:.74rem;color:var(--t-w3)}
+.foot__bar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);font-size:.74rem;color:rgba(255,255,255,.55)}
 
 /* ============ MODAL ============ */
 .ov{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(9px);display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:.35s}
@@ -328,7 +317,7 @@ button{cursor:pointer;border:none;background:none}
 /* ============ RESPONSIVE ============ */
 @media (max-width:1100px){
   .catalog{grid-template-columns:repeat(3,1fr)}
-  .cond{grid-template-columns:repeat(2,1fr)}
+  .road__in{grid-template-columns:1fr;align-items:start}
   .cta,.panel{grid-template-columns:1fr}
   .panel{min-height:0}
 }
@@ -346,8 +335,8 @@ button{cursor:pointer;border:none;background:none}
 }
 @media (max-width:600px){
   :root{--rxl:26px;--rlg:18px}
-  .cond{grid-template-columns:1fr}
-  .mtn,.fbanner{aspect-ratio:16/10}
+  .road{min-height:0}
+  .foot{min-height:0;padding-top:220px}
   .cars3{grid-template-columns:1fr}
   .trust,.catalog{grid-template-columns:1fr}
   .rvc{flex-basis:80vw}
@@ -360,7 +349,7 @@ button{cursor:pointer;border:none;background:none}
 
 <!-- ======== HEADER ======== -->
 <header class="hdr">
-  <div class="wrap hdr__in">
+  <div class="edge hdr__in">
     <a class="logo" href="#top">GRAND <i>AVTO</i></a>
     <nav class="nav">
       <a href="#hits">Главная</a><a href="#catalog">Автопарк</a><a href="#steps">Услуги</a>
@@ -368,7 +357,7 @@ button{cursor:pointer;border:none;background:none}
     </nav>
     <div class="hdr__r">
       <button class="btn btn--w" onclick="go('contact')">Забронировать</button>
-      <button class="sq sq--gl" aria-label="Личный кабинет" onclick="openModal('','Вход в личный кабинет','Личный кабинет скоро будет доступен — оставьте номер, и мы сообщим о запуске')">
+      <button class="sq sq--gl" aria-label="Личный кабинет" onclick="openModal('','Вход в личный кабинет','Личный кабинет скоро будет доступен — оставьте номер, и мы сообщим о запуске','','{{WHEEL_IMG}}')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21v-1.8a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4V21"/><circle cx="12" cy="7" r="4"/></svg>
       </button>
     </div>
@@ -384,7 +373,7 @@ button{cursor:pointer;border:none;background:none}
   <div class="gb" style="left:5%;top:46%">Аренда <span>с выкупом</span></div>
   <div class="gb" style="right:7%;top:30%">Без банка <span>и первоначального взноса</span></div>
   <div class="gb" style="right:15%;bottom:30%">От 18 лет <span>стаж без ограничений</span></div>
-  <div class="wrap hero__in">
+  <div class="edge hero__in">
     <h1 class="hero__t reveal">Найди машину за 30 секунд!<br>Простые условия, мгновенный результат</h1>
     <div class="hero__cta reveal">
       <p class="small">Японские авто в наличии<br>во Владивостоке и Находке</p>
@@ -505,20 +494,9 @@ button{cursor:pointer;border:none;background:none}
 </section>
 
 
-<!-- ======== УСЛОВИЯ АРЕНДЫ ======== -->
-<section class="section" id="terms">
-  <div class="wrap">
-    <div class="sec-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px">
-      <h2 class="hd hd-lg">Условия аренды</h2>
-      <p class="small" style="max-width:44ch">Всё прозрачно и зафиксировано в договоре — никаких скрытых платежей и мелкого шрифта.</p>
-    </div>
-    <div class="cond reveal">
-      <div class="cnd"><div class="cnd__n">01 · ВОЗРАСТ</div><div class="cnd__v">18+</div><div class="cnd__k">Минимальный возраст водителя — 18 лет.</div></div>
-      <div class="cnd"><div class="cnd__n">02 · СТАЖ</div><div class="cnd__v">Без<br>ограничений</div><div class="cnd__k">При стаже до 3 лет в особых случаях назначается залог.</div></div>
-      <div class="cnd"><div class="cnd__n">03 · ПРОБЕГ</div><div class="cnd__v">250 км</div><div class="cnd__k">В сутки. Опция «без лимита» — при аренде от 3 суток.</div></div>
-      <div class="cnd"><div class="cnd__n">04 · ОПЛАТА</div><div class="cnd__v">Любая<br>форма</div><div class="cnd__k">Наличные, карта или безнал для юридических лиц.</div></div>
-    </div>
-  </div>
+<!-- ======== ЛЕНТА АВТО (едет при скролле) ======== -->
+<section class="cstrip" id="cstrip" aria-label="Автопарк">
+  <div class="cstrip__t" id="cstripT">{{STRIP_HTML}}</div>
 </section>
 
 <!-- ======== АУКЦИОН ======== -->
@@ -690,18 +668,16 @@ button{cursor:pointer;border:none;background:none}
 </section>
 
 
-<!-- ======== ГОРА ======== -->
-<div class="mtn"><img src="{{MOUNTAIN_IMG}}" alt="Дорога к горе на закате"></div>
-
-<!-- ======== CTA ======== -->
-<section class="section" id="contact" style="padding-top:0">
-  <div class="full">
-    <div class="cta reveal">
-      <div class="cta__l">
-        <h2 class="hd hd-xl">Не знаете,<br>какое авто выбрать?</h2>
-        <p class="small">Укажите контакты — свяжемся с вами в ближайшее время, подберём машину под задачу и бюджет и подадим её туда, куда вам удобно.</p>
-      </div>
-      <form class="cta__f" onsubmit="send(event)">
+<!-- ======== CTA НА ДОРОГЕ ======== -->
+<section class="road" id="contact">
+  <div class="road__ph"><img src="{{MOUNTAIN_IMG}}" alt="Дорога к горе на закате"></div>
+  <div class="road__sc"></div>
+  <div class="edge road__in">
+    <div class="road__l reveal">
+      <h2 class="hd hd-xl">Не знаете,<br>какое авто выбрать?</h2>
+      <p class="small">Укажите контакты — свяжемся с вами в ближайшее время, подберём машину под задачу и бюджет и подадим её туда, куда вам удобно.</p>
+    </div>
+    <form class="cta__f road__f reveal" onsubmit="send(event)">
         <input class="inp" id="cn" type="text" placeholder="Имя и фамилия" required>
         <input class="inp" id="cp" type="tel" placeholder="Номер телефона" required>
         <select class="inp" id="cc"><option>Подберите авто за меня</option>{{CAR_OPTIONS}}</select>
@@ -710,17 +686,14 @@ button{cursor:pointer;border:none;background:none}
         </div>
         <div class="cta__note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
       </form>
-    </div>
   </div>
 </section>
 
-
-<!-- ======== ФУТЕР-БАННЕР ======== -->
-<div class="fbanner"><img src="{{FOOTER_IMG}}" alt="GRAND AVTO — прокат японских авто"></div>
-
-<!-- ======== FOOTER ======== -->
+<!-- ======== FOOTER НА ФОТО ======== -->
 <footer class="foot">
-  <div class="wrap foot__in">
+  <div class="foot__ph"><img src="{{FOOTER_IMG}}" alt="GRAND AVTO — прокат японских авто"></div>
+  <div class="foot__sc"></div>
+  <div class="edge foot__in">
     <div class="foot__top">
       <a class="logo" href="#top">GRAND <i>AVTO</i></a>
       <nav class="foot__nav">
@@ -778,7 +751,21 @@ function tglFq(el){
   document.querySelectorAll('.fq.on').forEach(function(f){f.classList.remove('on')});
   if(!was)it.classList.add('on');
 }
-function tglCar(b){b.closest('.pc').classList.toggle('on')}
+// car strip runs right as the page scrolls past it
+var csEl=document.getElementById('cstrip'),csT=document.getElementById('cstripT'),csMax=0,csTick=false;
+function csMeasure(){ if(!csEl)return; csMax=Math.max(0,csT.scrollWidth-csEl.clientWidth); csDraw(); }
+function csDraw(){
+  if(!csEl||!csMax)return;
+  var r=csEl.getBoundingClientRect(), vh=innerHeight;
+  var p=(vh-r.top)/(vh+r.height);
+  p=p<0?0:p>1?1:p;
+  csT.style.transform='translate3d('+(-p*csMax).toFixed(1)+'px,0,0)';
+}
+function csOnScroll(){ if(csTick)return; csTick=true; requestAnimationFrame(function(){csDraw();csTick=false}); }
+addEventListener('scroll',csOnScroll,{passive:true});
+addEventListener('resize',csMeasure);
+addEventListener('load',csMeasure);
+csMeasure();
 
 function filt(){
   var q=document.getElementById('q').value.trim().toLowerCase();
@@ -816,6 +803,8 @@ function openModal(car,title,sub,price,img,specs){
   if(img){ph.hidden=false;im.src=img}else{ph.hidden=true}
   var sp=document.getElementById('mSpecs');
   if(specs){sp.hidden=false;sp.innerHTML=specs}else{sp.hidden=true}
+  var dt=document.getElementById('md1');
+  dt.hidden=!car; dt.required=false; if(!car)dt.value='';
   document.getElementById('ov').classList.add('on');document.body.style.overflow='hidden';
 }
 function rentFrom(btn){

@@ -68,14 +68,22 @@ const catalog = cars.map(c => {
         <div class="pc__sp"><span>${sp['Коробка']}</span><span>${sp['Двигатель']}</span><span>${sp['Мест']} мест</span></div>
         <div class="pc__ft">
           <div class="pc__pr">${fmt(c.price)} ₽<small>в сутки</small></div>
-          <button class="sq sq--k" aria-label="Подробнее о ${c.name}" onclick="tglCar(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></button>
+          <button class="sq sq--k" aria-label="Подробнее о ${c.name}" onclick="rentFrom(this)">${ARROW}</button>
         </div>
-        <div class="pc__det"><div><div class="pc__inner">
-          <p class="pc__desc">${descOf(c)}</p>
-          <dl class="specs">${specHtml}</dl>
-          <button class="pc__rent" onclick="rentFrom(this)">Арендовать</button>
-        </div></div></div>
       </article>`;
+}).join('');
+
+// ---- ЛЕНТА АВТО (едет вправо при скролле) ----
+const strip = cars.concat(cars.slice(0,4)).map(c => {
+  const s = split(c.name);
+  return `
+    <figure class="csi">
+      <img src="${c.dataUri}" alt="${c.name}">
+      <figcaption class="csi__c">
+        <div class="csi__n">${s.brand} ${s.model}</div>
+        <div class="csi__p">${fmt(c.price)} ₽ / сутки</div>
+      </figcaption>
+    </figure>`;
 }).join('');
 
 const carOptions = cars.map(c => `<option>${c.name}</option>`).join('');
@@ -110,6 +118,7 @@ tpl = tpl
   .replace(/{{STEERING_IMG}}/g, data.decor.steering)
   .replace('{{HITS_HTML}}', hits)
   .replace('{{CATALOG_HTML}}', catalog)
+  .replace('{{STRIP_HTML}}', strip)
   .replace('{{CAR_COUNT}}', String(cars.length))
   .replace('{{CAR_OPTIONS}}', carOptions)
   .replace('{{REVIEWS_HTML}}', revHtml)
