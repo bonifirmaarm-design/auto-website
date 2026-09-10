@@ -3,12 +3,19 @@ const fs = require('fs');
 const REPO = '/home/user/auto-website/';
 const OUT = '/tmp/claude-0/-home-user-auto-website/16d1e8ad-1c45-53ab-ad9f-9567d11aab9b/scratchpad/';
 
+const A = 'cinematic_automotive_photography_premium_silver_japanese_minivan_toyota_alphard_style_three-quarter_upipzsc3d2piata1c21o_3.png';
+const V = 'cinematic_automotive_photography_premium_white_japanese_minivan_side_three-quarter_view_vertical_co_yikdxy9m8i0ikh0q7z1r_1.png';
+const L = 'cinematic_automotive_photography_premium_white_japanese_minivan_side_three-quarter_view_vertical_co_pncezim40s6q6cra5thg_0.png';
+const G = 'cinematic_wide_shot_of_a_dark_premium_japanese_car_on_an_empty_mountain_road_at_sunset_golden_hour__069vcbgb3v2j7c988ydz_2.png';
+const M = 'omni-4d735913-3ba6-479f-a676-5f641a7fca8c.png';
+
 const jobs = [
-  { key:'hero',    file:'2026-09-10_17-14-32.png', w:1400, q:0.74 }, // Toyota Noah minivan
-  { key:'hits',    file:'2026-09-10_17-14-32.png', w:900,  q:0.74 },
-  { key:'steps',   file:'2026-09-10_17-15-46.png', w:1200, q:0.72 }, // Toyota SAI
-  { key:'auction', file:'2026-09-10_17-13-30.png', w:1200, q:0.72 }, // Nissan X-Trail
-  { key:'footer',  file:'2026-09-10_17-11-57.png', w:1400, q:0.72 }, // Honda Accord
+  { key:'hero',     file:A, w:1376, q:0.80 }, // Alphard + baked-in GRAND AVTO wall
+  { key:'hits',     file:V, w:900,  q:0.80 }, // vertical white Alphard
+  { key:'steps',    file:G, w:1376, q:0.78 }, // GR86 on mountain road, dark left
+  { key:'auction',  file:L, w:1376, q:0.78 }, // white minivan, landscape
+  { key:'mountain', file:M, w:1376, q:0.80 }, // desert road to mountain, pale sky -> dark road
+  { key:'footer',   file:A, w:1200, q:0.76 }, // bookend with the hero image
 ];
 
 (async () => {

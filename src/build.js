@@ -62,18 +62,19 @@ const catalog = cars.map(c => {
   const specHtml = Object.entries(sp).map(([k,v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
   return `
       <article class="pc" data-name="${c.name.toLowerCase()}" data-type="${c.type}" data-price="${c.price}" data-full="${c.name}" data-specs='${specHtml.replace(/'/g,"&#39;")}'>
-        <div class="pc__ph"><span class="pc__tag">${TYPE[c.type]}</span><img src="${c.dataUri}" alt="${c.name} — аренда авто GRAND AVTO"></div>
         <div class="pc__nm">${s.brand}</div>
         <div class="pc__md">${s.model} ${s.year}</div>
-        <div class="pc__pr">${fmt(c.price)} ₽ <small>/ сутки</small></div>
+        <div class="pc__ph"><span class="pc__tag">${TYPE[c.type]}</span><img src="${c.dataUri}" alt="${c.name} — аренда авто GRAND AVTO"></div>
+        <div class="pc__sp"><span>${sp['Коробка']}</span><span>${sp['Двигатель']}</span><span>${sp['Мест']} мест</span></div>
+        <div class="pc__ft">
+          <div class="pc__pr">${fmt(c.price)} ₽<small>в сутки</small></div>
+          <button class="sq sq--k" aria-label="Подробнее о ${c.name}" onclick="tglCar(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
         <div class="pc__det"><div><div class="pc__inner">
           <p class="pc__desc">${descOf(c)}</p>
           <dl class="specs">${specHtml}</dl>
-        </div></div></div>
-        <div class="pc__btns">
-          <button class="pc__more" onclick="tglCar(this)">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></button>
           <button class="pc__rent" onclick="rentFrom(this)">Арендовать</button>
-        </div>
+        </div></div></div>
       </article>`;
 }).join('');
 
@@ -104,6 +105,7 @@ tpl = tpl
   .replace(/{{STEPS_IMG}}/g, big.steps)
   .replace(/{{AUCTION_IMG}}/g, big.auction)
   .replace(/{{FOOTER_IMG}}/g, big.footer)
+  .replace(/{{MOUNTAIN_IMG}}/g, big.mountain)
   .replace(/{{WHEEL_IMG}}/g, data.decor.wheel)
   .replace(/{{STEERING_IMG}}/g, data.decor.steering)
   .replace('{{HITS_HTML}}', hits)
