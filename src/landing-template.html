@@ -1,730 +1,728 @@
 <title>GRAND AVTO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --ink:#0B0B0C; --ink-soft:#141416; --graphite:#1B1B1F; --graphite-2:#26262C;
-  --paper:#FFFFFF; --paper-2:#F1F2F4; --paper-3:#E7E9EC;
-  --steel:#CCDDE1; --steel-ink:#5E7C85; --steel-deep:#41565D;
-  --line-dk:rgba(255,255,255,.10); --line-dk-2:rgba(255,255,255,.16);
-  --line-lt:#E2E4E8;
-  --t-dk:#F7F8F9; --t-dk-2:rgba(247,248,249,.60); --t-dk-3:rgba(247,248,249,.40);
-  --t-lt:#0B0B0C; --t-lt-2:#5B5F66; --t-lt-3:#8A8F97;
-  --grad:linear-gradient(140deg,#34343C 0%,#1C1C21 52%,#0E0E11 100%);
-  --grad-steel:linear-gradient(140deg,#2E3A3E 0%,#1A2226 55%,#0E1113 100%);
-  --sheen:radial-gradient(120% 90% at 15% 10%,rgba(204,221,225,.14) 0%,transparent 55%);
-  --r:18px; --r-md:14px; --r-sm:10px; --r-xs:8px;
+  --black:#000000; --ink:#0A0A0B; --ink-2:#141416;
+  --cream:#ECEBE9; --white:#FFFFFF; --grey-card:#E3E2DF; --grey-line:#D5D4D0;
+  --dk-grad:linear-gradient(152deg,#3E3E48 0%,#22222A 45%,#101014 100%);
+  --dk-grad-2:linear-gradient(152deg,#4A4A57 0%,#26262F 50%,#131318 100%);
+  --glass:rgba(255,255,255,.13); --glass-b:rgba(255,255,255,.22);
+  --t-w:#FFFFFF; --t-w2:rgba(255,255,255,.58); --t-w3:rgba(255,255,255,.36);
+  --t-b:#0A0A0B; --t-b2:#6C6C68; --t-b3:#9B9B96;
+  --rxl:40px; --rlg:24px; --rmd:16px; --rsm:12px;
   --fd:'Montserrat',system-ui,sans-serif; --fb:'Manrope',system-ui,sans-serif;
-  --ease:cubic-bezier(.22,1,.36,1);
-  --gutter:clamp(20px,5vw,72px);
+  --e:cubic-bezier(.22,1,.36,1);
+  --gut:clamp(18px,4.5vw,64px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--ink);color:var(--t-dk);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--ink);color:var(--t-w);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-::selection{background:var(--steel);color:#0B0B0C}
-::-webkit-scrollbar{width:7px;height:7px}
-::-webkit-scrollbar-track{background:var(--ink)}
-::-webkit-scrollbar-thumb{background:var(--graphite-2);border-radius:4px}
-:focus-visible{outline:2px solid var(--steel);outline-offset:3px}
+button,input,select{font-family:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+::selection{background:var(--cream);color:#000}
+::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:#2C2C33;border-radius:4px}
+:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+.wrap{max-width:1300px;margin:0 auto;padding-inline:var(--gut)}
 
-.wrap{max-width:1280px;margin:0 auto;padding-inline:var(--gutter)}
-.eyebrow{font-family:var(--fb);font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--steel-ink)}
-.on-dark .eyebrow{color:var(--steel)}
-.h-display{font-family:var(--fd);font-weight:300;letter-spacing:-.03em;line-height:1.02}
-.h-sec{font-family:var(--fd);font-weight:600;letter-spacing:-.025em;line-height:1.08;font-size:clamp(1.9rem,3.4vw,3rem)}
-.lede{font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.65}
+/* type */
+.hd{font-family:var(--fd);font-weight:800;text-transform:uppercase;letter-spacing:-.015em;line-height:1.06;text-wrap:balance}
+.hd-xl{font-size:clamp(1.9rem,4.4vw,3.6rem)}
+.hd-lg{font-size:clamp(1.5rem,3vw,2.5rem)}
+.hd-md{font-size:clamp(1.15rem,1.9vw,1.6rem)}
+.dim{font-weight:500;color:var(--t-w2)}
+.on-light .dim{color:var(--t-b2)}
+.small{font-size:.86rem;line-height:1.6;color:var(--t-w2)}
+.on-light .small{color:var(--t-b2)}
 
-/* buttons — rounded-square */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:var(--r-sm);font-family:var(--fb);font-weight:600;font-size:.9rem;letter-spacing:.01em;transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s,box-shadow .35s var(--ease);will-change:transform}
-.btn svg{width:16px;height:16px}
-.btn--steel{background:var(--steel);color:#0B0B0C}
-.btn--steel:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(204,221,225,.22)}
-.btn--dark{background:var(--ink);color:var(--t-dk)}
-.btn--dark:hover{transform:translateY(-2px);background:#000}
-.btn--lineDk{background:transparent;color:var(--t-dk);border:1px solid var(--line-dk-2)}
-.btn--lineDk:hover{border-color:var(--steel);color:var(--steel)}
-.btn--lineLt{background:transparent;color:var(--t-lt);border:1px solid var(--line-lt)}
-.btn--lineLt:hover{border-color:var(--t-lt);transform:translateY(-2px)}
-.btn--grad{background:var(--grad);color:var(--t-dk);border:1px solid var(--line-dk)}
-.btn--grad:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 26px;border-radius:var(--rmd);font-family:var(--fb);font-weight:700;font-size:.88rem;transition:transform .35s var(--e),background .3s,color .3s,border-color .3s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn--w{background:var(--white);color:#000}
+.btn--w:hover{background:var(--cream)}
+.btn--k{background:var(--black);color:#fff}
+.btn--k:hover{background:#1c1c22}
+.btn--gl{background:var(--glass);color:#fff;border:1px solid var(--glass-b);backdrop-filter:blur(14px)}
+.btn--gl:hover{background:rgba(255,255,255,.2)}
+.btn--ln{background:transparent;color:var(--t-b);border:1px solid var(--grey-line)}
+.btn--ln:hover{border-color:#000}
+.ar{width:22px;height:22px;flex-shrink:0}
+/* square arrow chip */
+.sq{width:44px;height:44px;border-radius:var(--rsm);display:grid;place-items:center;flex-shrink:0;transition:.32s var(--e)}
+.sq svg{width:18px;height:18px}
+.sq--k{background:var(--black);color:#fff}
+.sq--k:hover{transform:translate(2px,-2px)}
+.sq--w{background:var(--white);color:#000}
+.sq--gl{background:var(--glass);border:1px solid var(--glass-b);color:#fff;backdrop-filter:blur(12px)}
 
-/* chip / badge — rounded-square, never pill */
-.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:var(--r-xs);font-size:.75rem;font-weight:600;letter-spacing:.01em;line-height:1}
-.chip--glass{background:rgba(11,11,12,.55);backdrop-filter:blur(14px);border:1px solid var(--line-dk-2);color:var(--t-dk)}
-.chip--steel{background:var(--steel);color:#0B0B0C}
-.chip--outline{background:transparent;border:1px solid var(--line-dk-2);color:var(--t-dk-2)}
-.chip .dot{width:6px;height:6px;border-radius:2px;background:var(--steel)}
+/* glass badge on photos */
+.gb{position:absolute;z-index:3;padding:11px 17px;border-radius:var(--rmd);background:rgba(255,255,255,.15);backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,.26);font-family:var(--fd);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:#fff;line-height:1.35;max-width:190px;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.gb span{font-weight:500;color:rgba(255,255,255,.72)}
 
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s var(--e),transform .85s var(--e)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
-/* ============ HEADER ============ */
-.hdr{position:fixed;top:0;left:0;right:0;z-index:90;transition:background .4s,border-color .4s,padding .4s}
-.hdr__in{display:flex;align-items:center;justify-content:space-between;padding-block:18px;border-bottom:1px solid transparent}
-.hdr.scrolled{background:rgba(11,11,12,.82);backdrop-filter:blur(20px) saturate(1.3)}
-.hdr.scrolled .hdr__in{border-color:var(--line-dk)}
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--fd);font-weight:600;font-size:1.05rem;letter-spacing:.02em}
-.brand__mark{width:34px;height:34px;border-radius:var(--r-xs);background:var(--grad);border:1px solid var(--line-dk-2);display:grid;place-items:center;font-weight:700;font-size:.9rem;color:var(--steel)}
-.brand b{font-weight:300;letter-spacing:.16em}
-.brand b span{font-weight:700;color:var(--steel)}
-.nav{display:flex;gap:30px}
-.nav a{font-size:.86rem;font-weight:500;color:var(--t-dk-2);transition:color .25s;position:relative}
-.nav a:hover{color:var(--t-dk)}
-.hdr__right{display:flex;align-items:center;gap:14px}
-.hdr__phone{font-size:.86rem;font-weight:600;color:var(--t-dk);letter-spacing:.01em}
-.icon-btn{width:40px;height:40px;border-radius:var(--r-xs);border:1px solid var(--line-dk-2);display:grid;place-items:center;color:var(--t-dk-2);transition:.25s}
-.icon-btn:hover{border-color:var(--steel);color:var(--steel)}
-.icon-btn svg{width:18px;height:18px}
-.burger{display:none}
+/* ============ HEADER (not sticky) ============ */
+.hdr{position:absolute;top:0;left:0;right:0;z-index:40;padding-block:22px}
+.hdr__in{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:var(--fd);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;text-transform:uppercase}
+.logo i{font-style:normal;font-weight:500;color:var(--t-w2)}
+.nav{display:flex;gap:clamp(16px,2.4vw,34px)}
+.nav a{font-size:.8rem;font-weight:600;color:var(--t-w2);letter-spacing:.01em;transition:color .25s}
+.nav a:hover{color:#fff}
+.hdr__r{display:flex;align-items:center;gap:10px}
 
 /* ============ HERO ============ */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:clamp(36px,6vh,72px)}
-.hero__img{position:absolute;inset:0;z-index:0}
-.hero__img img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
-.hero__scrim{position:absolute;inset:0;z-index:1;background:
-  linear-gradient(180deg,rgba(11,11,12,.72) 0%,rgba(11,11,12,.22) 30%,rgba(11,11,12,.55) 72%,var(--ink) 100%),
-  radial-gradient(120% 80% at 80% 0%,rgba(204,221,225,.10) 0%,transparent 50%)}
-.hero__in{position:relative;z-index:2;width:100%}
-.hero__chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
-.hero__title{font-size:clamp(2.6rem,7vw,6rem);margin-bottom:22px;max-width:15ch;text-wrap:balance}
-.hero__title b{font-weight:700}
-.hero__title .thin{font-weight:200}
-.hero__sub{max-width:46ch;color:var(--t-dk-2);margin-bottom:34px}
-.hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
-.hero__stats{display:flex;gap:clamp(24px,5vw,64px);flex-wrap:wrap;padding-top:30px;border-top:1px solid var(--line-dk)}
-.stat__n{font-family:var(--fd);font-weight:300;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.03em;line-height:1}
-.stat__n b{font-weight:600;color:var(--steel)}
-.stat__l{font-size:.82rem;color:var(--t-dk-2);margin-top:8px;letter-spacing:.02em}
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:clamp(32px,5vh,64px)}
+.hero__ph{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero__ph img{width:100%;height:100%;object-fit:cover;object-position:56% 56%;filter:blur(1.6px) saturate(.88) contrast(1.14) brightness(.55);transform:scale(1.08)}
+/* cinematic grain so the soft source reads as depth of field, not low-res */
+.grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.15;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.vig{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(115% 85% at 50% 42%,transparent 34%,rgba(10,10,11,.55) 78%,var(--ink) 100%)}
+.hero__mark{position:absolute;z-index:1;left:50%;top:44%;transform:translate(-50%,-50%);font-family:var(--fd);font-weight:800;font-size:clamp(2.6rem,11.5vw,10.5rem);letter-spacing:-.035em;color:rgba(255,255,255,.09);white-space:nowrap;user-select:none;pointer-events:none;line-height:1;max-width:100%}
+.hero__sc{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(10,10,11,.82) 0%,rgba(10,10,11,.30) 32%,rgba(10,10,11,.74) 72%,var(--ink) 100%)}
+.hero__in{position:relative;z-index:4;width:100%;display:grid;grid-template-columns:1.35fr auto;gap:32px;align-items:end}
+.hero__t{font-size:clamp(1.6rem,4.2vw,3.4rem);max-width:19ch}
+.hero__cta{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.hero__cta .small{max-width:24ch;text-align:right;color:var(--t-w2)}
 
-/* ============ QUICK STRIP (dark) ============ */
-.section{padding-block:clamp(72px,10vw,128px)}
-.sec-head{max-width:64ch;margin-bottom:clamp(40px,5vw,64px)}
-.sec-head .eyebrow{display:inline-block;margin-bottom:18px}
-.sec-head .h-sec{margin-bottom:16px;text-wrap:balance}
-.sec-head p{color:var(--t-dk-2);max-width:52ch}
-.on-light .sec-head p{color:var(--t-lt-2)}
-.sec-head--center{margin-inline:auto;text-align:center}
-.sec-head--center p{margin-inline:auto}
-.sec-head--split{max-width:none;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+/* ============ BIG CREAM CARD ============ */
+.section{padding-block:clamp(56px,8vw,110px)}
+.bigcard{position:relative;background:var(--cream);color:var(--t-b);border-radius:var(--rxl);padding:clamp(24px,3.4vw,48px)}
+.bigcard::before{content:'';position:absolute;top:-26px;left:50%;transform:translateX(-50%);width:clamp(120px,18vw,210px);height:27px;background:var(--cream);border-radius:18px 18px 0 0}
+.hits{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(20px,2.6vw,36px);align-items:stretch}
+.hits__ph{position:relative;border-radius:var(--rlg);overflow:hidden;min-height:340px}
+.hits__ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hits__r{display:flex;flex-direction:column}
+.hits__r .hd{margin-bottom:12px}
+.hits__r>.small{margin-bottom:26px;max-width:52ch}
+.cars3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+.cc{background:var(--grey-card);border-radius:var(--rlg);padding:18px 16px 16px;display:flex;flex-direction:column}
+.cc__nm{font-family:var(--fd);font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.01em;text-align:center;line-height:1.25}
+.cc__md{font-family:var(--fd);font-weight:500;font-size:.72rem;text-transform:uppercase;color:var(--t-b2);text-align:center;margin-top:3px;line-height:1.25}
+.cc__ph{margin:14px 0 12px;aspect-ratio:16/10;border-radius:var(--rsm);overflow:hidden}
+.cc__ph img{width:100%;height:100%;object-fit:cover}
+.cc__sp{display:flex;gap:10px;font-size:.66rem;color:var(--t-b3);font-weight:600;margin-bottom:10px;flex-wrap:wrap}
+.cc__ft{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:auto}
+.cc__pr{font-family:var(--fd);font-weight:800;font-size:.95rem;line-height:1.1}
+.cc__pr small{display:block;font-family:var(--fb);font-weight:500;font-size:.66rem;color:var(--t-b2);margin-top:2px}
+.hits__btn{align-self:center}
 
-/* хиты проката — 3 cards */
-.hits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.carcard{position:relative;border-radius:var(--r);overflow:hidden;background:var(--graphite);border:1px solid var(--line-dk);transition:transform .5s var(--ease),border-color .4s}
-.carcard:hover{transform:translateY(-6px);border-color:var(--line-dk-2)}
-.carcard__media{position:relative;aspect-ratio:16/11;overflow:hidden}
-.carcard__media img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
-.carcard:hover .carcard__media img{transform:scale(1.05)}
-.carcard__media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,11,12,.65) 100%)}
-/* плашки в углах фото */
-.badge-tl{position:absolute;top:12px;left:12px;z-index:2}
-.badge-tr{position:absolute;top:12px;right:12px;z-index:2}
-.badge-bl{position:absolute;left:12px;bottom:12px;z-index:2}
-.carcard__body{padding:20px 22px 22px}
-.carcard__row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
-.carcard__name{font-family:var(--fd);font-weight:600;font-size:1.1rem;letter-spacing:-.01em}
-.carcard__year{font-size:.8rem;color:var(--t-dk-3);font-variant-numeric:tabular-nums}
-.carcard__price{font-family:var(--fd);font-weight:300;font-size:1.5rem;letter-spacing:-.02em;color:var(--steel);font-variant-numeric:tabular-nums;margin-bottom:16px}
-.carcard__price b{font-weight:600}
-.carcard__price span{font-family:var(--fb);font-size:.8rem;font-weight:500;color:var(--t-dk-2);letter-spacing:0}
-.carcard__foot{display:flex;gap:10px}
-.carcard__foot .btn{flex:1;padding:12px 16px;font-size:.82rem}
+/* ============ TRUST CHECKERBOARD ============ */
+.tr-head{text-align:center;max-width:1180px;margin:0 auto clamp(28px,4vw,48px)}
+.tr-head .hd{margin-bottom:14px;font-size:clamp(1.5rem,3.3vw,2.9rem)}
+.tr-head .small{max-width:56ch;margin-inline:auto}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tc{position:relative;border-radius:var(--rlg);padding:clamp(20px,2.2vw,30px);min-height:230px;display:flex;flex-direction:column;overflow:hidden;transition:transform .5s var(--e)}
+.tc:hover{transform:translateY(-5px)}
+.tc__n{font-family:var(--fd);font-weight:800;font-size:1.05rem;line-height:1;margin-bottom:auto;opacity:.5}
+.tc__k{font-family:var(--fd);font-weight:800;font-size:clamp(.92rem,1.25vw,1.08rem);text-transform:uppercase;line-height:1.28;margin:22px 0 10px;letter-spacing:-.01em}
+.tc__t{font-size:.8rem;line-height:1.62}
+.tc--w{background:var(--white);color:var(--t-b)}
+.tc--w .tc__t{color:var(--t-b2)}
+.tc--w .tc__k .dim{color:var(--t-b3)}
+.tc--k{background:var(--black);color:#fff}
+.tc--k .tc__t{color:var(--t-w2)}
+.tc--g{background:var(--dk-grad);color:#fff}
+.tc--g .tc__t{color:var(--t-w2)}
+/* decor only on dark cards: black source blends away with screen, edges masked to nothing */
+.tc__dec{position:absolute;right:-72px;bottom:-64px;width:225px;height:225px;pointer-events:none;
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 48%,transparent 72%);
+  mask-image:radial-gradient(circle at 50% 50%,#000 48%,transparent 72%)}
+.tc__dec img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;opacity:.5}
 
-/* ============ CHECKERBOARD TRUST (white) ============ */
-.on-light{background:var(--paper);color:var(--t-lt)}
-.on-light .h-sec{color:var(--t-lt)}
-.on-light .eyebrow{color:var(--steel-ink)}
-.trust{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:18px}
-.tcard{border-radius:var(--r);padding:32px;display:flex;flex-direction:column;min-height:260px;position:relative;overflow:hidden;transition:transform .5s var(--ease)}
-.tcard:hover{transform:translateY(-5px)}
-.tcard__icon{width:48px;height:48px;border-radius:var(--r-sm);display:grid;place-items:center;margin-bottom:auto}
-.tcard__icon svg{width:24px;height:24px}
-.tcard__k{font-family:var(--fd);font-weight:600;font-size:1.15rem;letter-spacing:-.01em;margin:26px 0 10px}
-.tcard__t{font-size:.9rem;line-height:1.6}
-.tcard--paper{background:var(--paper-2);border:1px solid var(--line-lt);color:var(--t-lt)}
-.tcard--paper .tcard__icon{background:#fff;border:1px solid var(--line-lt);color:var(--steel-ink)}
-.tcard--paper .tcard__t{color:var(--t-lt-2)}
-.tcard--dark{background:var(--ink);color:var(--t-dk)}
-.tcard--dark .tcard__icon{background:var(--graphite-2);color:var(--steel)}
-.tcard--dark .tcard__t{color:var(--t-dk-2)}
-.tcard--grad{background:var(--grad);color:var(--t-dk);border:1px solid var(--line-dk)}
-.tcard--grad::before{content:'';position:absolute;inset:0;background:var(--sheen);pointer-events:none}
-.tcard--grad .tcard__icon{background:rgba(204,221,225,.14);color:var(--steel)}
-.tcard--grad .tcard__t{color:var(--t-dk-2)}
-.tcard__decor{position:absolute;right:-30px;bottom:-30px;width:180px;height:180px;opacity:.5;pointer-events:none;filter:grayscale(.2) contrast(1.05)}
-.tcard__decor img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen}
-.tcard--big{grid-column:span 1}
+/* ============ STEPS / AUCTION PANEL ============ */
+.panel{position:relative;border-radius:var(--rxl);overflow:hidden;min-height:520px;display:grid;grid-template-columns:1fr .82fr;gap:clamp(20px,3vw,40px);padding:clamp(24px,3.4vw,48px)}
+.panel__ph{position:absolute;inset:0;z-index:0}
+.panel__ph img{width:100%;height:100%;object-fit:cover;filter:blur(1.4px) saturate(.82) contrast(1.12) brightness(.6);transform:scale(1.2)}
+.panel__sc{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(10,10,11,.92) 6%,rgba(10,10,11,.62) 44%,rgba(10,10,11,.42) 100%)}
+.panel__l{position:relative;z-index:3;display:flex;flex-direction:column}
+.panel__l .hd{margin-bottom:16px;font-size:clamp(1.5rem,2.9vw,2.6rem)}
+.panel__foot{margin-top:auto;padding-top:30px}
+.panel__foot .small{max-width:40ch;margin-bottom:18px}
+.panel__r{position:relative;z-index:3;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.stp{border-radius:var(--rlg);padding:20px 22px;transition:.45s var(--e);cursor:pointer;overflow:hidden}
+.stp__top{display:flex;align-items:center;gap:16px}
+.stp__n{font-family:var(--fd);font-weight:800;font-size:1.05rem;min-width:1.6ch;transition:font-size .4s var(--e)}
+.stp__k{font-family:var(--fd);font-weight:800;font-size:.95rem;text-transform:uppercase;letter-spacing:-.01em;flex:1;line-height:1.25}
+.stp__bd{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e)}
+.stp__bd>div{overflow:hidden}
+.stp__bd p{padding-top:14px;font-size:.8rem;line-height:1.6;color:var(--t-w2);max-width:44ch}
+/* closed = glass */
+.stp{background:rgba(255,255,255,.10);backdrop-filter:blur(16px) saturate(1.1);border:1px solid rgba(255,255,255,.16);color:#fff}
+.stp:hover{background:rgba(255,255,255,.16)}
+/* open = solid black */
+.stp.on{background:#0B0B0D;border-color:rgba(255,255,255,.10);backdrop-filter:none;padding:26px 24px}
+.stp.on .stp__top{flex-direction:column;align-items:flex-start;gap:0}
+.stp.on .stp__n{font-size:1.9rem;margin-bottom:10px}
+.stp.on .stp__k{font-size:1.15rem}
+.stp.on .stp__bd{grid-template-rows:1fr}
+.stp.on:hover{background:#0B0B0D}
+.stp .sq{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff}
+.stp.on .stp__top .sq{position:absolute;top:26px;right:24px}
+.stp.on{position:relative}
 
-/* ============ 3 STEPS (dark) — expandable ============ */
-.steps{display:flex;flex-direction:column;gap:12px}
-.step{border:1px solid var(--line-dk);border-radius:var(--r);background:var(--graphite);overflow:hidden;transition:border-color .4s,background .4s}
-.step.open{border-color:var(--line-dk-2);background:var(--ink-soft)}
-.step__hd{display:flex;align-items:center;gap:24px;padding:26px 28px;cursor:pointer}
-.step__n{font-family:var(--fd);font-weight:200;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.03em;color:var(--t-dk-3);line-height:1;min-width:2.4ch;transition:color .4s}
-.step.open .step__n{color:var(--steel)}
-.step__k{font-family:var(--fd);font-weight:600;font-size:clamp(1.1rem,2vw,1.5rem);letter-spacing:-.01em;flex:1}
-.step__pl{width:42px;height:42px;border-radius:var(--r-xs);border:1px solid var(--line-dk-2);display:grid;place-items:center;flex-shrink:0;transition:.4s}
-.step.open .step__pl{background:var(--steel);border-color:var(--steel);color:#0B0B0C;transform:rotate(45deg)}
-.step__pl svg{width:18px;height:18px}
-.step__bd{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
-.step.open .step__bd{grid-template-rows:1fr}
-.step__bd>div{overflow:hidden}
-.step__bd p{padding:0 28px 28px 90px;color:var(--t-dk-2);max-width:70ch}
+/* ============ CATALOG ============ */
+.cat-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.cat-head .small{max-width:44ch}
+.fbar{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.fsearch{display:flex;align-items:center;gap:14px;background:var(--white);border-radius:var(--rmd);padding:0 20px}
+.fsearch svg{width:19px;height:19px;color:var(--t-b3);flex-shrink:0}
+.fsearch input{flex:1;border:none;outline:none;background:none;padding:18px 0;font-size:.95rem;font-weight:500;color:var(--t-b)}
+.fsearch input::placeholder{color:var(--t-b3)}
+.frow{display:flex;gap:12px;flex-wrap:wrap}
+.fsel{position:relative;flex:0 1 220px;min-width:170px}
+.fsel select{width:100%;appearance:none;background:var(--white);border:none;border-radius:var(--rmd);padding:15px 42px 15px 18px;font-size:.85rem;font-weight:600;color:var(--t-b);cursor:pointer;outline:none}
+.fsel::after{content:'';position:absolute;right:18px;top:50%;width:8px;height:8px;border-right:2px solid var(--t-b2);border-bottom:2px solid var(--t-b2);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.catalog{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pc{background:var(--white);border-radius:var(--rlg);padding:14px;display:flex;flex-direction:column;color:var(--t-b);transition:transform .45s var(--e),box-shadow .45s var(--e)}
+.pc:hover{transform:translateY(-5px);box-shadow:0 22px 50px rgba(0,0,0,.30)}
+.pc__ph{position:relative;aspect-ratio:16/11;border-radius:var(--rmd);overflow:hidden;margin-bottom:14px}
+.pc__ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--e)}
+.pc:hover .pc__ph img{transform:scale(1.05)}
+.pc__tag{position:absolute;top:10px;left:10px;padding:6px 11px;border-radius:9px;background:rgba(0,0,0,.62);backdrop-filter:blur(12px);font-family:var(--fd);font-size:.63rem;font-weight:700;text-transform:uppercase;color:#fff;letter-spacing:.03em}
+.pc__nm{font-family:var(--fd);font-weight:800;font-size:.9rem;text-transform:uppercase;line-height:1.22}
+.pc__md{font-family:var(--fd);font-weight:500;font-size:.72rem;text-transform:uppercase;color:var(--t-b2);margin-top:3px}
+.pc__pr{font-family:var(--fd);font-weight:800;font-size:1.15rem;margin:12px 0 0;line-height:1}
+.pc__pr small{font-family:var(--fb);font-weight:500;font-size:.68rem;color:var(--t-b2)}
+.pc__det{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e)}
+.pc.on .pc__det{grid-template-rows:1fr}
+.pc__det>div{overflow:hidden}
+.pc__inner{padding-top:14px}
+.pc__desc{font-size:.76rem;line-height:1.6;color:var(--t-b2);margin-bottom:12px}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--grey-line);border-radius:10px;overflow:hidden;margin-bottom:12px}
+.specs div{background:var(--white);padding:9px 11px}
+.specs dt{font-size:.62rem;color:var(--t-b3);font-weight:600}
+.specs dd{font-size:.78rem;font-weight:700;margin-top:2px}
+.pc__btns{display:flex;gap:8px;margin-top:12px}
+.pc__more{flex:1;padding:12px;border-radius:var(--rsm);background:var(--grey-card);font-family:var(--fb);font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center;gap:7px;transition:.25s}
+.pc__more:hover{background:var(--grey-line)}
+.pc__more svg{width:13px;height:13px;transition:transform .35s var(--e)}
+.pc.on .pc__more svg{transform:rotate(180deg)}
+.pc__rent{flex:1;padding:12px;border-radius:var(--rsm);background:var(--black);color:#fff;font-family:var(--fb);font-weight:700;font-size:.78rem;display:none;align-items:center;justify-content:center;transition:.25s}
+.pc.on .pc__rent{display:flex}
+.pc__rent:hover{background:#26262e}
+.cat-empty{grid-column:1/-1;text-align:center;padding:50px;color:var(--t-w3)}
 
-/* ============ AUCTION (dark banner) ============ */
-.auction{position:relative;border-radius:var(--r);overflow:hidden;background:var(--grad-steel);border:1px solid var(--line-dk);padding:clamp(36px,5vw,64px);display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
-.auction::before{content:'';position:absolute;inset:0;background:var(--sheen);pointer-events:none}
-.auction__c{position:relative;z-index:2}
-.auction .h-sec{margin:16px 0}
-.auction p{color:var(--t-dk-2);max-width:48ch;margin-bottom:28px}
-.auction__list{display:flex;flex-direction:column;gap:14px;margin-bottom:30px}
-.auction__li{display:flex;align-items:center;gap:12px;font-size:.92rem;color:var(--t-dk)}
-.auction__li i{width:24px;height:24px;border-radius:var(--r-xs);background:rgba(204,221,225,.14);display:grid;place-items:center;flex-shrink:0}
-.auction__li i svg{width:13px;height:13px;color:var(--steel)}
-.auction__decor{position:relative;z-index:2;aspect-ratio:1;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line-dk)}
-.auction__decor img{width:100%;height:100%;object-fit:cover;opacity:.9}
+/* ============ REVIEWS ============ */
+.rv-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:30px}
+.rv-arrows{display:flex;gap:10px}
+.rv-stage{overflow:hidden;padding-block:16px}
+.rv-track{display:flex;gap:18px;align-items:center;transition:transform .62s var(--e)}
+.rvc{flex:0 0 clamp(270px,32vw,400px);border-radius:var(--rlg);padding:clamp(20px,2.2vw,30px);background:var(--grey-card);color:var(--t-b);transform:scale(.86);opacity:.5;transition:transform .62s var(--e),opacity .62s var(--e),background .62s,color .62s,box-shadow .62s}
+.rvc.on{transform:scale(1);opacity:1;background:var(--dk-grad-2);color:#fff;box-shadow:0 28px 64px rgba(0,0,0,.34)}
+.rvc__top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.rvc__av{width:44px;height:44px;border-radius:50%;object-fit:cover;background:var(--grey-line);display:grid;place-items:center;font-family:var(--fd);font-weight:800;font-size:.9rem;color:var(--t-b2);flex-shrink:0}
+.rvc.on .rvc__av{background:rgba(255,255,255,.16);color:#fff}
+.rvc__nm{font-family:var(--fd);font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.01em}
+.rvc__st{display:flex;gap:3px;margin-top:4px}
+.rvc__st svg{width:13px;height:13px;color:#111}
+.rvc.on .rvc__st svg{color:var(--cream)}
+.rvc__tx{font-size:.84rem;line-height:1.66;color:var(--t-b2)}
+.rvc.on .rvc__tx{color:var(--t-w2)}
+.rvc__meta{margin-top:14px;font-size:.7rem;color:var(--t-b3)}
+.rvc.on .rvc__meta{color:var(--t-w3)}
 
-/* ============ CATALOG (dark) ============ */
-.filters{display:flex;gap:12px;flex-wrap:wrap;padding:16px;border:1px solid var(--line-dk);border-radius:var(--r-md);background:var(--graphite);margin-bottom:32px}
-.filters__search{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;padding:0 14px;background:var(--ink);border:1px solid var(--line-dk);border-radius:var(--r-sm);transition:border-color .25s}
-.filters__search:focus-within{border-color:var(--steel)}
-.filters__search svg{width:17px;height:17px;color:var(--t-dk-3);flex-shrink:0}
-.filters__search input{flex:1;background:none;border:none;color:var(--t-dk);font-family:var(--fb);font-size:.88rem;padding:13px 0;outline:none}
-.filters__search input::placeholder{color:var(--t-dk-3)}
-.sel{position:relative}
-.sel select{appearance:none;background:var(--ink);border:1px solid var(--line-dk);border-radius:var(--r-sm);color:var(--t-dk);font-family:var(--fb);font-size:.85rem;font-weight:500;padding:13px 40px 13px 16px;cursor:pointer;outline:none;transition:border-color .25s}
-.sel select:focus{border-color:var(--steel)}
-.sel option{background:var(--graphite);color:var(--t-dk)}
-.sel::after{content:'';position:absolute;right:15px;top:50%;width:8px;height:8px;border-right:1.5px solid var(--t-dk-2);border-bottom:1.5px solid var(--t-dk-2);transform:translateY(-65%) rotate(45deg);pointer-events:none}
-.catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.catalog .carcard__body{padding-bottom:20px}
-.cat-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--t-dk-3);font-size:.95rem}
-.carcard__more{width:100%;margin-top:14px;padding:11px;border-radius:var(--r-sm);border:1px solid var(--line-dk);color:var(--t-dk-2);font-size:.82rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;transition:.25s}
-.carcard__more:hover{border-color:var(--line-dk-2);color:var(--t-dk)}
-.carcard__more svg{width:14px;height:14px;transition:transform .35s var(--ease)}
-.carcard__det{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
-.carcard.open .carcard__det{grid-template-rows:1fr;margin-top:16px}
-.carcard.open .carcard__more svg{transform:rotate(180deg)}
-.carcard__det>div{overflow:hidden}
-.specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-dk);border:1px solid var(--line-dk);border-radius:var(--r-sm);overflow:hidden}
-.specs div{background:var(--graphite);padding:11px 13px;display:flex;flex-direction:column;gap:3px}
-.specs dt{font-size:.7rem;color:var(--t-dk-3);letter-spacing:.02em}
-.specs dd{font-size:.84rem;font-weight:600;color:var(--t-dk)}
+/* ============ FAQ ============ */
+.faq-t{text-align:center;margin-bottom:34px}
+.faq{display:flex;flex-direction:column;gap:11px;max-width:960px;margin-inline:auto}
+.fq{display:flex;align-items:flex-start;gap:14px}
+.fq__c{flex:1;background:var(--white);border-radius:var(--rlg);padding:20px 26px;color:var(--t-b);transition:.35s var(--e)}
+.fq__q{display:flex;gap:20px;align-items:flex-start;cursor:pointer}
+.fq__n{font-family:var(--fd);font-weight:700;font-size:.8rem;color:var(--t-b3);padding-top:2px}
+.fq__x{font-family:var(--fd);font-weight:500;font-size:.92rem;text-transform:uppercase;line-height:1.4;letter-spacing:-.005em;color:var(--t-b2);flex:1}
+.fq__x b{font-weight:800;color:var(--t-b)}
+.fq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e)}
+.fq.on .fq__a{grid-template-rows:1fr}
+.fq__a>div{overflow:hidden}
+.fq__a p{padding-top:14px;font-size:.84rem;line-height:1.65;color:var(--t-b2);max-width:70ch}
+.fq__a ul{margin:10px 0 0 18px;font-size:.84rem;line-height:1.8;color:var(--t-b2)}
+.fq__t{width:46px;height:46px;border-radius:var(--rmd);background:var(--white);color:var(--t-b);display:grid;place-items:center;flex-shrink:0;transition:.35s var(--e)}
+.fq.on .fq__t{background:var(--black);color:#fff}
+.fq__t svg{width:17px;height:17px}
 
-/* ============ REVIEWS (white) — coverflow ============ */
-.reviews{overflow:hidden}
-.rev-stage{position:relative;padding-block:20px}
-.rev-track{display:flex;align-items:center;gap:24px;transition:transform .6s var(--ease);will-change:transform}
-.rev-card{flex:0 0 clamp(300px,42vw,480px);border-radius:var(--r);padding:clamp(28px,3.4vw,44px);background:var(--paper-2);border:1px solid var(--line-lt);color:var(--t-lt);transform:scale(.82);opacity:.42;transition:transform .6s var(--ease),opacity .6s var(--ease),background .6s,color .6s,box-shadow .6s;filter:saturate(.9)}
-.rev-card.active{transform:scale(1);opacity:1;background:var(--grad);color:var(--t-dk);border-color:var(--line-dk);box-shadow:0 30px 70px rgba(11,11,12,.28);filter:none;position:relative;overflow:hidden}
-.rev-card.active::before{content:'';position:absolute;inset:0;background:var(--sheen);pointer-events:none}
-.rev-card__q{position:relative;z-index:2}
-.rev-stars{display:flex;gap:4px;margin-bottom:20px}
-.rev-stars svg{width:17px;height:17px;color:var(--t-lt-3)}
-.rev-card.active .rev-stars svg{color:var(--steel)}
-.rev-text{font-family:var(--fd);font-weight:400;font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.5;letter-spacing:-.01em;margin-bottom:28px;text-wrap:pretty}
-.rev-who{display:flex;align-items:center;gap:14px;position:relative;z-index:2}
-.rev-av{width:46px;height:46px;border-radius:var(--r-sm);background:var(--paper-3);display:grid;place-items:center;font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--steel-ink);flex-shrink:0}
-.rev-card.active .rev-av{background:rgba(204,221,225,.16);color:var(--steel)}
-.rev-nm{font-family:var(--fd);font-weight:600;font-size:.98rem}
-.rev-meta{font-size:.78rem;color:var(--t-lt-3)}
-.rev-card.active .rev-meta{color:var(--t-dk-2)}
-.rev-ctrl{display:flex;align-items:center;justify-content:space-between;margin-top:36px;gap:20px}
-.rev-arrows{display:flex;gap:10px}
-.rev-arrow{width:52px;height:52px;border-radius:var(--r-sm);border:1px solid var(--line-lt);display:grid;place-items:center;color:var(--t-lt);transition:.35s var(--ease)}
-.rev-arrow:hover{background:var(--grad);color:var(--t-dk);border-color:transparent;transform:translateY(-2px)}
-.rev-arrow svg{width:20px;height:20px}
-.rev-dots{display:flex;gap:8px}
-.rev-dot{width:9px;height:9px;border-radius:3px;background:var(--paper-3);transition:.35s var(--ease);cursor:pointer}
-.rev-dot.active{width:26px;background:var(--steel-ink)}
-
-/* ============ FAQ (white) ============ */
-.faq{display:flex;flex-direction:column;gap:12px;max-width:860px;margin-inline:auto}
-.faq-item{border:1px solid var(--line-lt);border-radius:var(--r-md);background:var(--paper-2);overflow:hidden;transition:border-color .35s,background .35s}
-.faq-item.open{border-color:var(--steel-ink);background:#fff}
-.faq-q{display:flex;align-items:center;gap:18px;padding:22px 26px;cursor:pointer;font-family:var(--fd);font-weight:600;font-size:1.02rem;letter-spacing:-.01em;color:var(--t-lt)}
-.faq-q span{flex:1}
-.faq-ic{width:34px;height:34px;border-radius:var(--r-xs);border:1px solid var(--line-lt);display:grid;place-items:center;flex-shrink:0;transition:.35s var(--ease);color:var(--t-lt-2)}
-.faq-item.open .faq-ic{background:var(--grad);color:var(--t-dk);border-color:transparent;transform:rotate(45deg)}
-.faq-ic svg{width:16px;height:16px}
-.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
-.faq-item.open .faq-a{grid-template-rows:1fr}
-.faq-a>div{overflow:hidden}
-.faq-a p{padding:0 26px 24px 26px;color:var(--t-lt-2);line-height:1.65;max-width:70ch}
-
-/* ============ CTA (dark w/ image) ============ */
-.cta{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line-dk);padding:clamp(40px,6vw,80px);display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-.cta__bg{position:absolute;inset:0;z-index:0}
-.cta__bg img{width:100%;height:100%;object-fit:cover;opacity:.28}
-.cta__bg::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,var(--ink) 20%,rgba(11,11,12,.7) 60%,rgba(11,11,12,.85) 100%)}
-.cta__c{position:relative;z-index:2}
-.cta .h-sec{margin:16px 0}
-.cta p{color:var(--t-dk-2);max-width:44ch}
-.cta__form{position:relative;z-index:2;background:rgba(20,20,22,.72);backdrop-filter:blur(18px);border:1px solid var(--line-dk-2);border-radius:var(--r-md);padding:28px}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:.76rem;font-weight:600;letter-spacing:.02em;color:var(--t-dk-2);margin-bottom:7px}
-.field input,.field select{width:100%;padding:14px 16px;background:var(--ink);border:1px solid var(--line-dk);border-radius:var(--r-sm);color:var(--t-dk);font-family:var(--fb);font-size:.9rem;outline:none;transition:border-color .25s}
-.field input::placeholder{color:var(--t-dk-3)}
-.field input:focus,.field select:focus{border-color:var(--steel)}
-.field select{appearance:none}
-.cta__form .btn{width:100%;margin-top:8px}
-.cta__note{font-size:.74rem;color:var(--t-dk-3);text-align:center;margin-top:14px;line-height:1.5}
+/* ============ CTA ============ */
+.cta{background:var(--black);border-radius:var(--rxl);padding:clamp(28px,4vw,60px);display:grid;grid-template-columns:1fr .82fr;gap:clamp(24px,3.5vw,52px);align-items:center}
+.cta__l .hd{margin-bottom:16px}
+.cta__l .small{max-width:42ch}
+.cta__soc{display:flex;gap:10px;margin-top:26px}
+.cta__soc a{width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.10);display:grid;place-items:center;transition:.25s}
+.cta__soc a:hover{background:rgba(255,255,255,.2)}
+.cta__soc svg{width:16px;height:16px}
+.cta__f{display:flex;flex-direction:column;gap:11px}
+.inp{width:100%;background:var(--white);border:none;border-radius:var(--rmd);padding:17px 20px;font-size:.9rem;font-weight:500;color:var(--t-b);outline:none}
+.inp::placeholder{color:var(--t-b3)}
+.inp:focus{box-shadow:0 0 0 2px var(--cream)}
+.cta__row{display:flex;align-items:center;gap:12px;background:var(--white);border-radius:var(--rmd);padding:7px 7px 7px 20px}
+.cta__row span{flex:1;font-family:var(--fd);font-weight:800;font-size:.84rem;text-transform:uppercase;color:var(--t-b)}
+.cta__note{font-size:.68rem;color:var(--t-w3);line-height:1.5;margin-top:4px}
 
 /* ============ FOOTER ============ */
-.foot{position:relative;padding-top:clamp(60px,8vw,100px);overflow:hidden}
-.foot__word{font-family:var(--fd);font-weight:800;font-size:clamp(4rem,20vw,17rem);letter-spacing:-.04em;line-height:.8;color:transparent;-webkit-text-stroke:1px var(--line-dk-2);text-align:center;white-space:nowrap;user-select:none;margin-bottom:-2vw;pointer-events:none}
-.foot__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px;padding-block:56px;border-top:1px solid var(--line-dk);position:relative;z-index:2}
-.foot__brand .brand{margin-bottom:16px}
-.foot__brand p{font-size:.86rem;color:var(--t-dk-2);max-width:34ch;line-height:1.6}
-.foot__col h4{font-family:var(--fd);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--t-dk-3);margin-bottom:18px}
-.foot__col a{display:block;font-size:.9rem;color:var(--t-dk-2);padding:6px 0;transition:color .25s}
-.foot__col a:hover{color:var(--steel)}
-.foot__contact .row{font-size:.92rem;color:var(--t-dk);margin-bottom:12px}
-.foot__contact .row b{font-family:var(--fd);font-weight:600}
-.foot__bar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-block:26px;border-top:1px solid var(--line-dk);font-size:.8rem;color:var(--t-dk-3);position:relative;z-index:2}
+.foot{position:relative;border-radius:var(--rxl) var(--rxl) 0 0;overflow:hidden;margin-top:clamp(40px,6vw,80px);min-height:440px;display:flex;align-items:flex-end}
+.foot__ph{position:absolute;inset:0;z-index:0}
+.foot__ph img{width:100%;height:100%;object-fit:cover}
+.foot__sc{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,11,.5) 0%,rgba(10,10,11,.2) 40%,rgba(10,10,11,.92) 100%)}
+.foot__in{position:relative;z-index:3;width:100%;padding:clamp(24px,3vw,44px)}
+.foot__top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:22px}
+.foot__nav{display:flex;gap:clamp(14px,2.2vw,30px);flex-wrap:wrap}
+.foot__nav a{font-size:.76rem;font-weight:600;color:var(--t-w2);transition:.25s}
+.foot__nav a:hover{color:#fff}
+.foot__bar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:.72rem;color:var(--t-w3)}
+.foot__soc{display:flex;gap:9px}
+.foot__soc a{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.12);display:grid;place-items:center;transition:.25s}
+.foot__soc a:hover{background:rgba(255,255,255,.24)}
+.foot__soc svg{width:15px;height:15px}
 
 /* ============ MODAL ============ */
-.overlay{position:fixed;inset:0;z-index:120;background:rgba(6,6,7,.72);backdrop-filter:blur(8px);display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
-.overlay.open{opacity:1;visibility:visible}
-.modal{width:min(460px,100%);background:var(--ink-soft);border:1px solid var(--line-dk-2);border-radius:var(--r);padding:32px;transform:translateY(20px) scale(.98);transition:transform .4s var(--ease)}
-.overlay.open .modal{transform:none}
-.modal__x{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:var(--r-xs);border:1px solid var(--line-dk-2);display:grid;place-items:center;color:var(--t-dk-2);transition:.25s}
-.modal__x:hover{border-color:var(--steel);color:var(--steel)}
-.modal{position:relative}
-.modal__t{font-family:var(--fd);font-weight:600;font-size:1.4rem;letter-spacing:-.02em;margin-bottom:6px;padding-right:40px}
-.modal__s{font-size:.88rem;color:var(--t-dk-2);margin-bottom:24px}
+.ov{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(9px);display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:.35s}
+.ov.on{opacity:1;visibility:visible}
+.md{position:relative;width:min(760px,100%);background:var(--cream);color:var(--t-b);border-radius:var(--rxl);padding:clamp(22px,3vw,38px);transform:translateY(18px) scale(.98);transition:transform .42s var(--e);max-height:92vh;overflow:auto}
+.ov.on .md{transform:none}
+.md__x{position:absolute;top:18px;right:18px;width:42px;height:42px;border-radius:var(--rsm);background:var(--white);display:grid;place-items:center;transition:.25s}
+.md__x:hover{background:var(--black);color:#fff}
+.md__x svg{width:17px;height:17px}
+.md__g{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+.md__ph{border-radius:var(--rlg);overflow:hidden;aspect-ratio:4/3;background:var(--grey-card)}
+.md__ph img{width:100%;height:100%;object-fit:cover}
+.md__t{font-family:var(--fd);font-weight:800;font-size:1.3rem;text-transform:uppercase;line-height:1.2;padding-right:46px}
+.md__p{font-family:var(--fd);font-weight:800;font-size:1.5rem;margin:8px 0 16px}
+.md__p small{font-family:var(--fb);font-weight:500;font-size:.72rem;color:var(--t-b2)}
+.md .inp{background:var(--white);margin-bottom:10px}
+.md .specs{margin-bottom:16px}
+.md__ok{background:#0B0B0D;color:#fff;border-radius:var(--rmd);padding:16px;text-align:center;font-weight:700;font-size:.88rem;width:100%;margin-top:4px}
 
 /* ============ RESPONSIVE ============ */
-@media (max-width:1024px){
-  .cta{grid-template-columns:1fr}
-  .foot__grid{grid-template-columns:1fr 1fr}
-  .auction{grid-template-columns:1fr}
-  .auction__decor{max-width:320px}
+@media (max-width:1100px){
+  .catalog{grid-template-columns:repeat(3,1fr)}
+  .cta,.panel{grid-template-columns:1fr}
+  .panel{min-height:0}
 }
-@media (max-width:860px){
-  .nav,.hdr__phone{display:none}
-  .burger{display:grid}
-  .hits,.trust,.catalog{grid-template-columns:1fr 1fr}
-  .steps__hd{gap:16px}
+@media (max-width:900px){
+  .nav{display:none}
+  .hits{grid-template-columns:1fr}
+  .hits__ph{min-height:260px}
+  .trust{grid-template-columns:1fr 1fr}
+  .catalog{grid-template-columns:repeat(2,1fr)}
+  .hero__in{grid-template-columns:1fr;gap:22px}
+  .hero__cta{align-items:flex-start}
+  .hero__cta .small{text-align:left}
+  .md__g{grid-template-columns:1fr}
+  .md__ph{aspect-ratio:16/9}
 }
 @media (max-width:600px){
-  .hits,.trust,.catalog{grid-template-columns:1fr}
-  .foot__grid{grid-template-columns:1fr}
-  .rev-card{flex-basis:82vw}
-  .hero__stats{gap:20px}
-  .stat{flex:1 1 40%}
-  .hero{min-height:92svh}
-  .btn{padding:14px 24px}
-  .modal{padding:24px}
+  :root{--rxl:26px;--rlg:18px}
+  .cars3{grid-template-columns:1fr}
+  .trust,.catalog{grid-template-columns:1fr}
+  .rvc{flex-basis:80vw}
+  .hero{min-height:88svh}
+  .fq__c{padding:16px 18px}
+  .fq__q{gap:12px}
+  .foot__bar{justify-content:flex-start}
 }
 </style>
 
-<!-- ==================== HEADER ==================== -->
-<header class="hdr" id="hdr">
+<!-- ======== HEADER ======== -->
+<header class="hdr">
   <div class="wrap hdr__in">
-    <a class="brand" href="#top" aria-label="GRAND AVTO">
-      <span class="brand__mark">GA</span>
-      <b>GRAND&nbsp;<span>AVTO</span></b>
-    </a>
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="#hits">Прокат</a>
-      <a href="#trust">О нас</a>
-      <a href="#steps">Как это работает</a>
-      <a href="#auction">Авто из Японии</a>
-      <a href="#catalog">Каталог</a>
-      <a href="#faq">Вопросы</a>
+    <a class="logo" href="#top">GRAND <i>AVTO</i></a>
+    <nav class="nav">
+      <a href="#hits">Главная</a><a href="#catalog">Автопарк</a><a href="#steps">Услуги</a>
+      <a href="#steps">Условия аренды</a><a href="#trust">О нас</a><a href="#contact">Контакты</a>
     </nav>
-    <div class="hdr__right">
-      <a class="hdr__phone" href="tel:+74232000000">+7 (423) 200-00-00</a>
-      <button class="btn btn--steel" style="padding:12px 22px;font-size:.84rem" onclick="openModal()">Забронировать</button>
-      <button class="icon-btn burger" aria-label="Меню" onclick="document.querySelector('.nav').scrollIntoView()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <div class="hdr__r">
+      <button class="btn btn--w" onclick="openModal()">Забронировать</button>
+      <button class="sq sq--gl" aria-label="Личный кабинет" onclick="openModal('','Вход в личный кабинет','Личный кабинет скоро будет доступен — оставьте номер, и мы сообщим о запуске')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21v-1.8a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4V21"/><circle cx="12" cy="7" r="4"/></svg>
       </button>
+      <a class="sq sq--w" href="tel:+74232000000" aria-label="Позвонить">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1.2 1.2 0 0 1 1.2-.3 13 13 0 0 0 4 .7 1.2 1.2 0 0 1 1.2 1.2V20a1.2 1.2 0 0 1-1.2 1.2A17.8 17.8 0 0 1 2.8 3.4 1.2 1.2 0 0 1 4 2.2h3.4a1.2 1.2 0 0 1 1.2 1.2 13 13 0 0 0 .7 4 1.2 1.2 0 0 1-.3 1.2z"/></svg>
+      </a>
     </div>
   </div>
 </header>
 
-<!-- ==================== HERO ==================== -->
-<section class="hero on-dark" id="top">
-  <div class="hero__img"><img src="{{HERO_IMG}}" alt="Toyota SAI — прокат авто GRAND AVTO во Владивостоке"></div>
-  <div class="hero__scrim"></div>
+<!-- ======== HERO ======== -->
+<section class="hero" id="top">
+  <div class="hero__ph"><img src="{{HERO_IMG}}" alt="Toyota Noah — премиальный минивэн в прокат, GRAND AVTO Владивосток"></div>
+  <div class="hero__mark" aria-hidden="true">GRAND AVTO</div>
+  <div class="vig"></div>
+  <div class="hero__sc"></div>
+  <div class="grain"></div>
+  <div class="gb" style="left:6%;top:44%">Премиум комфорт <span>каждый день</span></div>
+  <div class="gb" style="right:8%;top:34%">Гарантия <span>безопасности</span></div>
+  <div class="gb" style="right:16%;bottom:29%">Авто <span>с аукционов Японии</span></div>
   <div class="wrap hero__in">
-    <div class="hero__chips reveal">
-      <span class="chip chip--glass"><span class="dot"></span>Владивосток · Находка</span>
-      <span class="chip chip--glass">Авто из Японии с аукционов</span>
-      <span class="chip chip--glass">Подача 24/7</span>
-    </div>
-    <h1 class="hero__title h-display reveal"><span class="thin">Найди машину</span><br><b>за 30 секунд</b></h1>
-    <p class="hero__sub lede reveal">Прокат и продажа японских авто в Приморье. Прозрачные условия, полный бак, мгновенное оформление по паспорту — без залоговых сюрпризов.</p>
+    <h1 class="hd hero__t reveal">Найди машину за 30 секунд! Простые условия, мгновенный результат</h1>
     <div class="hero__cta reveal">
-      <button class="btn btn--steel" onclick="document.getElementById('catalog').scrollIntoView()">
-        Выбрать авто
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <p class="small">Японские авто в наличии во Владивостоке и Находке</p>
+      <button class="btn btn--w" onclick="go('catalog')">
+        Смотреть каталог
+        <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
       </button>
-      <button class="btn btn--lineDk" onclick="document.getElementById('steps').scrollIntoView()">Как это работает</button>
-    </div>
-    <div class="hero__stats reveal">
-      <div class="stat"><div class="stat__n"><b>1200</b>+</div><div class="stat__l">выданных авто</div></div>
-      <div class="stat"><div class="stat__n"><b>30</b> сек</div><div class="stat__l">на подбор машины</div></div>
-      <div class="stat"><div class="stat__n"><b>4.9</b></div><div class="stat__l">средняя оценка клиентов</div></div>
-      <div class="stat"><div class="stat__n"><b>10</b> мин</div><div class="stat__l">на оформление</div></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== ХИТЫ ПРОКАТА ==================== -->
-<section class="section on-dark" id="hits">
+<!-- ======== ХИТЫ ПРОКАТА ======== -->
+<section class="section" id="hits">
   <div class="wrap">
-    <div class="sec-head sec-head--split reveal">
-      <div>
-        <span class="eyebrow">Популярный выбор</span>
-        <h2 class="h-sec">Хиты проката — авто,<br>которые бронируют первыми</h2>
+    <div class="bigcard on-light reveal">
+      <div class="hits">
+        <div class="hits__ph">
+          <img src="{{HITS_IMG}}" alt="Toyota Noah в прокат">
+          <div class="gb" style="left:8%;top:9%">Премиум комфорт <span>каждый день</span></div>
+          <div class="gb" style="right:7%;top:44%">Гарантия <span>безопасности</span></div>
+          <div class="gb" style="left:9%;bottom:8%">Стиль, <span>который говорит сам за себя</span></div>
+        </div>
+        <div class="hits__r">
+          <h2 class="hd hd-lg">Хиты проката — авто,<br>которые бронируют первыми!</h2>
+          <p class="small">Популярные авто, которые чаще всего выбирают наши клиенты и бронируют в первую очередь — за комфорт, надёжность и стиль.</p>
+          <div class="cars3">{{HITS_HTML}}</div>
+          <button class="btn btn--k hits__btn" onclick="go('catalog')">Перейти в каталог</button>
+        </div>
       </div>
-      <p>Самые востребованные модели этого месяца. Всегда на ходу, вымыты и заправлены к подаче.</p>
-    </div>
-    <div class="hits reveal">
-      {{HITS_HTML}}
     </div>
   </div>
 </section>
 
-<!-- ==================== TRUST CHECKERBOARD ==================== -->
-<section class="section on-light" id="trust">
+<!-- ======== ПОЧЕМУ НАМ ДОВЕРЯЮТ ======== -->
+<section class="section" id="trust">
   <div class="wrap">
-    <div class="sec-head sec-head--center reveal">
-      <span class="eyebrow">Почему GRAND AVTO</span>
-      <h2 class="h-sec">Почему нам доверяют сотни<br>клиентов ежемесячно</h2>
-      <p>Мы работаем на рынке японских авто в Приморье с 2015 года и отвечаем за каждую машину.</p>
+    <div class="tr-head reveal">
+      <h2 class="hd hd-xl">Почему нам доверяют сотни<br>клиентов ежемесячно?</h2>
+      <p class="small">Японские авто с прозрачными условиями и честной ценой —<br>проверенный выбор для любой поездки по Приморью.</p>
     </div>
     <div class="trust reveal">
-      <div class="tcard tcard--paper">
-        <div class="tcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div class="tcard__k">Проверенная техника</div>
-        <div class="tcard__t">Каждое авто проходит диагностику перед выдачей. Ремни, тормоза, масло — всё под контролем.</div>
+      <div class="tc tc--w"><div class="tc__n">1</div><div class="tc__k">Аренда <span class="dim">с выкупом</span></div><div class="tc__t">Покупка в рассрочку без банка и без первоначального взноса. Вносите платежи — и после выкупного взноса авто становится вашим.</div></div>
+      <div class="tc tc--k"><div class="tc__n">2</div><div class="tc__k">Минимальный <span class="dim">пакет документов</span></div><div class="tc__t">Возраст от 18 лет, водительский стаж без ограничений. Оформление занимает около 10 минут.</div></div>
+      <div class="tc tc--w"><div class="tc__n">3</div><div class="tc__k">Никаких <span class="dim">скрытых платежей</span></div><div class="tc__t">Цена фиксируется в договоре. Любая форма оплаты — наличные, карта, безнал для юридических лиц.</div></div>
+      <div class="tc tc--k"><div class="tc__n">4</div><div class="tc__k">Физлицам, юрлицам <span class="dim">и под такси</span></div><div class="tc__t">Большой выбор авто с правом выкупа под разные нужды — для себя, для компании или для работы в такси.</div></div>
+      <div class="tc tc--g"><div class="tc__dec"><img src="{{STEERING_IMG}}" alt=""></div><div class="tc__n">5</div><div class="tc__k">Доставка <span class="dim">авто</span></div><div class="tc__t">Подадим машину к аэропорту, порту, вокзалу или к вашему адресу во Владивостоке и Находке.</div></div>
+      <div class="tc tc--k"><div class="tc__dec"><img src="{{WHEEL_IMG}}" alt=""></div><div class="tc__n">6</div><div class="tc__k">Авто <span class="dim">с аукционов Японии</span></div><div class="tc__t">Не нашли модель в наличии — пригоним под заказ напрямую с японских аукционов, со ставкой и растаможкой.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== АРЕНДУЙ ЗА 3 ШАГА ======== -->
+<section class="section" id="steps">
+  <div class="wrap">
+    <div class="panel reveal">
+      <div class="panel__ph"><img src="{{STEPS_IMG}}" alt=""></div>
+      <div class="panel__sc"></div>
+      <div class="panel__l">
+        <h2 class="hd hd-xl">Арендуй авто<br>всего за 3 шага</h2>
+        <div class="panel__foot">
+          <p class="small">Мы позаботились о том, чтобы аренда авто была максимально простой и быстрой. От выбора машины до поездки — минимум формальностей.</p>
+          <button class="btn btn--w" onclick="go('catalog')">Смотреть каталог
+            <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+        </div>
       </div>
-      <div class="tcard tcard--grad">
-        <div class="tcard__decor"><img src="{{WHEEL_IMG}}" alt=""></div>
-        <div class="tcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3.6M12 17.4V21M3 12h3.6M17.4 12H21"/></svg></div>
-        <div class="tcard__k">Свежая японская резина</div>
-        <div class="tcard__t">Сезонная резина в комплекте. Зимой — шипы, летом — свежий протектор без экономии на безопасности.</div>
-      </div>
-      <div class="tcard tcard--dark">
-        <div class="tcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13l2-6h14l2 6M5 13h14v5H5z"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="16.5" cy="18" r="1.6"/></svg></div>
-        <div class="tcard__k">Доставка авто</div>
-        <div class="tcard__t">Подгоним машину к аэропорту, порту, вокзалу или к вашему дому во Владивостоке и Находке.</div>
-      </div>
-      <div class="tcard tcard--dark">
-        <div class="tcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h5"/></svg></div>
-        <div class="tcard__k">Прозрачная оплата</div>
-        <div class="tcard__t">Фиксированная цена в договоре. Никаких скрытых платежей, залог возвращаем сразу после сдачи.</div>
-      </div>
-      <div class="tcard tcard--grad">
-        <div class="tcard__decor"><img src="{{STEERING_IMG}}" alt=""></div>
-        <div class="tcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 12l6.4-2M12 12l-6.4-2M12 12v7"/></svg></div>
-        <div class="tcard__k">Аукционы Японии</div>
-        <div class="tcard__t">Пригоним авто под вас напрямую с аукционов Японии — со ставкой, доставкой и растаможкой.</div>
-      </div>
-      <div class="tcard tcard--paper">
-        <div class="tcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="5"/></svg></div>
-        <div class="tcard__k">Поддержка 24/7</div>
-        <div class="tcard__t">На связи в любое время. Проблема на дороге — поможем, подменим авто или приедем на помощь.</div>
+      <div class="panel__r" data-steps>
+        <div class="stp on" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">1</div><div class="stp__k">Выбери <span class="dim">авто</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 7L7 17M15 17H7V9"/></svg></div></div>
+          <div class="stp__bd"><div><p>Перейди в каталог и отфильтруй авто по модели, цене или типу кузова. Выбери машину, которая подходит именно тебе.</p></div></div>
+        </div>
+        <div class="stp" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">2</div><div class="stp__k">Оформи <span class="dim">аренду</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div></div>
+          <div class="stp__bd"><div><p>Оставь заявку — перезвоним за 10 минут, подтвердим наличие и согласуем время подачи. Из документов нужны только паспорт и права.</p></div></div>
+        </div>
+        <div class="stp" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">3</div><div class="stp__k">Катайся <span class="dim">на здоровье</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div></div>
+          <div class="stp__bd"><div><p>Подпишем договор за 10 минут и передадим вымытое, заправленное авто. Подадим машину туда, куда тебе удобно.</p></div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== 3 STEPS ==================== -->
-<section class="section on-dark" id="steps">
+<!-- ======== АУКЦИОН ======== -->
+<section class="section" id="auction">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Быстро и без бумаг</span>
-      <h2 class="h-sec">Арендуй авто всего за 3 шага</h2>
-      <p>От выбора машины до ключей в руках — минимум формальностей.</p>
-    </div>
-    <div class="steps reveal">
-      <div class="step open">
-        <div class="step__hd" onclick="toggleStep(this)">
-          <div class="step__n">01</div>
-          <div class="step__k">Выбери авто</div>
-          <div class="step__pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div class="panel reveal">
+      <div class="panel__ph"><img src="{{AUCTION_IMG}}" alt=""></div>
+      <div class="panel__sc"></div>
+      <div class="panel__l">
+        <h2 class="hd hd-xl">Купи автомобиль<br>с аукциона за 3 шага</h2>
+        <div class="panel__foot">
+          <p class="small">Пригоним авто напрямую с аукционов Японии — под ваш бюджет и требования. Ставка, доставка и растаможка под ключ.</p>
+          <button class="btn btn--w" onclick="openModal('','Заявка на авто с аукциона','Опишите желаемую модель и бюджет — подберём варианты')">Перейти к аукционам
+            <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
         </div>
-        <div class="step__bd"><div><p>Открой каталог, отфильтруй по цене и типу кузова и выбери подходящую модель. Все машины в наличии и готовы к выдаче — актуальные фото и честный пробег.</p></div></div>
       </div>
-      <div class="step">
-        <div class="step__hd" onclick="toggleStep(this)">
-          <div class="step__n">02</div>
-          <div class="step__k">Оставь заявку</div>
-          <div class="step__pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div>
+      <div class="panel__r" data-steps>
+        <div class="stp on" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">1</div><div class="stp__k">Выбери <span class="dim">автомобиль</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 7L7 17M15 17H7V9"/></svg></div></div>
+          <div class="stp__bd"><div><p>Скажите марку, модель и бюджет — подберём варианты с аукционов Японии и покажем аукционные листы с реальным состоянием.</p></div></div>
         </div>
-        <div class="step__bd"><div><p>Оставь номер — перезвоним в течение 10 минут, подтвердим наличие, ответим на вопросы и согласуем время и место подачи. Для оформления нужен только паспорт и права.</p></div></div>
-      </div>
-      <div class="step">
-        <div class="step__hd" onclick="toggleStep(this)">
-          <div class="step__n">03</div>
-          <div class="step__k">Забирай ключи</div>
-          <div class="step__pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="stp" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">2</div><div class="stp__k">Сделай <span class="dim">ставку</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div></div>
+          <div class="stp__bd"><div><p>Фиксируем смету: ставка, доставка, растаможка. Выставляем ставку на торгах от вашего имени и держим в курсе на каждом этапе.</p></div></div>
         </div>
-        <div class="step__bd"><div><p>Подпишем договор за 10 минут, передадим заправленное и вымытое авто. Можем подать машину прямо к аэропорту или порту — сел и поехал.</p></div></div>
+        <div class="stp" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">3</div><div class="stp__k">Забирай <span class="dim">автомобиль</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div></div>
+          <div class="stp__bd"><div><p>Доставим авто во Владивосток, оформим документы и передадим машину вам. Полное сопровождение до постановки на учёт.</p></div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== AUCTION ==================== -->
-<section class="section on-dark" id="auction">
+<!-- ======== КАТАЛОГ ======== -->
+<section class="section" id="catalog">
   <div class="wrap">
-    <div class="auction reveal">
-      <div class="auction__c">
-        <span class="eyebrow">Авто под заказ</span>
-        <h2 class="h-sec">Пригоним авто с аукционов Японии</h2>
-        <p>Не нашли нужную модель в каталоге? Подберём и выкупим авто напрямую с японских аукционов — под ваш бюджет и требования.</p>
-        <div class="auction__list">
-          <div class="auction__li"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg></i>Проверка отчёта и реального состояния по аукционному листу</div>
-          <div class="auction__li"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg></i>Ставка, доставка и растаможка — под ключ</div>
-          <div class="auction__li"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg></i>Прозрачная смета и сопровождение на каждом этапе</div>
-        </div>
-        <button class="btn btn--steel" onclick="openModal('','Заявка на авто с аукциона')">Рассчитать стоимость</button>
-      </div>
-      <div class="auction__decor"><img src="{{STEERING_IMG}}" alt="Салон японского автомобиля"></div>
+    <div class="cat-head reveal">
+      <h2 class="hd hd-xl">Каталог авто</h2>
+      <p class="small">{{CAR_COUNT}} японских автомобиля в наличии. Найдите свой по модели и цене.</p>
     </div>
-  </div>
-</section>
-
-<!-- ==================== CATALOG ==================== -->
-<section class="section on-dark" id="catalog">
-  <div class="wrap">
-    <div class="sec-head sec-head--split reveal">
-      <div>
-        <span class="eyebrow">Весь автопарк</span>
-        <h2 class="h-sec">Каталог авто</h2>
-      </div>
-      <p>{{CAR_COUNT}} машин в наличии. Отфильтруйте по цене и типу кузова.</p>
-    </div>
-    <div class="filters reveal">
-      <label class="filters__search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
-        <input type="text" id="q" placeholder="Поиск: Toyota, Honda, Nissan…" oninput="filterCat()">
+    <div class="fbar reveal">
+      <label class="fsearch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
+        <input type="text" id="q" placeholder="Поиск по названию: Toyota, Honda, Nissan…" oninput="filt()">
       </label>
-      <div class="sel"><select id="fType" onchange="filterCat()">
-        <option value="">Все кузова</option>
-        <option value="sedan">Седан</option>
-        <option value="hatchback">Хэтчбек</option>
-        <option value="suv">Кроссовер</option>
-        <option value="minivan">Минивэн</option>
-        <option value="van">Универсал</option>
-      </select></div>
-      <div class="sel"><select id="fPrice" onchange="filterCat()">
-        <option value="99999">Любая цена</option>
-        <option value="1300">до 1 300 ₽</option>
-        <option value="1600">до 1 600 ₽</option>
-        <option value="2000">до 2 000 ₽</option>
-        <option value="2500">до 2 500 ₽</option>
-      </select></div>
-      <div class="sel"><select id="fSort" onchange="filterCat()">
-        <option value="pop">По популярности</option>
-        <option value="asc">Сначала дешевле</option>
-        <option value="desc">Сначала дороже</option>
-      </select></div>
+      <div class="frow">
+        <div class="fsel"><select id="fType" onchange="filt()">
+          <option value="">Все модели</option>
+          <option value="sedan">Седан</option><option value="hatchback">Хэтчбек</option>
+          <option value="suv">Кроссовер</option><option value="minivan">Минивэн</option><option value="van">Универсал</option>
+        </select></div>
+        <div class="fsel"><select id="fPrice" onchange="filt()">
+          <option value="99999">Любая цена</option>
+          <option value="1300">до 1 300 ₽</option><option value="1600">до 1 600 ₽</option>
+          <option value="2000">до 2 000 ₽</option><option value="2500">до 2 500 ₽</option>
+        </select></div>
+      </div>
     </div>
-    <div class="catalog" id="catGrid">
-      {{CATALOG_HTML}}
-    </div>
-    <div class="cat-empty" id="catEmpty" hidden>По вашему запросу авто не найдено. Сбросьте фильтры.</div>
+    <div class="catalog" id="grid">{{CATALOG_HTML}}</div>
+    <div class="cat-empty" id="empty" hidden>По вашему запросу авто не найдено — сбросьте фильтры.</div>
   </div>
 </section>
 
-<!-- ==================== REVIEWS ==================== -->
-<section class="section on-light reviews" id="reviews">
+<!-- ======== ОТЗЫВЫ ======== -->
+<section class="section" id="reviews">
   <div class="wrap">
-    <div class="sec-head sec-head--center reveal">
-      <span class="eyebrow">Отзывы</span>
-      <h2 class="h-sec">Реальные впечатления<br>наших клиентов</h2>
-    </div>
-    <div class="rev-stage reveal">
-      <div class="rev-track" id="revTrack">{{REVIEWS_HTML}}</div>
-    </div>
-    <div class="rev-ctrl wrap reveal" style="padding-inline:0">
-      <div class="rev-dots" id="revDots">{{DOTS_HTML}}</div>
-      <div class="rev-arrows">
-        <button class="rev-arrow" aria-label="Предыдущий отзыв" onclick="revMove(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 6l-6 6 6 6"/></svg></button>
-        <button class="rev-arrow" aria-label="Следующий отзыв" onclick="revMove(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="bigcard on-light reveal">
+      <div class="rv-head">
+        <h2 class="hd hd-lg">Реальные отзывы<br>наших клиентов</h2>
+        <div class="rv-arrows">
+          <button class="sq sq--k" aria-label="Предыдущий" onclick="rvMove(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 6l-6 6 6 6"/></svg></button>
+          <button class="sq sq--k" aria-label="Следующий" onclick="rvMove(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6l6 6-6 6"/></svg></button>
+        </div>
       </div>
+      <div class="rv-stage"><div class="rv-track" id="rvTrack">{{REVIEWS_HTML}}</div></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== FAQ ==================== -->
-<section class="section on-light" id="faq" style="padding-top:0">
+<!-- ======== FAQ ======== -->
+<section class="section" id="faq" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head sec-head--center reveal">
-      <span class="eyebrow">FAQ</span>
-      <h2 class="h-sec">Частые вопросы</h2>
-    </div>
-    <div class="faq reveal">
-      <div class="faq-item open">
-        <div class="faq-q" onclick="toggleFaq(this)"><span>Какие документы нужны для аренды?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div></div>
-        <div class="faq-a"><div><p>Паспорт РФ и водительское удостоверение со стажем от 2 лет. Оформление занимает около 10 минут — договор подписываем на месте выдачи.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)"><span>Можно ли взять авто без залога?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div></div>
-        <div class="faq-a"><div><p>Да, для ряда моделей действует аренда без залога. По остальным залог фиксирован в договоре и возвращается сразу после сдачи авто без повреждений.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)"><span>Вы подаёте машину к аэропорту или порту?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div></div>
-        <div class="faq-a"><div><p>Да. Подаём авто к аэропорту Владивостока, морскому порту, вокзалу или к вашему адресу во Владивостоке и Находке. Уточните время при бронировании.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)"><span>На какой срок можно арендовать авто?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div></div>
-        <div class="faq-a"><div><p>От одних суток до нескольких месяцев. На длительную аренду действуют скидки — чем дольше срок, тем ниже суточная ставка.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)"><span>Как заказать авто с аукциона Японии?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div></div>
-        <div class="faq-a"><div><p>Оставьте заявку с желаемой моделью и бюджетом. Мы подберём варианты с аукционов, покажем аукционные листы, зафиксируем смету и сопроводим сделку до выдачи авто.</p></div></div>
+    <div class="bigcard on-light reveal" style="padding-block:clamp(30px,4vw,56px)">
+      <h2 class="hd hd-xl faq-t">FAQ</h2>
+      <div class="faq">
+        <div class="fq on">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">01</span>
+            <span class="fq__x">Какие <b>документы нужны</b> для аренды авто?</span></div>
+            <div class="fq__a"><div><p>Пакет документов минимальный:</p>
+              <ul><li>паспорт РФ</li><li>водительское удостоверение — стаж без ограничений</li><li>любая форма оплаты: наличные, карта или безнал для юрлиц</li></ul></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">02</span>
+            <span class="fq__x">Есть ли <b>возрастные ограничения</b> и лимит пробега?</span></div>
+            <div class="fq__a"><div><p>Минимальный возраст — 18 лет, водительский стаж без ограничений (при стаже до 3 лет арендодатель вправе в особых случаях назначить залог). Лимит пробега — 250 км в сутки; опция «без лимита пробега» доступна при аренде от 3 суток.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">03</span>
+            <span class="fq__x">Что <b>не входит</b> в стоимость аренды?</span></div>
+            <div class="fq__a"><div><p>В стоимость не входит бензин, оплата парковок и штрафов — эти расходы на стороне арендатора. Залог берётся при выезде за пределы Находкинского городского округа и возвращается после сдачи авто.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">04</span>
+            <span class="fq__x">Возможна ли <b>доставка авто</b> по адресу?</span></div>
+            <div class="fq__a"><div><p>Да. Подаём авто к аэропорту Владивостока, морскому порту, вокзалу или к вашему адресу во Владивостоке и Находке. Время подачи согласуем при бронировании.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">05</span>
+            <span class="fq__x">Как заказать <b>авто с аукциона Японии</b>?</span></div>
+            <div class="fq__a"><div><p>Оставьте заявку с желаемой моделью и бюджетом. Подберём варианты с аукционов, покажем аукционные листы, зафиксируем смету и сопроводим сделку до выдачи авто.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">06</span>
+            <span class="fq__x">Как работает <b>аренда с выкупом</b>?</span></div>
+            <div class="fq__a"><div><p>Вы берёте авто в аренду и регулярно вносите платежи — без банка, без кредитной истории и без первоначального взноса. После оплаты последнего выкупного взноса автомобиль становится вашим. Решение принимается индивидуально, доступно физическим и юридическим лицам, в том числе под работу в такси.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== CTA ==================== -->
-<section class="section on-dark" id="contact">
+<!-- ======== CTA ======== -->
+<section class="section" id="contact" style="padding-top:0">
   <div class="wrap">
     <div class="cta reveal">
-      <div class="cta__bg"><img src="{{HERO_IMG}}" alt=""></div>
-      <div class="cta__c">
-        <span class="eyebrow">Готовы начать?</span>
-        <h2 class="h-sec">Готовы арендовать авто без лишних хлопот?</h2>
-        <p>Оставьте заявку — перезвоним в течение 10 минут, подберём машину и подадим её туда, куда вам удобно.</p>
-      </div>
-      <form class="cta__form" onsubmit="submitForm(event)">
-        <div class="field"><label for="cName">Ваше имя</label><input id="cName" type="text" placeholder="Как к вам обращаться" required></div>
-        <div class="field"><label for="cPhone">Телефон</label><input id="cPhone" type="tel" placeholder="+7 (___) ___-__-__" required></div>
-        <div class="field"><label for="cCar">Какое авто интересует</label>
-          <select id="cCar"><option>Подберите за меня</option>{{CAR_OPTIONS}}</select>
+      <div class="cta__l">
+        <h2 class="hd hd-xl">Не знаете,<br>какое авто выбрать?</h2>
+        <p class="small">Укажите контакты — свяжемся с вами в ближайшее время, подберём машину под задачу и бюджет и подадим её туда, куда вам удобно.</p>
+        <div class="cta__soc">
+          <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.2.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 12.5 1.7 11c-1-.3-1-1 .2-1.5l19-7.3c.8-.3 1.5.2 1 2.1z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5 0a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.5c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 5.3 5.3 0 0 0 3.3.7 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
         </div>
-        <button class="btn btn--steel" type="submit">Отправить заявку</button>
+      </div>
+      <form class="cta__f" onsubmit="send(event)">
+        <input class="inp" id="cn" type="text" placeholder="Имя и фамилия" required>
+        <input class="inp" id="cp" type="tel" placeholder="Номер телефона" required>
+        <select class="inp" id="cc"><option>Подберите авто за меня</option>{{CAR_OPTIONS}}</select>
+        <div class="cta__row"><span>Отправить заявку</span>
+          <button class="sq sq--k" type="submit" aria-label="Отправить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+        </div>
         <div class="cta__note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ==================== FOOTER ==================== -->
-<footer class="foot on-dark">
-  <div class="foot__word" aria-hidden="true">GRAND AVTO</div>
-  <div class="wrap">
-    <div class="foot__grid">
-      <div class="foot__brand">
-        <a class="brand" href="#top"><span class="brand__mark">GA</span><b>GRAND&nbsp;<span>AVTO</span></b></a>
-        <p>Прокат и продажа японских авто во Владивостоке и Находке. Пригоним машину с аукционов Японии под ключ.</p>
-      </div>
-      <div class="foot__col">
-        <h4>Навигация</h4>
-        <a href="#hits">Прокат</a><a href="#catalog">Каталог</a><a href="#auction">Авто из Японии</a><a href="#faq">Вопросы</a>
-      </div>
-      <div class="foot__col">
-        <h4>Услуги</h4>
-        <a href="#catalog">Аренда авто</a><a href="#auction">Авто под заказ</a><a href="#contact">Доставка авто</a><a href="#contact">Выкуп авто</a>
-      </div>
-      <div class="foot__contact">
-        <h4 style="font-family:var(--fd);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--t-dk-3);margin-bottom:18px">Контакты</h4>
-        <div class="row"><b>+7 (423) 200-00-00</b></div>
-        <div class="row">Владивосток, ул. Светланская, 1</div>
-        <div class="row">Находка, ул. Портовая, 12</div>
-        <div class="row">Ежедневно 08:00 — 22:00</div>
-        <button class="btn btn--lineDk" style="margin-top:12px;padding:11px 20px;font-size:.82rem" onclick="openModal()">Заказать звонок</button>
+<!-- ======== FOOTER ======== -->
+<footer class="foot">
+  <div class="foot__ph"><img src="{{FOOTER_IMG}}" alt=""></div>
+  <div class="foot__sc"></div>
+  <div class="gb" style="left:8%;top:34%">Двигатель эмоций <span>под капотом</span></div>
+  <div class="gb" style="right:9%;top:26%">Уверенность <span>в каждой поездке</span></div>
+  <div class="gb" style="right:22%;top:52%">Выбери авто <span>премиум-класса</span></div>
+  <div class="foot__in">
+    <div class="foot__top">
+      <a class="logo" href="#top">GRAND <i>AVTO</i></a>
+      <nav class="foot__nav">
+        <a href="#top">Главная</a><a href="#catalog">Автопарк</a><a href="#steps">Услуги</a>
+        <a href="#auction">Аукционы</a><a href="#trust">О нас</a><a href="#contact">Контакты</a>
+      </nav>
+      <div class="foot__soc">
+        <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.2.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 12.5 1.7 11c-1-.3-1-1 .2-1.5l19-7.3c.8-.3 1.5.2 1 2.1z"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
       </div>
     </div>
     <div class="foot__bar">
       <span>© 2026 GRAND AVTO. Все права защищены.</span>
-      <span>Владивосток · Находка · Приморский край</span>
+      <span>Владивосток, ул. Светланская, 1 · Находка, ул. Портовая, 12</span>
+      <a href="tel:+74232000000">+7 (423) 200-00-00</a>
     </div>
   </div>
 </footer>
 
-<!-- ==================== MODAL ==================== -->
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal on-dark">
-    <button class="modal__x" aria-label="Закрыть" onclick="closeModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <div class="modal__t" id="mTitle">Заявка на аренду</div>
-    <div class="modal__s" id="mSub">Оставьте данные — перезвоним в течение 10 минут</div>
-    <form onsubmit="submitForm(event,true)">
-      <div class="field"><label for="mName">Ваше имя</label><input id="mName" type="text" placeholder="Как к вам обращаться" required></div>
-      <div class="field"><label for="mPhone">Телефон</label><input id="mPhone" type="tel" placeholder="+7 (___) ___-__-__" required></div>
-      <button class="btn btn--steel" type="submit" style="width:100%;margin-top:6px">Отправить заявку</button>
-      <div class="cta__note">Перезвоним в течение 10 минут в рабочее время</div>
-    </form>
+<!-- ======== MODAL ======== -->
+<div class="ov" id="ov" onclick="if(event.target===this)closeModal()">
+  <div class="md">
+    <button class="md__x" aria-label="Закрыть" onclick="closeModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="md__g">
+      <div>
+        <div class="md__ph" id="mPh"><img id="mImg" src="" alt=""></div>
+      </div>
+      <div>
+        <div class="md__t" id="mT">Заявка на аренду</div>
+        <div class="md__p" id="mP" hidden></div>
+        <p class="small" id="mS" style="margin-bottom:16px">Оставьте данные — перезвоним в течение 10 минут</p>
+        <dl class="specs" id="mSpecs" hidden></dl>
+        <form onsubmit="send(event,1)">
+          <input class="inp" id="mn" type="text" placeholder="Имя и фамилия" required>
+          <input class="inp" id="mp" type="tel" placeholder="Номер телефона" required>
+          <input class="inp" id="md1" type="text" placeholder="Дата и срок аренды (например, 12.09 на 3 дня)">
+          <button class="md__ok" type="submit">Отправить заявку</button>
+          <div class="cta__note" style="color:var(--t-b3)">Перезвоним в рабочее время в течение 10 минут</div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-// reveal
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
 
-// header
-addEventListener('scroll',function(){document.getElementById('hdr').classList.toggle('scrolled',scrollY>40)},{passive:true});
+function tglStep(el){
+  var grp=el.closest('[data-steps]');
+  if(el.classList.contains('on'))return;
+  grp.querySelectorAll('.stp.on').forEach(function(s){s.classList.remove('on')});
+  el.classList.add('on');
+}
+function tglFq(el){
+  var it=el.closest('.fq');var was=it.classList.contains('on');
+  document.querySelectorAll('.fq.on').forEach(function(f){f.classList.remove('on')});
+  if(!was)it.classList.add('on');
+  document.querySelectorAll('.fq').forEach(function(f){
+    var pl=f.querySelector('.pl'); if(pl)pl.style.display=f.classList.contains('on')?'none':'';
+  });
+}
+function tglCar(b){b.closest('.pc').classList.toggle('on')}
 
-// steps accordion (one open)
-function toggleStep(hd){var s=hd.closest('.step');var was=s.classList.contains('open');document.querySelectorAll('.step.open').forEach(function(x){x.classList.remove('open')});if(!was)s.classList.add('open')}
-
-// faq accordion
-function toggleFaq(q){var it=q.closest('.faq-item');var was=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open')});if(!was)it.classList.add('open')}
-
-// car card expand
-function toggleCar(btn){btn.closest('.carcard').classList.toggle('open')}
-
-// catalog filter + sort
-function filterCat(){
+function filt(){
   var q=document.getElementById('q').value.trim().toLowerCase();
   var t=document.getElementById('fType').value;
   var mp=parseInt(document.getElementById('fPrice').value);
-  var sort=document.getElementById('fSort').value;
-  var grid=document.getElementById('catGrid');
-  var cards=[].slice.call(grid.querySelectorAll('.carcard'));
-  var shown=0;
-  cards.forEach(function(c){
+  var n=0;
+  document.querySelectorAll('#grid .pc').forEach(function(c){
     var ok=(!q||c.dataset.name.indexOf(q)>-1)&&(!t||c.dataset.type===t)&&(parseInt(c.dataset.price)<=mp);
-    c.hidden=!ok; if(ok)shown++;
+    c.hidden=!ok; if(ok)n++;
   });
-  document.getElementById('catEmpty').hidden=shown>0;
-  var vis=cards.filter(function(c){return !c.hidden});
-  if(sort==='asc')vis.sort(function(a,b){return a.dataset.price-b.dataset.price});
-  else if(sort==='desc')vis.sort(function(a,b){return b.dataset.price-a.dataset.price});
-  else vis.sort(function(a,b){return a.dataset.pop-b.dataset.pop});
-  vis.forEach(function(c){grid.appendChild(c)});
+  document.getElementById('empty').hidden=n>0;
 }
 
-// reviews coverflow
-var revI=0,revN={{REV_N}};
-function revRender(){
-  var track=document.getElementById('revTrack');
-  var cards=track.querySelectorAll('.rev-card');
-  cards.forEach(function(c,i){c.classList.toggle('active',i===revI)});
-  document.querySelectorAll('.rev-dot').forEach(function(d,i){d.classList.toggle('active',i===revI)});
-  var active=cards[revI];
-  var tw=track.parentElement.offsetWidth;
-  var off=active.offsetLeft-(tw/2)+(active.offsetWidth/2);
-  track.style.transform='translateX('+(-off)+'px)';
+var rvI=1,rvN={{REV_N}};
+function rvR(){
+  var tr=document.getElementById('rvTrack');
+  var cs=tr.querySelectorAll('.rvc');
+  cs.forEach(function(c,i){c.classList.toggle('on',i===rvI)});
+  var a=cs[rvI];
+  tr.style.transform='translateX('+(-(a.offsetLeft-(tr.parentElement.offsetWidth/2)+(a.offsetWidth/2)))+'px)';
 }
-function revMove(d){revI=(revI+d+revN)%revN;revRender();resetAuto()}
-function revGo(i){revI=i;revRender();resetAuto()}
-var revTimer=setInterval(function(){revMove(1)},5000);
-function resetAuto(){clearInterval(revTimer);revTimer=setInterval(function(){revMove(1)},5000)}
-addEventListener('load',revRender);addEventListener('resize',revRender);
-setTimeout(revRender,300);
+function rvMove(d){rvI=(rvI+d+rvN)%rvN;rvR();rvA()}
+var rvT=setInterval(function(){rvMove(1)},5600);
+function rvA(){clearInterval(rvT);rvT=setInterval(function(){rvMove(1)},5600)}
+addEventListener('load',rvR);addEventListener('resize',rvR);setTimeout(rvR,260);
 
-// modal
-function openModal(car,title){
-  document.getElementById('mTitle').textContent=title||(car?('Аренда: '+car):'Заявка на аренду');
-  document.getElementById('mSub').textContent=car?('Перезвоним и подтвердим наличие '+car):'Оставьте данные — перезвоним в течение 10 минут';
-  if(car){var s=document.getElementById('cCar');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text.indexOf(car)>-1){s.selectedIndex=i;break}}}}
-  document.getElementById('overlay').classList.add('open');document.body.style.overflow='hidden';
+function openModal(car,title,sub,price,img,specs){
+  document.getElementById('mT').textContent=title||(car?('Аренда: '+car):'Заявка на аренду');
+  document.getElementById('mS').textContent=sub||'Оставьте данные — перезвоним в течение 10 минут';
+  var p=document.getElementById('mP');
+  if(price){p.hidden=false;p.innerHTML=price+' ₽ <small>/ сутки</small>'}else{p.hidden=true}
+  var ph=document.getElementById('mPh'),im=document.getElementById('mImg');
+  if(img){ph.hidden=false;im.src=img}else{ph.hidden=true}
+  var sp=document.getElementById('mSpecs');
+  if(specs){sp.hidden=false;sp.innerHTML=specs}else{sp.hidden=true}
+  document.getElementById('ov').classList.add('on');document.body.style.overflow='hidden';
 }
-function closeModal(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow=''}
+function rentFrom(btn){
+  var c=btn.closest('.pc');
+  openModal(c.dataset.full,'Аренда: '+c.dataset.full,'Перезвоним и подтвердим наличие',c.dataset.price,c.querySelector('img').src,c.dataset.specs);
+}
+function closeModal(){document.getElementById('ov').classList.remove('on');document.body.style.overflow=''}
 addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
-function submitForm(e,modal){e.preventDefault();var btn=e.target.querySelector('button[type=submit]');var old=btn.textContent;btn.textContent='Отправлено ✓';btn.style.background='#7FB08A';btn.style.color='#0B0B0C';setTimeout(function(){btn.textContent=old;btn.style.background='';btn.style.color='';e.target.reset();if(modal)closeModal()},1900)}
+function send(e,m){e.preventDefault();var f=e.target;var b=f.querySelector('button[type=submit]');
+  var t=b.querySelector('span')?b.querySelector('span'):b;var o=t.textContent;
+  t.textContent='Отправлено ✓';
+  setTimeout(function(){t.textContent=o;f.reset();if(m)closeModal()},1900)}
 </script>
