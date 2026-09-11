@@ -78,7 +78,7 @@ button{cursor:pointer;border:none;background:none}
 .logo{font-family:var(--fd);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;text-transform:uppercase}
 .logo i{font-style:normal;font-weight:500;color:var(--t-w2)}
 .nav{display:flex;gap:clamp(14px,1.8vw,26px);justify-content:center}
-.nav a{font-size:.8rem;font-weight:600;color:var(--t-w2);letter-spacing:.01em;transition:color .25s}
+.nav a{font-size:.74rem;font-weight:600;white-space:nowrap;color:var(--t-w2);letter-spacing:.01em;transition:color .25s}
 .nav a:hover{color:#fff}
 .hdr__r{display:flex;align-items:center;gap:10px;justify-self:end}
 
@@ -298,6 +298,12 @@ button{cursor:pointer;border:none;background:none}
 .foot__nav{display:flex;gap:clamp(14px,2.2vw,30px);flex-wrap:wrap}
 .foot__nav a{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.72);transition:.25s}
 .foot__nav a:hover{color:#fff}
+.foot__people{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-block:22px;border-top:1px solid rgba(255,255,255,.16)}
+.fp__n{font-family:var(--fd);font-weight:700;font-size:.76rem;color:#fff;margin-bottom:7px;line-height:1.3}
+.fp__l{display:block;font-size:.74rem;color:rgba(255,255,255,.62);padding:2px 0;transition:color .25s}
+.fp__l:hover{color:#fff}
+.foot__bar a{color:rgba(255,255,255,.72);transition:color .25s}
+.foot__bar a:hover{color:#fff}
 .foot__bar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);font-size:.74rem;color:rgba(255,255,255,.55)}
 
 /* ============ MODAL ============ */
@@ -340,6 +346,7 @@ button{cursor:pointer;border:none;background:none}
 }
 @media (max-width:600px){
   :root{--rxl:26px;--rlg:18px}
+  .foot__people{grid-template-columns:1fr 1fr}
   .road{min-height:0}
   .foot{min-height:0;padding-top:220px}
   .cars3{grid-template-columns:1fr}
@@ -357,8 +364,11 @@ button{cursor:pointer;border:none;background:none}
   <div class="edge hdr__in">
     <a class="logo" href="#top">GRAND <i>AVTO</i></a>
     <nav class="nav">
-      <a href="#hits">Главная</a><a href="#catalog">Автопарк</a><a href="#steps">Услуги</a>
-      <a href="#steps">Условия аренды</a><a href="#trust">О нас</a><a href="#contact">Контакты</a>
+      <a href="#top">Главная</a>
+      <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Китая</a>
+      <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Кореи</a>
+      <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Японии</a>
+      <a href="#contact">Контакты</a>
     </nav>
     <div class="hdr__r">
       <button class="sq sq--gl" aria-label="Личный кабинет" onclick="openModal('','Вход в личный кабинет','Личный кабинет скоро будет доступен — оставьте номер, и мы сообщим о запуске','','{{WHEEL_IMG}}')">
@@ -514,7 +524,7 @@ button{cursor:pointer;border:none;background:none}
         <h2 class="hd hd-xl">Купи автомобиль<br>с аукциона за 3 шага</h2>
         <div class="panel__foot">
           <p class="small">Пригоним авто напрямую с аукционов Японии — под ваш бюджет и требования. Ставка, доставка и растаможка под ключ.</p>
-          <button class="btn btn--w" onclick="openModal('','Заявка на авто с аукциона','Опишите желаемую модель и бюджет — подберём варианты')">Перейти к аукционам
+          <button class="btn btn--w" onclick="openModal('','Заявка на авто с аукциона','Опишите желаемую модель и бюджет — подберём варианты','','{{STEERING_IMG}}')">Перейти к аукционам
             <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
         </div>
       </div>
@@ -702,15 +712,35 @@ button{cursor:pointer;border:none;background:none}
     <div class="foot__top">
       <a class="logo" href="#top">GRAND <i>AVTO</i></a>
       <nav class="foot__nav">
-        <a href="#hits">Главная</a><a href="#catalog">Автопарк</a><a href="#steps">Услуги</a>
-        <a href="#auction">Аукционы</a><a href="#trust">О нас</a><a href="#contact">Контакты</a>
+        <a href="#top">Главная</a>
+        <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Китая</a>
+        <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Кореи</a>
+        <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Японии</a>
+        <a href="#catalog">Автопарк</a><a href="#contact">Контакты</a>
       </nav>
-      <a class="btn btn--w" href="tel:+74232000000">+7 (423) 200-00-00</a>
+      <a class="btn btn--w" href="tel:+79147156979">8 914 715-69-79</a>
+    </div>
+    <div class="foot__people">
+      <div class="fp"><div class="fp__n">Силушин Александр Иванович</div>
+        <a class="fp__l" href="tel:+79147156979">8 914 715-69-79</a>
+        <a class="fp__l" href="mailto:grandavto2021@yandex.ru">grandavto2021@yandex.ru</a></div>
+      <div class="fp"><div class="fp__n">Волков Александр Дмитриевич</div>
+        <a class="fp__l" href="tel:+79940112770">+7 994 011-27-70</a>
+        <a class="fp__l" href="mailto:buldozercar@bk.ru">buldozercar@bk.ru</a></div>
+      <div class="fp"><div class="fp__n">Драчев Антон Олегович</div>
+        <a class="fp__l" href="tel:+79247997711">8 924 799-77-11</a>
+        <a class="fp__l" href="mailto:antonolegovich3003@mail.ru">antonolegovich3003@mail.ru</a></div>
+      <div class="fp"><div class="fp__n">Большеротов Игорь Иванович</div>
+        <a class="fp__l" href="tel:+79841408669">+7 984 140-86-69</a>
+        <a class="fp__l" href="mailto:Ivanovih-1973@mail.ru">Ivanovih-1973@mail.ru</a></div>
     </div>
     <div class="foot__bar">
       <span>© 2026 GRAND AVTO. Все права защищены.</span>
-      <span>Владивосток, ул. Светланская, 1 · Находка, ул. Портовая, 12</span>
-      <span>Ежедневно 08:00 — 22:00</span>
+      <span>
+        <a href="https://www.instagram.com/grandavto_nhk/" target="_blank" rel="noopener">Instagram</a> ·
+        <a href="https://max.ru/id2508139768_biz" target="_blank" rel="noopener">Наш канал</a>
+      </span>
+      <span>Находка · Владивосток · Приморский край</span>
     </div>
   </div>
 </footer>
