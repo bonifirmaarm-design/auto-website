@@ -82,6 +82,24 @@ button{cursor:pointer;border:none;background:none}
 .nav a:hover{color:#fff}
 .hdr__r{display:flex;align-items:center;gap:10px;justify-self:end}
 
+/* ============ BURGER + DRAWER ============ */
+.burger{display:none;width:44px;height:44px;border-radius:var(--rsm);border:1px solid var(--glass-b);background:var(--glass);backdrop-filter:blur(12px);flex-direction:column;justify-content:center;align-items:center;gap:5px;flex-shrink:0}
+.burger span{display:block;width:18px;height:2px;background:#fff;border-radius:2px;transition:transform .35s var(--e),opacity .25s}
+.burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hdr__tel{display:none}
+.drawer{position:fixed;inset:0;z-index:38;background:rgba(10,10,11,.97);backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;justify-content:center;gap:34px;padding:96px var(--gut) 40px;
+  opacity:0;transition:opacity .32s var(--e)}
+.drawer.on{opacity:1}
+.drawer__nav{display:flex;flex-direction:column;gap:4px}
+.drawer__nav a{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,7vw,2.2rem);text-transform:uppercase;letter-spacing:-.02em;color:var(--t-w2);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.10);transition:color .25s}
+.drawer__nav a.on,.drawer__nav a:hover{color:#fff}
+.drawer__foot{display:flex;flex-direction:column;gap:10px}
+.drawer__foot .btn{width:100%;padding:17px 24px;font-size:.95rem}
+body.locked{overflow:hidden}
+
 /* ============ HERO ============ */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:clamp(32px,5vh,64px)}
 .hero__ph{position:absolute;inset:0;z-index:0;overflow:hidden}
@@ -351,37 +369,87 @@ button{cursor:pointer;border:none;background:none}
 .md__ok{background:#0B0B0D;color:#fff;border-radius:var(--rmd);padding:16px;text-align:center;font-weight:700;font-size:.88rem;width:100%;margin-top:4px}
 
 /* ============ RESPONSIVE ============ */
-@media (max-width:1100px){
+@media (max-width:1200px){
   .catalog{grid-template-columns:repeat(3,1fr)}
-  .road__in{grid-template-columns:1fr;align-items:start}
-  .cta,.panel{grid-template-columns:1fr}
-  .panel{min-height:0}
 }
-@media (max-width:900px){
-  .nav{display:none}
-  .hits{grid-template-columns:1fr}
-  .hits__ph{min-height:260px}
-  .trust{grid-template-columns:1fr 1fr}
+/* tablet / iPad — burger takes over, side-by-side blocks stack */
+@media (max-width:1024px){
+  .nav,.hdr__cta{display:none}
+  .burger{display:flex}
+  .hdr__tel{display:grid}
+  .hdr__in{display:flex;justify-content:space-between}
+  .hits,.road__in,.cta,.panel,.about{grid-template-columns:1fr}
+  .panel{min-height:0}
+  .panel__r{margin-top:8px}
+  .trust,.stages{grid-template-columns:repeat(2,1fr)}
   .catalog{grid-template-columns:repeat(2,1fr)}
-  .hero__in{grid-template-columns:1fr;gap:22px}
-  .hero__cta{align-items:flex-start}
-  .hero__cta .small{text-align:left}
+  .hits__ph{min-height:300px}
+  .hero{min-height:78svh}
+  .road{min-height:0}
+  .foot{min-height:0;padding-top:180px}
   .md__g{grid-template-columns:1fr}
   .md__ph{aspect-ratio:16/9}
+  .rvc{flex-basis:min(440px,72vw)}
+  .tc{min-height:0}
+  .cnd,.stg{min-height:0}
 }
-@media (max-width:600px){
-  :root{--rxl:26px;--rlg:18px}
-  .foot__people{grid-template-columns:1fr 1fr}
-  .road{min-height:0}
-  .foot{min-height:0;padding-top:220px}
-  .cars3{grid-template-columns:1fr}
-  .trust,.catalog{grid-template-columns:1fr}
-  .rvc{flex-basis:80vw}
-  .hero{min-height:88svh}
-  .fq__c{padding:16px 18px}
-  .fq__q{gap:12px}
-  .foot__bar{justify-content:flex-start}
+/* phone */
+@media (max-width:640px){
+  :root{--rxl:22px;--rlg:16px;--rmd:13px;--rsm:10px;--gut:clamp(16px,5vw,22px)}
+  .hero{min-height:86svh;padding-bottom:26px}
+  .hero__in{grid-template-columns:1fr;gap:18px}
+  .hero__t{font-size:clamp(1.15rem,5.6vw,1.6rem);max-width:none}
+  .hero__cta{align-items:stretch;gap:16px}
+  .hero__cta .small{text-align:left;max-width:none}
+  .hero__cta .btn{width:100%;padding:16px 22px}
+  /* the glass badges crowd the car on a narrow screen */
+  .gb{display:none}
+  .logo{font-size:1.05rem;white-space:nowrap}
+  .hd-xl{font-size:clamp(1.45rem,7vw,2rem)}
+  .hd-lg{font-size:clamp(1.3rem,6.2vw,1.8rem)}
+  .tr-head .hd{font-size:clamp(1.35rem,6.4vw,1.9rem)}
+  .panel__l .hd{font-size:clamp(1.3rem,6.2vw,1.8rem)}
+  .cars3,.trust,.catalog,.stages{grid-template-columns:1fr}
+  /* keep the short spec fields paired so the form does not become a mile long */
+  .calc__g{grid-template-columns:1fr 1fr;gap:8px}
+  .calc__g .inp{padding:14px 13px;font-size:.82rem}
+  /* stacked over the photo the text lands on the pale sky — darken hard on phones */
+  .road__ph img{object-position:center 82%}
+  .road__sc{background:linear-gradient(180deg,var(--cream) 0%,rgba(236,235,233,0) 4%,rgba(10,10,11,.74) 13%,rgba(10,10,11,.92) 48%,rgba(10,10,11,.96) 100%)}
+  .road{padding-block:54px 30px}
+  .road__l .small{color:rgba(255,255,255,.80)}
+  .hits__ph{min-height:210px}
+  .specs{grid-template-columns:1fr}
+  .rvc{flex-basis:82vw}
+  .rv-head{flex-direction:column;gap:16px}
+  .fq__c{padding:15px 16px}
+  .fq__q{gap:11px}
+  .fq__x{font-size:.84rem}
+  .fq__t{width:38px;height:38px}
+  .fq__t svg{width:20px;height:20px}
+  .csi{width:64vw}
+  .frow{flex-direction:column}
+  .fsel{flex:1 1 auto;min-width:0}
+  .stg{min-height:132px;padding:16px}
+  .stg__dec{display:none}
+  .cta__row{width:100%;justify-content:space-between}
+  .foot__people{grid-template-columns:1fr;gap:14px}
+  .foot__top{flex-direction:column;align-items:flex-start;gap:16px}
+  .foot__top .btn{width:100%}
+  .foot__bar{flex-direction:column;align-items:flex-start;gap:8px}
+  .foot{padding-top:150px}
+  .md{padding:18px}
+  .md__t{font-size:1.05rem;padding-right:42px}
+  .section{padding-block:clamp(30px,7vw,44px)}
+  .bigcard,.panel{padding:20px 16px}
+  .btn{padding:14px 20px;font-size:.84rem}
 }
+@media (max-width:380px){
+  .hdr__r{gap:7px}
+  .sq{width:40px;height:40px}
+  .burger{width:40px;height:40px}
+}
+
 </style>
 
 <!-- ======== HEADER ======== -->
@@ -396,10 +464,14 @@ button{cursor:pointer;border:none;background:none}
       <a href="#contacts" onclick="toContacts(event)">Контакты</a>
     </nav>
     <div class="hdr__r">
+      <a class="sq sq--w hdr__tel" href="tel:+79147156979" aria-label="Позвонить">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1.2 1.2 0 0 1 1.2-.3 13 13 0 0 0 4 .7 1.2 1.2 0 0 1 1.2 1.2V20a1.2 1.2 0 0 1-1.2 1.2A17.8 17.8 0 0 1 2.8 3.4 1.2 1.2 0 0 1 4 2.2h3.4a1.2 1.2 0 0 1 1.2 1.2 13 13 0 0 0 .7 4 1.2 1.2 0 0 1-.3 1.2z"/></svg>
+      </a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
       <button class="sq sq--gl" aria-label="Личный кабинет" onclick="openModal('','Вход в личный кабинет','Личный кабинет скоро будет доступен — оставьте номер, и мы сообщим о запуске','','{{WHEEL_IMG}}')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21v-1.8a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4V21"/><circle cx="12" cy="7" r="4"/></svg>
       </button>
-      <button class="btn btn--w" onclick="go('contact')">Забронировать</button>
+      <button class="btn btn--w hdr__cta" onclick="goCTA()">Забронировать</button>
     </div>
   </div>
 </header>
@@ -696,6 +768,25 @@ button{cursor:pointer;border:none;background:none}
 
 </main>
 
+
+<!-- ======== МОБИЛЬНОЕ МЕНЮ ======== -->
+<div class="drawer" id="drawer" hidden>
+  <nav class="drawer__nav">
+    <a href="#auc" data-page="auc" class="on">Аукционы</a>
+    <a href="#rent" data-page="rent">Аренда</a>
+    <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Китая</a>
+    <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Кореи</a>
+    <a href="#contacts" onclick="closeMenu();toContacts(event)">Контакты</a>
+  </nav>
+  <div class="drawer__foot">
+    <a class="btn btn--w" href="tel:+79147156979">
+      <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1.2 1.2 0 0 1 1.2-.3 13 13 0 0 0 4 .7 1.2 1.2 0 0 1 1.2 1.2V20a1.2 1.2 0 0 1-1.2 1.2A17.8 17.8 0 0 1 2.8 3.4 1.2 1.2 0 0 1 4 2.2h3.4a1.2 1.2 0 0 1 1.2 1.2 13 13 0 0 0 .7 4 1.2 1.2 0 0 1-.3 1.2z"/></svg>
+      8 914 715-69-79
+    </a>
+    <button class="btn btn--gl" onclick="closeMenu();goCTA()">Оставить заявку</button>
+  </div>
+</div>
+
 <main id="auc" class="page">
 
 <!-- ======== HERO АУКЦИОНЫ ======== -->
@@ -969,7 +1060,26 @@ button{cursor:pointer;border:none;background:none}
 <script>
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function go(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})}
+// header CTA: jump to whichever closing form the open page has
+function goCTA(){
+  var pg=document.querySelector('.page:not([hidden])');
+  var t=(pg&&pg.querySelector('.road'))||document.querySelector('.foot');
+  if(t)t.scrollIntoView({behavior:'smooth'});
+}
+// burger drawer
+var drawer=document.getElementById('drawer'), burger=document.getElementById('burger');
+function openMenu(){
+  drawer.hidden=false; requestAnimationFrame(function(){drawer.classList.add('on')});
+  burger.classList.add('on'); burger.setAttribute('aria-expanded','true'); document.body.classList.add('locked');
+}
+function closeMenu(){
+  drawer.classList.remove('on'); burger.classList.remove('on');
+  burger.setAttribute('aria-expanded','false'); document.body.classList.remove('locked');
+  setTimeout(function(){drawer.hidden=true},320);
+}
+function toggleMenu(){ drawer.hidden?openMenu():closeMenu() }
+addEventListener('keydown',function(e){if(e.key==='Escape'&&!drawer.hidden)closeMenu()});
 
 function tglStep(el){
   var grp=el.closest('[data-steps]');
@@ -1038,13 +1148,15 @@ setTimeout(revAll,260);
 // page switching: Аукционы / Аренда
 function showPage(id){
   document.querySelectorAll('.page').forEach(function(pg){pg.hidden=(pg.id!==id)});
-  document.querySelectorAll('.nav a[data-page]').forEach(function(a){a.classList.toggle('on',a.dataset.page===id)});
+  document.querySelectorAll('[data-page]').forEach(function(a){a.classList.toggle('on',a.dataset.page===id)});
   scrollTo(0,0);
   document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
   requestAnimationFrame(function(){revAll();csMeasure()});
 }
 document.querySelectorAll('[data-page]').forEach(function(a){
-  a.addEventListener('click',function(e){e.preventDefault();showPage(a.dataset.page);history.replaceState(null,'','#'+a.dataset.page)});
+  a.addEventListener('click',function(e){e.preventDefault();showPage(a.dataset.page);
+    history.replaceState(null,'','#'+a.dataset.page);
+    if(!drawer.hidden)closeMenu();});
 });
 if(location.hash==='#rent')showPage('rent');
 if(location.hash==='#auc')showPage('auc');
