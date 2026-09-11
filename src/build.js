@@ -164,4 +164,24 @@ const left = tpl.match(/{{[A-Z_]+}}/g);
 if (left) { console.error('UNRESOLVED:', [...new Set(left)]); process.exit(1); }
 
 fs.writeFileSync(dir + 'grand-avto-v3.html', tpl);
+
+// standalone document for GitHub Pages / any static host.
+// The artifact host injects doctype, charset and the viewport meta itself;
+// served directly those must be in the file or phones render at 980px.
+const standalone = `<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="GRAND AVTO — продажа и поставка техники с аукционов Японии, аренда автомобилей с последующим выкупом. Владивосток и Находка.">
+<meta name="theme-color" content="#0A0A0B">
+<style>:root{color-scheme:dark}html,body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+${tpl}
+</body>
+</html>`;
+fs.writeFileSync('/home/user/auto-website/index.html', standalone);
+
 console.log('Built:', Math.round(tpl.length/1024), 'KB · cars', cars.length, '· reviews', reviews.length);
+console.log('index.html:', Math.round(standalone.length/1024), 'KB → repo root');
