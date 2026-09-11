@@ -94,10 +94,18 @@ const reviews = [
   { n:'Марина Соколова', i:'МС', m:'Аэропорт Кневичи · июль 2026', st:5, t:'Прилетала во Владивосток, машина была нужна срочно. X-Trail подали прямо к аэропорту — чистый, полный бак, никаких скрытых платежей.' },
   { n:'Дмитрий Лазарев', i:'ДЛ', m:'Находка · июнь 2026', st:5, t:'Взял Noah в аренду с выкупом. Без банка, без первоначального взноса, платежи по графику. Через год минивэн будет мой — всё честно и прозрачно.' },
   { n:'Ольга Ким', i:'ОК', m:'Находка · сентябрь 2026', st:5, t:'Арендовала Toyota Aqua на выходные. Расход копеечный, оформление за 10 минут по паспорту. Однозначно вернусь ещё.' },
-  { n:'Сергей Волошин', i:'СВ', m:'Владивосток · май 2026', st:5, t:'Заказывал авто с аукциона Японии. Показали аукционный лист, зафиксировали смету — ставка, доставка, растаможка. Приятно удивила поддержка на каждом этапе.' }
+  { n:'Сергей Волошин', i:'СВ', m:'Владивосток · май 2026', st:5, t:'Первый взнос 20%, дальше платежи по графику. КАСКО и ОСАГО уже в стоимости — отдельно ничего не доплачивал. Всё как договаривались.' }
+];
+// отдельный набор отзывов для страницы аукционов
+const aucReviews = [
+  { n:'Сергей Волошин', i:'СВ', m:'Владивосток · май 2026', st:5, t:'Заказывал авто с аукциона Японии. Показали аукционный лист, зафиксировали смету — ставка, доставка, растаможка. Приятно удивила поддержка на каждом этапе.' },
+  { n:'Роман Ефимов', i:'РЕ', m:'Хабаровск · июль 2026', st:5, t:'Брал спецтехнику под компанию. Перевели все лоты, которые просил, объяснили каждую отметку в листе. Пришло ровно то, что покупал.' },
+  { n:'Алексей Гордеев', i:'АГ', m:'Находка · август 2026', st:5, t:'Считали по конструктору — вышло заметно дешевле полной пошлины. Фотоотчёт присылали на каждом этапе, от торгов до порта.' },
+  { n:'Наталья Пак', i:'НП', m:'Владивосток · июнь 2026', st:5, t:'Пока моя машина шла из Японии, дали авто в аренду. Не осталась без колёс на два месяца — за это отдельное спасибо.' },
+  { n:'Игорь Савченко', i:'ИС', m:'Уссурийск · сентябрь 2026', st:5, t:'Отправили в регион без моего участия: таможня, погрузка, ж/д. Себестоимость совпала с расчётом, который дали в начале.' }
 ];
 const STAR = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.9l-6.1 2.7 1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>';
-const revHtml = reviews.map(r => `
+const mkRev = list => list.map(r => `
         <article class="rvc">
           <div class="rvc__top">
             <div class="rvc__av">${r.i}</div>
@@ -106,8 +114,36 @@ const revHtml = reviews.map(r => `
           <p class="rvc__tx">${r.t}</p>
           <div class="rvc__meta">${r.m}</div>
         </article>`).join('');
+const revHtml = mkRev(reviews), aucRevHtml = mkRev(aucReviews);
+
+// ---- ЛОТЫ АУКЦИОНА (плейсхолдеры до загрузки реальных фото) ----
+const lots = [
+  { brand:'TOYOTA', model:'ALPHARD 2021', img:big.hero,    vol:'3500 cc', grade:'Оценка 4.5', auc:'TOKYO', bid:'1 620 000 ¥' },
+  { brand:'TOYOTA', model:'GR86 2022',    img:big.steps,   vol:'2400 cc', grade:'Оценка 4.5', auc:'USS',   bid:'1 480 000 ¥' },
+  { brand:'TOYOTA', model:'NOAH 2020',    img:big.auction, vol:'2000 cc', grade:'Оценка 4',   auc:'HAA',   bid:'1 150 000 ¥' },
+];
+const aucCars = lots.map(l => `
+        <article class="cc">
+          <div class="cc__nm">${l.brand}</div>
+          <div class="cc__md">${l.model}</div>
+          <div class="cc__ph"><img src="${l.img}" alt="${l.brand} ${l.model} — лот аукциона"></div>
+          <div class="cc__sp"><span>${l.auc}</span><span>${l.vol}</span><span>${l.grade}</span></div>
+          <div class="cc__ft">
+            <div class="cc__pr">${l.bid}<small>стартовая ставка</small></div>
+            <a class="sq sq--k" href="https://auc.grand-avto.com" target="_blank" rel="noopener" aria-label="Смотреть лот ${l.brand} ${l.model}">${ARROW}</a>
+          </div>
+        </article>`).join('');
+
+const mqAuc = ['Аукционы Японии','85 000+ лотов','Полный доступ','Перевод лотов','Распил и конструктор',
+  'Таможня под ключ','Владивосток','Отправка в регионы']
+  .map(t => `<span class="mq__i">${t}</span>`).join('\n      ');
+
+const auctionPanel = fs.readFileSync(dir + '_auction_panel.html', 'utf8');
 
 tpl = tpl
+  .replace('{{AUCTION_PANEL}}', auctionPanel)
+  .replace('{{AUC_CARS}}', aucCars)
+  .replace(/{{MQ_AUC}}/g, mqAuc)
   .replace(/{{HERO_IMG}}/g, big.hero)
   .replace(/{{HITS_IMG}}/g, big.hits)
   .replace(/{{STEPS_IMG}}/g, big.steps)
@@ -122,7 +158,7 @@ tpl = tpl
   .replace('{{CAR_COUNT}}', String(cars.length))
   .replace('{{CAR_OPTIONS}}', carOptions)
   .replace('{{REVIEWS_HTML}}', revHtml)
-  .replace('{{REV_N}}', String(reviews.length));
+  .replace('{{AUC_REVIEWS}}', aucRevHtml);
 
 const left = tpl.match(/{{[A-Z_]+}}/g);
 if (left) { console.error('UNRESOLVED:', [...new Set(left)]); process.exit(1); }

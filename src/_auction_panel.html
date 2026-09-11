@@ -1,0 +1,36 @@
+<!-- ======== АУКЦИОН ======== -->
+<section class="section" id="auction">
+  <div class="full">
+    <div class="panel reveal">
+      <div class="panel__ph"><img src="{{AUCTION_IMG}}" alt=""></div>
+      <div class="panel__sc"></div>
+      <div class="panel__l">
+        <h2 class="hd hd-xl">Купи автомобиль<br>с аукциона за 3 шага</h2>
+        <div class="panel__foot">
+          <p class="small">Пригоним авто напрямую с аукционов Японии — под ваш бюджет и требования. Ставка, доставка и растаможка под ключ.</p>
+          <button class="btn btn--w" onclick="openModal('','Заявка на авто с аукциона','Опишите желаемую модель и бюджет — подберём варианты','','{{STEERING_IMG}}')">Перейти к аукционам
+            <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+        </div>
+      </div>
+      <div class="panel__r" data-steps>
+        <div class="stp on" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">1</div><div class="stp__k">Выбери <span class="dim">автомобиль</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
+          <div class="stp__bd"><div><p>Скажите марку, модель и бюджет — подберём варианты с аукционов Японии и покажем аукционные листы с реальным состоянием.</p></div></div>
+        </div>
+        <div class="stp" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">2</div><div class="stp__k">Сделай <span class="dim">ставку</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
+          <div class="stp__bd"><div><p>Фиксируем смету: ставка, доставка, растаможка. Выставляем ставку на торгах от вашего имени и держим в курсе на каждом этапе.</p></div></div>
+        </div>
+        <div class="stp" onclick="tglStep(this)">
+          <div class="stp__top"><div class="stp__n">3</div><div class="stp__k">Забирай <span class="dim">автомобиль</span></div>
+            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
+          <div class="stp__bd"><div><p>Доставим авто во Владивосток, оформим документы и передадим машину вам. Полное сопровождение до постановки на учёт.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

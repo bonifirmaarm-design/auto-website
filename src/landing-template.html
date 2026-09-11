@@ -267,6 +267,30 @@ button{cursor:pointer;border:none;background:none}
 @keyframes mqs{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.mq__t{animation:none}}
 
+/* ============ PAGES ============ */
+.page[hidden]{display:none}
+.nav a.on{color:#fff}
+.nav a.on::after{content:'';display:block;height:2px;background:#fff;margin-top:4px;border-radius:2px}
+
+/* ============ ЭТАПЫ РАБОТЫ ============ */
+.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stg{position:relative;overflow:hidden;text-align:left;border:1px solid rgba(255,255,255,.12);border-radius:var(--rlg);background:rgba(255,255,255,.035);padding:20px 20px 18px;display:flex;flex-direction:column;min-height:172px;transition:border-color .4s,background .4s,transform .5s var(--e);color:#fff}
+.stg:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.07);transform:translateY(-4px)}
+.stg--last{background:var(--dk-grad);border-color:rgba(255,255,255,.2)}
+.stg__n{font-family:var(--fd);font-weight:800;font-size:.8rem;color:var(--t-w3);letter-spacing:.06em;margin-bottom:auto}
+.stg__k{font-family:var(--fd);font-weight:800;font-size:.86rem;text-transform:uppercase;line-height:1.32;letter-spacing:-.005em;margin:18px 0 12px}
+.stg__a{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-weight:700;font-size:.7rem;color:rgba(255,255,255,.62);transition:color .3s}
+.stg:hover .stg__a{color:#fff}
+.stg__a svg{width:13px;height:13px;transition:transform .35s var(--e)}
+.stg:hover .stg__a svg{transform:translate(2px,-2px)}
+.stg__dec{position:absolute;right:-74px;bottom:-64px;width:180px;height:180px;pointer-events:none;
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 72%);
+  mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 72%)}
+.stg__dec img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;opacity:.26}
+
+/* ============ CALC FORM ============ */
+.calc__g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+
 /* ============ CAR STRIP (translates with scroll) ============ */
 .cstrip{overflow:hidden;padding-block:clamp(26px,3vw,44px)}
 .cstrip__t{display:flex;gap:14px;width:max-content;will-change:transform}
@@ -364,11 +388,11 @@ button{cursor:pointer;border:none;background:none}
   <div class="edge hdr__in">
     <a class="logo" href="#top">GRAND <i>AVTO</i></a>
     <nav class="nav">
-      <a href="#top">Главная</a>
+      <a href="#auc" data-page="auc" class="on">Аукционы</a>
+      <a href="#rent" data-page="rent">Аренда</a>
       <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Китая</a>
       <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Кореи</a>
-      <a href="https://grand-avto.com/" target="_blank" rel="noopener">Авто из Японии</a>
-      <a href="#contact">Контакты</a>
+      <a href="#contacts" onclick="toContacts(event)">Контакты</a>
     </nav>
     <div class="hdr__r">
       <button class="sq sq--gl" aria-label="Личный кабинет" onclick="openModal('','Вход в личный кабинет','Личный кабинет скоро будет доступен — оставьте номер, и мы сообщим о запуске','','{{WHEEL_IMG}}')">
@@ -378,6 +402,8 @@ button{cursor:pointer;border:none;background:none}
     </div>
   </div>
 </header>
+
+<main id="rent" class="page" hidden>
 
 <!-- ======== HERO ======== -->
 <section class="hero" id="top">
@@ -389,7 +415,7 @@ button{cursor:pointer;border:none;background:none}
   <div class="gb" style="right:7%;top:30%">Без банка <span>и первоначального взноса</span></div>
   <div class="gb" style="right:15%;bottom:30%">От 18 лет <span>стаж без ограничений</span></div>
   <div class="edge hero__in">
-    <h1 class="hero__t reveal">Найди машину за 30 секунд!<br>Простые условия, мгновенный результат</h1>
+    <h1 class="hero__t reveal">Аренда автомобилей<br>с последующим выкупом</h1>
     <div class="hero__cta reveal">
       <p class="small">Японские авто в наличии<br>во Владивостоке и Находке</p>
       <button class="btn btn--w" onclick="go('catalog')">
@@ -410,7 +436,7 @@ button{cursor:pointer;border:none;background:none}
       <span class="mq__i">Nissan</span>
       <span class="mq__i">Аренда с выкупом</span>
       <span class="mq__i">Без банка</span>
-      <span class="mq__i">Авто с аукционов Японии</span>
+      <span class="mq__i">Аренда с выкупом</span>
       <span class="mq__i">Владивосток</span>
       <span class="mq__i">Находка</span>
       <span class="mq__i">Подача 24/7</span>
@@ -423,7 +449,7 @@ button{cursor:pointer;border:none;background:none}
       <span class="mq__i">Nissan</span>
       <span class="mq__i">Аренда с выкупом</span>
       <span class="mq__i">Без банка</span>
-      <span class="mq__i">Авто с аукционов Японии</span>
+      <span class="mq__i">Аренда с выкупом</span>
       <span class="mq__i">Владивосток</span>
       <span class="mq__i">Находка</span>
       <span class="mq__i">Подача 24/7</span>
@@ -463,12 +489,12 @@ button{cursor:pointer;border:none;background:none}
       <p class="small">Японские авто с прозрачными условиями и честной ценой —<br>проверенный выбор для любой поездки по Приморью.</p>
     </div>
     <div class="trust reveal">
-      <div class="tc tc--w"><div class="tc__n">1</div><div class="tc__k">Аренда <span class="dim">с выкупом</span></div><div class="tc__t">Покупка в рассрочку без банка и без первоначального взноса. Вносите платежи — и после выкупного взноса авто становится вашим.</div></div>
+      <div class="tc tc--w"><div class="tc__n">1</div><div class="tc__k">Аренда <span class="dim">с выкупом</span></div><div class="tc__t">Первый взнос 20% от стоимости — можно больше, тогда ежемесячные платежи ниже. После выкупного взноса авто становится вашим.</div></div>
       <div class="tc tc--k"><div class="tc__n">2</div><div class="tc__k">Минимальный <span class="dim">пакет документов</span></div><div class="tc__t">Возраст от 18 лет, водительский стаж без ограничений. Оформление занимает около 10 минут.</div></div>
       <div class="tc tc--w"><div class="tc__n">3</div><div class="tc__k">Никаких <span class="dim">скрытых платежей</span></div><div class="tc__t">Цена фиксируется в договоре. Любая форма оплаты — наличные, карта, безнал для юридических лиц.</div></div>
       <div class="tc tc--k"><div class="tc__n">4</div><div class="tc__k">Физлицам, юрлицам <span class="dim">и под такси</span></div><div class="tc__t">Большой выбор авто с правом выкупа под разные нужды — для себя, для компании или для работы в такси.</div></div>
       <div class="tc tc--g"><div class="tc__dec"><img src="{{STEERING_IMG}}" alt=""></div><div class="tc__n">5</div><div class="tc__k">Доставка <span class="dim">авто</span></div><div class="tc__t">Подадим машину к аэропорту, порту, вокзалу или к вашему адресу во Владивостоке и Находке.</div></div>
-      <div class="tc tc--k"><div class="tc__dec"><img src="{{WHEEL_IMG}}" alt=""></div><div class="tc__n">6</div><div class="tc__k">Авто <span class="dim">с аукционов Японии</span></div><div class="tc__t">Не нашли модель в наличии — пригоним под заказ напрямую с японских аукционов, со ставкой и растаможкой.</div></div>
+      <div class="tc tc--k"><div class="tc__dec"><img src="{{WHEEL_IMG}}" alt=""></div><div class="tc__n">6</div><div class="tc__k">КАСКО и ОСАГО <span class="dim">в стоимости</span></div><div class="tc__t">Обе страховки уже включены в стоимость услуги — отдельно доплачивать не нужно.</div></div>
     </div>
   </div>
 </section>
@@ -514,42 +540,6 @@ button{cursor:pointer;border:none;background:none}
   <div class="cstrip__t" id="cstripT">{{STRIP_HTML}}</div>
 </section>
 
-<!-- ======== АУКЦИОН ======== -->
-<section class="section" id="auction">
-  <div class="full">
-    <div class="panel reveal">
-      <div class="panel__ph"><img src="{{AUCTION_IMG}}" alt=""></div>
-      <div class="panel__sc"></div>
-      <div class="panel__l">
-        <h2 class="hd hd-xl">Купи автомобиль<br>с аукциона за 3 шага</h2>
-        <div class="panel__foot">
-          <p class="small">Пригоним авто напрямую с аукционов Японии — под ваш бюджет и требования. Ставка, доставка и растаможка под ключ.</p>
-          <button class="btn btn--w" onclick="openModal('','Заявка на авто с аукциона','Опишите желаемую модель и бюджет — подберём варианты','','{{STEERING_IMG}}')">Перейти к аукционам
-            <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
-        </div>
-      </div>
-      <div class="panel__r" data-steps>
-        <div class="stp on" onclick="tglStep(this)">
-          <div class="stp__top"><div class="stp__n">1</div><div class="stp__k">Выбери <span class="dim">автомобиль</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
-          <div class="stp__bd"><div><p>Скажите марку, модель и бюджет — подберём варианты с аукционов Японии и покажем аукционные листы с реальным состоянием.</p></div></div>
-        </div>
-        <div class="stp" onclick="tglStep(this)">
-          <div class="stp__top"><div class="stp__n">2</div><div class="stp__k">Сделай <span class="dim">ставку</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
-          <div class="stp__bd"><div><p>Фиксируем смету: ставка, доставка, растаможка. Выставляем ставку на торгах от вашего имени и держим в курсе на каждом этапе.</p></div></div>
-        </div>
-        <div class="stp" onclick="tglStep(this)">
-          <div class="stp__top"><div class="stp__n">3</div><div class="stp__k">Забирай <span class="dim">автомобиль</span></div>
-            <div class="sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div></div>
-          <div class="stp__bd"><div><p>Доставим авто во Владивосток, оформим документы и передадим машину вам. Полное сопровождение до постановки на учёт.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- ======== MARQUEE ======== -->
 <div class="mq" aria-hidden="true">
   <div class="mq__t">
@@ -559,7 +549,7 @@ button{cursor:pointer;border:none;background:none}
       <span class="mq__i">Nissan</span>
       <span class="mq__i">Аренда с выкупом</span>
       <span class="mq__i">Без банка</span>
-      <span class="mq__i">Авто с аукционов Японии</span>
+      <span class="mq__i">Аренда с выкупом</span>
       <span class="mq__i">Владивосток</span>
       <span class="mq__i">Находка</span>
       <span class="mq__i">Подача 24/7</span>
@@ -572,7 +562,7 @@ button{cursor:pointer;border:none;background:none}
       <span class="mq__i">Nissan</span>
       <span class="mq__i">Аренда с выкупом</span>
       <span class="mq__i">Без банка</span>
-      <span class="mq__i">Авто с аукционов Японии</span>
+      <span class="mq__i">Аренда с выкупом</span>
       <span class="mq__i">Владивосток</span>
       <span class="mq__i">Находка</span>
       <span class="mq__i">Подача 24/7</span>
@@ -619,11 +609,11 @@ button{cursor:pointer;border:none;background:none}
       <div class="rv-head">
         <h2 class="hd hd-lg">Реальные отзывы<br>наших клиентов</h2>
         <div class="rv-arrows">
-          <button class="sq sq--k" aria-label="Предыдущий" onclick="rvMove(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 6l-6 6 6 6"/></svg></button>
-          <button class="sq sq--k" aria-label="Следующий" onclick="rvMove(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6l6 6-6 6"/></svg></button>
+          <button class="sq sq--k" aria-label="Предыдущий отзыв" onclick="revStep(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 6l-6 6 6 6"/></svg></button>
+          <button class="sq sq--k" aria-label="Следующий отзыв" onclick="revStep(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6l6 6-6 6"/></svg></button>
         </div>
       </div>
-      <div class="rv-stage"><div class="rv-track" id="rvTrack">{{REVIEWS_HTML}}</div></div>
+      <div class="rv-stage" data-rev><div class="rv-track">{{REVIEWS_HTML}}</div></div>
     </div>
   </div>
 </section>
@@ -665,8 +655,8 @@ button{cursor:pointer;border:none;background:none}
         </div>
         <div class="fq">
           <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">05</span>
-            <span class="fq__x">Как заказать <b>авто с аукциона Японии</b>?</span></div>
-            <div class="fq__a"><div><p>Оставьте заявку с желаемой моделью и бюджетом. Подберём варианты с аукционов, покажем аукционные листы, зафиксируем смету и сопроводим сделку до выдачи авто.</p></div></div>
+            <span class="fq__x">Какие <b>машины есть под выкуп</b>?</span></div>
+            <div class="fq__a"><div><p>Бюджетные модели, отлично показавшие себя в работе в такси, и авто разных классов для личного пользования. Также даём машину в аренду на время, пока ваше авто едет из Японии.</p></div></div>
           </div>
           <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
         </div>
@@ -703,6 +693,218 @@ button{cursor:pointer;border:none;background:none}
       </form>
   </div>
 </section>
+
+</main>
+
+<main id="auc" class="page">
+
+<!-- ======== HERO АУКЦИОНЫ ======== -->
+<section class="hero" id="auc-top">
+  <div class="hero__ph"><img src="{{STEPS_IMG}}" alt="Японский автомобиль на закате"></div>
+  <div class="vig"></div>
+  <div class="hero__sc"></div>
+  <div class="grain"></div>
+  <div class="gb" style="left:5%;top:44%">85 000+ <span>авто на торгах прямо сейчас</span></div>
+  <div class="gb" style="right:7%;top:30%">Полный доступ <span>ко всем аукционам Японии</span></div>
+  <div class="gb" style="right:15%;bottom:30%">Безопасно <span>договор и страховые партнёры</span></div>
+  <div class="edge hero__in">
+    <h1 class="hero__t reveal">Продажа и поставка<br>техники с аукционов Японии</h1>
+    <div class="hero__cta reveal">
+      <p class="small">Доставим из Японии быстро<br>и безопасно — под ключ</p>
+      <a class="btn btn--w" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+        Перейти к аукционам
+        <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== MARQUEE ======== -->
+<div class="mq" aria-hidden="true">
+  <div class="mq__t">
+    <div class="mq__g">{{MQ_AUC}}</div>
+    <div class="mq__g">{{MQ_AUC}}</div>
+  </div>
+</div>
+
+<!-- ======== ЛОТЫ СЕЙЧАС НА ТОРГАХ ======== -->
+<section class="section" id="lots">
+  <div class="full">
+    <div class="bigcard on-light reveal">
+      <div class="hits">
+        <div class="hits__ph">
+          <img src="{{HERO_IMG}}" alt="Автомобиль с аукциона Японии">
+          <div class="gb" style="left:7%;top:7%">Аукционный лист <span>и реальная оценка</span></div>
+          <div class="gb" style="right:6%;top:46%">Фотоотчёт <span>на всех стадиях</span></div>
+          <div class="gb" style="left:7%;bottom:7%">Ставка <span>прозрачный расчёт</span></div>
+        </div>
+        <div class="hits__r">
+          <h2 class="hd hd-lg">Аукционы, которые<br>проходят прямо сейчас</h2>
+          <p class="small">Лоты с площадок Японии обновляются ежедневно. Переведём любой интересующий лот и рассчитаем ставку вместе с себестоимостью.</p>
+          <div class="cars3">{{AUC_CARS}}</div>
+          <a class="btn btn--k hits__btn" href="https://auc.grand-avto.com" target="_blank" rel="noopener">Перейти к аукционам</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ПОЧЕМУ НАМ ДОВЕРЯЮТ (АУКЦИОНЫ) ======== -->
+<section class="section" id="auc-trust">
+  <div class="wrap">
+    <div class="tr-head reveal">
+      <h2 class="hd hd-xl">Почему нам доверяют сотни<br>клиентов ежемесячно?</h2>
+      <p class="small">ООО «ГрандАвто» работает с проверенными аукционами, надёжными перевозчиками<br>и страховыми партнёрами — покупатель защищён от необоснованных расходов.</p>
+    </div>
+    <div class="trust reveal">
+      <div class="tc tc--w"><div class="tc__n">1</div><div class="tc__k">Полный доступ <span class="dim">ко всем аукционам Японии</span></div><div class="tc__t">Все площадки и все лоты — без ограничений по маркам, кузовам и классам техники.</div></div>
+      <div class="tc tc--k"><div class="tc__n">2</div><div class="tc__k">Перевод <span class="dim">любых лотов</span></div><div class="tc__t">Оперативно переведём аукционный лист интересующего лота и объясним каждую отметку.</div></div>
+      <div class="tc tc--w"><div class="tc__n">3</div><div class="tc__k">Прозрачный расчёт <span class="dim">ставки и себестоимости</span></div><div class="tc__t">Простая и понятная система: вы заранее видите итоговую сумму без скрытых статей.</div></div>
+      <div class="tc tc--k"><div class="tc__n">4</div><div class="tc__k">Полная фотопись <span class="dim">на всех стадиях</span></div><div class="tc__t">Фотоотчёт по движению вашего авто — от покупки на торгах до отправки в регион.</div></div>
+      <div class="tc tc--g"><div class="tc__dec"><img src="{{STEERING_IMG}}" alt=""></div><div class="tc__n">5</div><div class="tc__k">Таможенное <span class="dim">оформление</span></div><div class="tc__t">Распил, конструктор или полная пошлина — оформим под ключ вместе с очисткой груза.</div></div>
+      <div class="tc tc--k"><div class="tc__dec"><img src="{{WHEEL_IMG}}" alt=""></div><div class="tc__n">6</div><div class="tc__k">Доставка <span class="dim">во Владивосток и регионы</span></div><div class="tc__t">Отправка техники во Владивосток и другие города России — авто, контейнером или паллетой.</div></div>
+    </div>
+  </div>
+</section>
+
+{{AUCTION_PANEL}}
+
+<!-- ======== ЭТАПЫ РАБОТЫ ======== -->
+<section class="section" id="stages">
+  <div class="wrap">
+    <div class="tr-head reveal">
+      <h2 class="hd hd-xl">Этапы работы</h2>
+      <p class="small">Процесс покупки — от заявки до отправки автомобиля в ваш регион.</p>
+    </div>
+    <div class="stages reveal">
+      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+        <div class="stg__dec"><img src="{{STEERING_IMG}}" alt=""></div>
+        <div class="stg__n">01</div><div class="stg__k">Заявка на покупку авто<br>или звонок менеджеру</div>
+        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+        <div class="stg__n">02</div><div class="stg__k">Заключение договора</div>
+        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+        <div class="stg__dec"><img src="{{WHEEL_IMG}}" alt=""></div>
+        <div class="stg__n">03</div><div class="stg__k">Покупка авто<br>на аукционе</div>
+        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+        <div class="stg__n">04</div><div class="stg__k">Распил, конструктор,<br>полная пошлина</div>
+        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+        <div class="stg__n">05</div><div class="stg__k">Погрузка авто,<br>контейнера или паллета</div>
+        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+        <div class="stg__n">06</div><div class="stg__k">Доставка в порт Владивосток<br>и таможенная очистка груза</div>
+        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <button class="stg stg--last" onclick="openModal('','Оставить заявку','Опишите нужную технику и бюджет — рассчитаем ставку и себестоимость','','{{STEERING_IMG}}')">
+        <div class="stg__n">07</div><div class="stg__k">Отправка<br>в регион</div>
+        <span class="stg__a">Оставить заявку <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ОТЗЫВЫ (АУКЦИОНЫ) ======== -->
+<section class="section">
+  <div class="full">
+    <div class="bigcard on-light reveal">
+      <div class="rv-head">
+        <h2 class="hd hd-lg">Реальные отзывы<br>наших клиентов</h2>
+        <div class="rv-arrows">
+          <button class="sq sq--k" aria-label="Предыдущий отзыв" onclick="revStep(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 6l-6 6 6 6"/></svg></button>
+          <button class="sq sq--k" aria-label="Следующий отзыв" onclick="revStep(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="rv-stage" data-rev><div class="rv-track">{{AUC_REVIEWS}}</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FAQ (АУКЦИОНЫ) ======== -->
+<section class="section" style="padding-top:0;padding-bottom:0">
+  <div class="full">
+    <div class="bigcard on-light reveal" style="padding-block:clamp(30px,4vw,56px)">
+      <h2 class="hd hd-xl faq-t">FAQ</h2>
+      <div class="faq">
+        <div class="fq on">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">01</span>
+            <span class="fq__x">Как считается <b>итоговая стоимость</b> авто?</span></div>
+            <div class="fq__a"><div><p>Система расчёта простая и понятная: ставка на торгах, доставка, таможенное оформление и услуги компании. Вы видите себестоимость заранее — без скрытых статей.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">02</span>
+            <span class="fq__x">Что такое <b>распил и конструктор</b>?</span></div>
+            <div class="fq__a"><div><p>Это варианты ввоза техники с разной таможенной схемой. Разбираем легковые и грузовые авто, комплектуем контейнеры с запчастями. Подскажем, какой вариант выгоднее под вашу задачу — или оформим полную пошлину.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">03</span>
+            <span class="fq__x">Могу ли я <b>видеть лоты сам</b>?</span></div>
+            <div class="fq__a"><div><p>Да, открываем полный доступ ко всем аукционам Японии. Любой интересующий лот переведём оперативно и разберём аукционный лист вместе с вами.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">04</span>
+            <span class="fq__x">Какую технику <b>можно привезти</b>?</span></div>
+            <div class="fq__a"><div><p>Легковые и грузовые автомобили, спецтехнику. Работаем с частными и корпоративными клиентами. Отправляем во Владивосток и другие города России.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+        <div class="fq">
+          <div class="fq__c"><div class="fq__q" onclick="tglFq(this)"><span class="fq__n">05</span>
+            <span class="fq__x">Дадите ли <b>авто на время доставки</b>?</span></div>
+            <div class="fq__a"><div><p>Да. Пока ваша техника едет из Японии, предоставим автомобиль в аренду — чтобы вы не остались без машины на время сделки.</p></div></div>
+          </div>
+          <button class="fq__t" aria-label="Раскрыть" onclick="tglFq(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path class="pl" d="M12 5v14"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== РАССЧИТАТЬ СТОИМОСТЬ ======== -->
+<section class="road" id="calc">
+  <div class="road__ph"><img src="{{MOUNTAIN_IMG}}" alt="Дорога к горе на закате"></div>
+  <div class="road__sc"></div>
+  <div class="edge road__in">
+    <div class="road__l reveal">
+      <h2 class="hd hd-xl">Рассчитать<br>стоимость авто</h2>
+      <p class="small">Опишите нужный автомобиль — рассчитаем ставку, доставку и таможню, и пришлём итоговую себестоимость.</p>
+    </div>
+    <form class="cta__f road__f reveal" onsubmit="send(event)">
+      <div class="calc__g">
+        <input class="inp" id="kName" type="text" placeholder="Ваше имя" required>
+        <input class="inp" id="kPhone" type="tel" placeholder="Контактный телефон" required>
+        <input class="inp" id="kMail" type="email" placeholder="E-mail" required>
+        <input class="inp" id="kCar" type="text" placeholder="Название автомобиля" required>
+        <input class="inp" id="kYear" type="text" placeholder="Год выпуска">
+        <input class="inp" id="kBody" type="text" placeholder="Тип кузова">
+        <input class="inp" id="kVol" type="text" placeholder="Объём двигателя">
+        <input class="inp" id="kFuel" type="text" placeholder="Тип топлива">
+        <input class="inp" id="kGear" type="text" placeholder="КПП">
+        <input class="inp" id="kDrive" type="text" placeholder="Привод">
+      </div>
+      <input class="inp" id="kWish" type="text" placeholder="Пожелания">
+      <div class="cta__row"><span>Рассчитать стоимость</span>
+        <button class="sq sq--k" type="submit" aria-label="Отправить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+      <div class="cta__note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+    </form>
+  </div>
+</section>
+
+</main>
 
 <!-- ======== FOOTER НА ФОТО ======== -->
 <footer class="foot">
@@ -814,18 +1016,45 @@ function filt(){
   document.getElementById('empty').hidden=n>0;
 }
 
-var rvI=1,rvN={{REV_N}};
-function rvR(){
-  var tr=document.getElementById('rvTrack');
-  var cs=tr.querySelectorAll('.rvc');
-  cs.forEach(function(c,i){c.classList.toggle('on',i===rvI)});
-  var a=cs[rvI];
-  tr.style.transform='translateX('+(-(a.offsetLeft-(tr.parentElement.offsetWidth/2)+(a.offsetWidth/2)))+'px)';
+// reviews coverflow — one independent slider per [data-rev]
+function initRev(st){
+  var track=st.querySelector('.rv-track'), cards=track.querySelectorAll('.rvc'), i=1, n=cards.length, t;
+  if(!n)return;
+  if(i>=n)i=0;
+  function render(){
+    cards.forEach(function(c,k){c.classList.toggle('on',k===i)});
+    var a=cards[i];
+    track.style.transform='translateX('+(-(a.offsetLeft-(st.offsetWidth/2)+(a.offsetWidth/2)))+'px)';
+  }
+  function auto(){clearInterval(t);t=setInterval(function(){i=(i+1)%n;render()},5600)}
+  st._step=function(d){i=(i+d+n)%n;render();auto()};
+  st._render=render;
+  render();auto();
 }
-function rvMove(d){rvI=(rvI+d+rvN)%rvN;rvR();rvA()}
-var rvT=setInterval(function(){rvMove(1)},5600);
-function rvA(){clearInterval(rvT);rvT=setInterval(function(){rvMove(1)},5600)}
-addEventListener('load',rvR);addEventListener('resize',rvR);setTimeout(rvR,260);
+function revStep(btn,d){
+  var scope=btn.closest('.bigcard')||document, st=scope.querySelector('[data-rev]');
+  if(st&&st._step)st._step(d);
+}
+function revAll(){document.querySelectorAll('[data-rev]').forEach(function(st){ st._render?st._render():initRev(st) })}
+document.querySelectorAll('[data-rev]').forEach(initRev);
+addEventListener('resize',revAll);
+addEventListener('load',revAll);
+setTimeout(revAll,260);
+
+// page switching: Аукционы / Аренда
+function showPage(id){
+  document.querySelectorAll('.page').forEach(function(pg){pg.hidden=(pg.id!==id)});
+  document.querySelectorAll('.nav a[data-page]').forEach(function(a){a.classList.toggle('on',a.dataset.page===id)});
+  scrollTo(0,0);
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
+  requestAnimationFrame(function(){revAll();csMeasure()});
+}
+document.querySelectorAll('[data-page]').forEach(function(a){
+  a.addEventListener('click',function(e){e.preventDefault();showPage(a.dataset.page);history.replaceState(null,'','#'+a.dataset.page)});
+});
+if(location.hash==='#rent')showPage('rent');
+if(location.hash==='#auc')showPage('auc');
+function toContacts(e){e.preventDefault();document.querySelector('.foot').scrollIntoView({behavior:'smooth'})}
 
 function openModal(car,title,sub,price,img,specs){
   document.getElementById('mT').textContent=title||(car?('Аренда: '+car):'Заявка на аренду');
