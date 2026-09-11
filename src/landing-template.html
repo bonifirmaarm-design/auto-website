@@ -163,15 +163,15 @@ body.locked{overflow:hidden}
 .tc__dec img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;opacity:.5}
 
 /* ============ STEPS / AUCTION PANEL ============ */
-.panel{position:relative;border-radius:var(--rxl);overflow:hidden;min-height:520px;display:grid;grid-template-columns:1fr .82fr;gap:clamp(20px,3vw,40px);padding:clamp(24px,3.4vw,48px)}
+.panel{position:relative;border-radius:var(--rxl);overflow:hidden;min-height:520px;display:grid;grid-template-columns:1fr .82fr;grid-template-rows:auto 1fr;gap:clamp(20px,3vw,40px);padding:clamp(24px,3.4vw,48px)}
 .panel__ph{position:absolute;inset:0;z-index:0}
 .panel__ph img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.02) brightness(.86)}
 .panel__sc{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(10,10,11,.90) 4%,rgba(10,10,11,.52) 46%,rgba(10,10,11,.18) 100%)}
-.panel__l{position:relative;z-index:3;display:flex;flex-direction:column}
+.panel__l{position:relative;z-index:3;grid-column:1;grid-row:1;align-self:start}
 .panel__l .hd{margin-bottom:16px;font-size:clamp(1.5rem,2.9vw,2.6rem)}
-.panel__foot{margin-top:auto;padding-top:30px}
+.panel__foot{position:relative;z-index:3;grid-column:1;grid-row:2;align-self:end;padding-top:30px}
 .panel__foot .small{max-width:40ch;margin-bottom:18px}
-.panel__r{position:relative;z-index:3;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.panel__r{position:relative;z-index:3;grid-column:2;grid-row:1 / span 2;align-self:center;display:flex;flex-direction:column;gap:12px}
 .stp{border-radius:var(--rlg);padding:20px 22px;transition:.45s var(--e);cursor:pointer;overflow:hidden}
 .stp__top{display:flex;align-items:center;gap:16px}
 .stp__n{font-family:var(--fd);font-weight:800;font-size:1.05rem;min-width:1.6ch;transition:font-size .4s var(--e)}
@@ -378,9 +378,13 @@ body.locked{overflow:hidden}
   .burger{display:flex}
   .hdr__tel{display:grid}
   .hdr__in{display:flex;justify-content:space-between}
-  .hits,.road__in,.cta,.panel,.about{grid-template-columns:1fr}
-  .panel{min-height:0}
-  .panel__r{margin-top:8px}
+  .hits,.road__in,.cta,.about{grid-template-columns:1fr}
+  .panel{grid-template-columns:1fr;grid-template-rows:auto auto auto;min-height:0;padding-block:clamp(30px,5vw,44px)}
+  .panel__l,.panel__foot,.panel__r{grid-column:1}
+  .panel__l{grid-row:1}
+  .panel__r{grid-row:2;margin-block:20px}
+  .panel__foot{grid-row:3;padding-top:0}
+  .panel__foot .btn{width:100%}
   .trust,.stages{grid-template-columns:repeat(2,1fr)}
   .catalog{grid-template-columns:repeat(2,1fr)}
   .hits__ph{min-height:300px}
@@ -391,6 +395,16 @@ body.locked{overflow:hidden}
   .md__ph{aspect-ratio:16/9}
   .rvc{flex-basis:min(440px,72vw)}
   .tc{min-height:0}
+  /* touch targets */
+  .logo{display:inline-block;padding-block:9px}
+  .foot__nav a{padding:11px 0}
+  .fp__l{padding:11px 0}
+  .foot__bar a{display:inline-block;padding:8px 0}
+  .fq__t{width:46px;height:46px}
+  /* type-size floor: nothing under 11px on touch screens */
+  .cc__sp,.pc__sp,.cc__pr small,.pc__pr small{font-size:.74rem}
+  .pc__tag{font-size:.7rem;padding:6px 11px}
+  .cta__note,.csi__p,.rvc__meta,.specs dt{font-size:.74rem}
   .cnd,.stg{min-height:0}
 }
 /* phone */
@@ -425,8 +439,10 @@ body.locked{overflow:hidden}
   .fq__c{padding:15px 16px}
   .fq__q{gap:11px}
   .fq__x{font-size:.84rem}
-  .fq__t{width:38px;height:38px}
-  .fq__t svg{width:20px;height:20px}
+  .fq__t{width:44px;height:44px}
+  .fq__t svg{width:21px;height:21px}
+  .cc__md,.pc__md{font-size:.76rem}
+  .stg__n,.tc__n{font-size:.84rem}
   .csi{width:64vw}
   .frow{flex-direction:column}
   .fsel{flex:1 1 auto;min-width:0}
@@ -579,11 +595,11 @@ body.locked{overflow:hidden}
       <div class="panel__sc"></div>
       <div class="panel__l">
         <h2 class="hd hd-xl">Арендуй авто<br>всего за 3 шага</h2>
-        <div class="panel__foot">
+      </div>
+      <div class="panel__foot">
           <p class="small">Мы позаботились о том, чтобы аренда авто была максимально простой и быстрой. От выбора машины до поездки — минимум формальностей.</p>
           <button class="btn btn--w" onclick="go('catalog')">Смотреть каталог
             <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
-        </div>
       </div>
       <div class="panel__r" data-steps>
         <div class="stp on" onclick="tglStep(this)">
