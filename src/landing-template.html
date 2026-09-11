@@ -87,6 +87,7 @@ button{cursor:pointer;border:none;background:none}
 .hero__ph{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero__ph img{width:100%;height:100%;object-fit:cover;object-position:center 58%;filter:contrast(1.04) saturate(1.02)}
 #rent .hero__ph img{object-position:64% 60%;transform:scale(1.16)}
+#auc .hero__ph img{object-position:66% 56%;transform:scale(1.24)}
 /* cinematic grain so the soft source reads as depth of field, not low-res */
 .grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
@@ -272,18 +273,6 @@ button{cursor:pointer;border:none;background:none}
 .page[hidden]{display:none}
 .nav a.on{color:#fff;font-weight:700}
 
-/* ============ О КОМПАНИИ ============ */
-.about{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,3.4vw,52px);align-items:start}
-.about__l .hd{margin-bottom:18px}
-.about__p{font-size:.88rem;line-height:1.72;color:var(--t-b2);margin-bottom:14px;max-width:52ch}
-.about__p b{color:var(--t-b);font-weight:700}
-.about__goal{margin-top:22px;padding:18px 22px;border-radius:var(--rmd);background:var(--black);color:#fff;font-family:var(--fd);font-weight:700;font-size:.92rem;line-height:1.45}
-.about__r{background:var(--white);border-radius:var(--rlg);padding:clamp(22px,2.4vw,32px)}
-.about__t{font-family:var(--fd);font-weight:800;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--t-b3);margin-bottom:18px}
-.svc{display:grid;grid-template-columns:1fr 1fr;gap:2px 22px}
-.svc li{list-style:none;display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--grey-line);font-size:.8rem;line-height:1.45;color:var(--t-b)}
-.svc li svg{width:14px;height:14px;flex-shrink:0;margin-top:3px;color:var(--t-b3)}
-
 /* ============ ЭТАПЫ РАБОТЫ ============ */
 .stages{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .stg{position:relative;overflow:hidden;text-align:left;border:1px solid rgba(255,255,255,.12);border-radius:var(--rlg);background:rgba(255,255,255,.035);padding:20px 20px 18px;display:flex;flex-direction:column;min-height:172px;transition:border-color .4s,background .4s,transform .5s var(--e);color:#fff}
@@ -365,7 +354,6 @@ button{cursor:pointer;border:none;background:none}
 @media (max-width:1100px){
   .catalog{grid-template-columns:repeat(3,1fr)}
   .road__in{grid-template-columns:1fr;align-items:start}
-  .about{grid-template-columns:1fr}
   .cta,.panel{grid-template-columns:1fr}
   .panel{min-height:0}
 }
@@ -387,7 +375,6 @@ button{cursor:pointer;border:none;background:none}
   .road{min-height:0}
   .foot{min-height:0;padding-top:220px}
   .cars3{grid-template-columns:1fr}
-  .svc{grid-template-columns:1fr}
   .trust,.catalog{grid-template-columns:1fr}
   .rvc{flex-basis:80vw}
   .hero{min-height:88svh}
@@ -780,40 +767,6 @@ button{cursor:pointer;border:none;background:none}
   </div>
 </section>
 
-<!-- ======== О КОМПАНИИ ======== -->
-<section class="section" id="about">
-  <div class="full">
-    <div class="bigcard on-light reveal">
-      <div class="about">
-        <div class="about__l">
-          <h2 class="hd hd-lg">О компании</h2>
-          <p class="about__p">ООО <b>«ГрандАвто»</b> создана для безопасной, продуктивной и доступной покупки качественной японской техники. Мы работаем с проверенными аукционами, надёжными транспортными компаниями, международными перевозчиками и страховыми партнёрами.</p>
-          <p class="about__p">Наши покупатели полностью защищены от любых необоснованных расходов, форс-мажорных и конфликтных ситуаций. Работаем с частными и корпоративными клиентами, которые покупают автомобили и спецтехнику с японских аукционов.</p>
-          <p class="about__p">Пока идёт поиск и покупка техники из Японии, мы предоставляем клиенту автомобиль — чтобы вы не остались без машины на время сделки.</p>
-          <div class="about__goal">Наша цель — предоставить вам лучший сервис по поиску техники с аукционов Японии.</div>
-        </div>
-        <div class="about__r">
-          <div class="about__t">Услуги</div>
-          <ul class="svc">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Покупка техники с аукционов Японии</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Полный доступ на все аукционы Японии</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Оперативный перевод всех интересующих лотов</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Простая система расчёта ставки и себестоимости</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Разбор, распил легковых и грузовых авто, запчасти</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Погрузка контейнеров с запчастями</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Отправка техники во Владивосток и другие города</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Таможенное оформление</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Полная фотопись на всех стадиях движения авто</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Информационная поддержка на всех этапах</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Аренда авто на время доставки из Японии</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l4.5 4.5L19 7"/></svg><span>Аренда авто с правом выкупа</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 {{AUCTION_PANEL}}
 
 <!-- ======== ЭТАПЫ РАБОТЫ ======== -->
@@ -824,33 +777,27 @@ button{cursor:pointer;border:none;background:none}
       <p class="small">Процесс покупки — от заявки до отправки автомобиля в ваш регион.</p>
     </div>
     <div class="stages reveal">
-      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+      <div class="stg">
         <div class="stg__dec"><img src="{{STEERING_IMG}}" alt=""></div>
         <div class="stg__n">01</div><div class="stg__k">Заявка на покупку авто<br>или звонок менеджеру</div>
-        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+      </div>
+      <div class="stg">
         <div class="stg__n">02</div><div class="stg__k">Заключение договора</div>
-        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+      </div>
+      <div class="stg">
         <div class="stg__dec"><img src="{{WHEEL_IMG}}" alt=""></div>
         <div class="stg__n">03</div><div class="stg__k">Покупка авто<br>на аукционе</div>
-        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+      </div>
+      <div class="stg">
         <div class="stg__n">04</div><div class="stg__k">Распил, конструктор,<br>полная пошлина</div>
-        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+      </div>
+      <div class="stg">
         <div class="stg__n">05</div><div class="stg__k">Погрузка авто,<br>контейнера или паллета</div>
-        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="stg" href="https://auc.grand-avto.com" target="_blank" rel="noopener">
+      </div>
+      <div class="stg">
         <div class="stg__n">06</div><div class="stg__k">Доставка в порт Владивосток<br>и таможенная очистка груза</div>
-        <span class="stg__a">Перейти к аукционам <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <button class="stg stg--last" onclick="openModal('','Оставить заявку','Опишите нужную технику и бюджет — рассчитаем ставку и себестоимость','','{{STEERING_IMG}}')">
+      </div>
+      <button class="stg stg--last" onclick="document.getElementById('calc').scrollIntoView({behavior:'smooth'})">
         <div class="stg__n">07</div><div class="stg__k">Отправка<br>в регион</div>
         <span class="stg__a">Оставить заявку <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
       </button>
