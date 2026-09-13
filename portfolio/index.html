@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Портфолио — сайты для бизнеса</title>
+<meta name="description" content="Портфолио веб-разработчика: лендинги, каталоги и сайты услуг. Дизайн, вёрстка, адаптив и публикация. Лендинг — от 3 000 до 7 000 ₽.">
+<meta name="theme-color" content="#0B0B0D">
+<meta property="og:title" content="Портфолио — сайты для бизнеса">
+<meta property="og:description" content="Лендинги, каталоги и сайты услуг под ключ. Предоплата 30%, остальное после сдачи.">
+<meta property="og:type" content="website">
+<link rel="preload" href="assets/fonts/unbounded-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+/* ─────────────────────────────────────────────
+   ТОКЕНЫ
+   ───────────────────────────────────────────── */
+:root{
+  --ink:#0B0B0D;
+  --ink-2:#131317;
+  --ink-3:#1C1C22;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(255,255,255,.06);
+
+  --paper:#F2EFE9;
+  --paper-2:#E6E1D7;
+  --paper-line:#D3CCBE;
+
+  --t1:#F5F3EF;
+  --t2:#A9A59C;
+  --t3:#8B877F;
+  --pt1:#17161A;
+  --pt2:#5C584F;
+
+  --brass:#C9A227;
+  --brass-soft:rgba(201,162,39,.16);
+
+  --fd:'Unbounded','Manrope',system-ui,sans-serif;
+  --fb:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+
+  --gut:clamp(20px,5vw,72px);
+  --measure:68ch;
+  --e:cubic-bezier(.22,1,.36,1);
+  --r:clamp(16px,2vw,28px);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--ink);color:var(--t1);
+  font-family:var(--fb);font-size:clamp(15px,1.05vw,17px);line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  font-variant-numeric:lining-nums;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+
+/* браузерные поверхности тоже часть дизайна */
+::selection{background:var(--brass);color:#0B0B0D}
+:root{caret-color:var(--brass);accent-color:var(--brass)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:#27272E;border-radius:99px;border:3px solid var(--ink)}
+::-webkit-scrollbar-thumb:hover{background:#3A3A44}
+html{scrollbar-color:#27272E var(--ink);scrollbar-width:thin}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+
+.wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:var(--gut)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ─────────────────────────────────────────────
+   ТИПОГРАФИКА
+   ───────────────────────────────────────────── */
+.d{font-family:var(--fd);font-weight:800;line-height:1;letter-spacing:-.03em;text-wrap:balance}
+h2.d{font-size:clamp(2rem,5.2vw,4rem);letter-spacing:-.035em}
+h3.d{font-size:clamp(1.35rem,2.4vw,2rem);letter-spacing:-.03em;font-weight:700}
+.lead{font-size:clamp(1.05rem,1.55vw,1.32rem);line-height:1.55;color:var(--t1);max-width:34ch}
+.body{color:var(--t2);max-width:var(--measure)}
+.tag{
+  display:inline-flex;align-items:center;gap:.55em;
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--t2);
+}
+.tag::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brass);flex:none}
+.tag--work::before{background:#8E8A80}
+
+/* ─────────────────────────────────────────────
+   КНОПКИ
+   ───────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:.7em;
+  padding:.95em 1.5em;border-radius:99px;
+  font-weight:600;font-size:.97rem;line-height:1;
+  border:1px solid transparent;
+  transition:transform .45s var(--e),background-color .3s ease,border-color .3s ease,color .3s ease,box-shadow .45s var(--e);
+}
+.btn svg{width:1em;height:1em;flex:none}
+.btn--fill{background:var(--paper);color:#0B0B0D;box-shadow:0 12px 28px -14px rgba(0,0,0,.9)}
+.btn--fill:hover{transform:translateY(-2px);box-shadow:0 20px 40px -16px rgba(0,0,0,.95)}
+.btn--ghost{border-color:var(--line);color:var(--t1)}
+.btn--ghost:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.04);transform:translateY(-2px)}
+.btn--ink{background:#17161A;color:var(--paper)}
+.btn--ink:hover{transform:translateY(-2px);background:#000}
+.btn--lg{padding:1.15em 1.9em;font-size:1.02rem}
+
+.link-u{
+  display:inline-flex;align-items:center;gap:.5em;color:var(--t1);font-weight:600;
+  border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:2px;
+  transition:border-color .3s ease,color .3s ease;
+}
+.link-u:hover{border-color:var(--brass);color:var(--brass)}
+.link-u svg{width:.85em;height:.85em}
+
+/* ─────────────────────────────────────────────
+   ШАПКА
+   ───────────────────────────────────────────── */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:14px var(--gut);
+  background:rgba(11,11,13,.72);backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid var(--line-2);
+}
+.mark{font-family:var(--fd);font-weight:700;font-size:.95rem;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:.55em}
+.mark i{width:7px;height:7px;border-radius:99px;background:var(--brass);display:block}
+.nav-links{display:flex;gap:clamp(14px,2vw,30px);align-items:center}
+.nav-links a{font-size:.9rem;color:var(--t2);transition:color .25s ease}
+.nav-links a:hover{color:var(--t1)}
+.nav .btn{padding:.7em 1.15em;font-size:.88rem}
+@media (max-width:860px){.nav-links{display:none}}
+
+/* ─────────────────────────────────────────────
+   ПЕРВЫЙ ЭКРАН
+   ───────────────────────────────────────────── */
+.hero{
+  position:sticky;top:0;z-index:1;
+  min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding-block:120px clamp(40px,9vh,90px);
+  overflow:clip;
+}
+.hero::after{ /* тёплое свечение у горизонта */
+  content:"";position:absolute;inset:auto -20% -40% -20%;height:70%;
+  background:radial-gradient(60% 100% at 50% 100%,rgba(201,162,39,.12),transparent 70%);
+  pointer-events:none;
+}
+.hero-in{position:relative;z-index:2;width:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-index{
+  margin-bottom:auto;display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  align-self:flex-end;width:min(100%,340px);
+}
+.hero-index-t{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);padding-bottom:10px}
+.hi{
+  display:flex;align-items:center;gap:14px;width:100%;
+  padding:10px 0;border-top:1px solid var(--line-2);
+  transition:padding-inline .45s var(--e),background-color .3s ease;
+}
+.hi:last-child{border-bottom:1px solid var(--line-2)}
+.hi img{width:44px;height:34px;object-fit:cover;border-radius:7px;border:1px solid var(--line);flex:none}
+.hi b{font-family:var(--fd);font-weight:700;font-size:.86rem;letter-spacing:-.02em;flex:1;min-width:0}
+.hi span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);flex:none}
+a.hi:hover{padding-inline:10px;background:linear-gradient(90deg,rgba(201,162,39,.07),transparent)}
+a.hi:hover b{color:var(--brass)}
+@media (max-width:900px){
+  .hero-index{align-self:stretch;width:100%;max-width:none;margin-bottom:clamp(24px,5vh,56px)}
+}
+.hero-word{
+  font-family:var(--fd);font-weight:800;
+  font-size:clamp(2.15rem,9.4vw,7.6rem);
+  line-height:.9;letter-spacing:-.05em;
+  margin-left:-.04em;white-space:nowrap;
+  color:var(--t1);
+}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);
+  gap:clamp(22px,4vw,64px);align-items:end;
+  margin-top:clamp(22px,3.4vw,44px);
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-note{
+  display:flex;align-items:center;flex-wrap:wrap;gap:.2em .7em;
+  font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);
+  margin-top:26px;
+}
+.hero-note b{color:var(--t2);font-weight:600;white-space:nowrap}
+.hero-note i{font-style:normal;color:var(--t3)}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+
+/* ─────────────────────────────────────────────
+   СЦЕНА — работы наезжают на заголовок
+   ───────────────────────────────────────────── */
+.stage{
+  position:relative;z-index:10;
+  background:var(--ink);
+  border-radius:var(--r) var(--r) 0 0;
+  box-shadow:0 -30px 90px -20px rgba(0,0,0,.9),0 -1px 0 rgba(255,255,255,.08);
+}
+.stage::before{
+  content:"";position:absolute;top:0;left:6%;right:6%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,162,39,.5),transparent);
+}
+
+.sec{padding-block:clamp(64px,9vw,132px)}
+[id]{scroll-margin-top:86px}
+.sec-head{margin-bottom:clamp(30px,4.5vw,60px)}
+.sec-head p{margin-top:14px;color:var(--t2);max-width:52ch}
+
+/* ─────────────────────────────────────────────
+   КЕЙСЫ
+   ───────────────────────────────────────────── */
+.case+.case{margin-top:clamp(72px,11vw,168px)}
+.case-top{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline;justify-content:space-between;margin-bottom:clamp(20px,2.6vw,34px)}
+.case-title{display:flex;flex-direction:column;gap:12px}
+.case-sub{color:var(--t2);max-width:44ch}
+
+/* Плита со скриншотом */
+.plate{
+  position:relative;border-radius:clamp(12px,1.6vw,20px);overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 48px 90px -34px rgba(0,0,0,.95),0 8px 24px -12px rgba(0,0,0,.7);
+  transition:transform .7s var(--e),box-shadow .7s var(--e);
+  background:var(--ink-2);
+}
+a.shot:hover .plate{transform:translateY(-6px);box-shadow:0 64px 110px -34px rgba(0,0,0,1),0 10px 28px -12px rgba(0,0,0,.8)}
+.shot{display:block;position:relative}
+.phone{
+  position:absolute;right:clamp(12px,3.4vw,58px);bottom:clamp(-26px,-2vw,-14px);
+  width:clamp(88px,13vw,172px);
+  border-radius:clamp(10px,1.4vw,18px);overflow:hidden;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 60px -18px rgba(0,0,0,1);
+  transition:transform .7s var(--e);
+}
+a.shot:hover .phone{transform:translateY(-10px)}
+@media (max-width:640px){.phone{width:98px;right:12px;bottom:-18px}}
+
+.case-body{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(26px,4vw,64px);
+  margin-top:clamp(42px,5vw,72px);
+}
+@media (max-width:860px){.case-body{grid-template-columns:1fr;gap:30px}}
+
+.did{display:flex;flex-direction:column;gap:14px}
+.did li{display:flex;gap:14px;color:var(--t2);line-height:1.5}
+.did li::before{
+  content:"";flex:none;width:18px;height:1px;background:var(--brass);
+  margin-top:.75em;opacity:.85;
+}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:14px;overflow:hidden}
+.facts div{background:var(--ink-2);padding:16px 18px}
+.facts dt{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--t3);margin-bottom:6px}
+.facts dd{font-size:.95rem;color:var(--t1);font-weight:500}
+.case-cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+
+/* Кейс FLOWLOVE — коллаж */
+.collage{
+  display:grid;grid-template-columns:1.25fr .95fr;grid-template-rows:1fr 1fr;
+  gap:clamp(10px,1.4vw,18px);align-items:stretch;
+  height:clamp(380px,44vw,560px);
+}
+.collage>*{min-height:0;overflow:hidden}
+.collage figure{border-radius:clamp(12px,1.6vw,20px);border:1px solid var(--line);background:var(--ink-2)}
+.collage .big{grid-row:span 2}
+.collage img{width:100%;height:100%;object-fit:cover}
+.spec{
+  background:#FFFCF2;color:#574040;border:1px solid rgba(0,0,0,.08);
+  border-radius:clamp(12px,1.6vw,20px);padding:clamp(15px,1.8vw,22px);
+  display:flex;flex-direction:column;justify-content:space-between;gap:14px;
+}
+.spec-h{font-family:var(--fd);font-weight:700;font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:.02em;color:#BC0930;line-height:1.05}
+.spec small{display:block;font-size:.78rem;color:#8C7373;margin-top:8px;letter-spacing:.02em}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  display:flex;align-items:center;gap:7px;font-size:.73rem;font-weight:600;
+  color:#574040;background:#fff;border:1px solid #EBE2D2;border-radius:99px;padding:5px 10px 5px 6px;
+}
+.chip i{width:14px;height:14px;border-radius:99px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+@media (max-width:720px){
+  .collage{grid-template-columns:1fr 1fr;grid-template-rows:1.15fr .85fr;height:auto;min-height:430px}
+  .collage .big{grid-row:1;grid-column:span 2}
+}
+
+/* ─────────────────────────────────────────────
+   ПРОЦЕСС
+   ───────────────────────────────────────────── */
+.steps{border-top:1px solid var(--line-2)}
+.step{
+  display:grid;grid-template-columns:clamp(58px,7vw,104px) minmax(0,1fr) minmax(0,1.25fr);
+  gap:clamp(14px,3vw,44px);align-items:start;
+  padding-block:clamp(24px,3.4vw,42px);
+  border-bottom:1px solid var(--line-2);
+  position:relative;
+}
+.step-n{font-family:var(--fd);font-weight:500;font-size:clamp(.95rem,1.5vw,1.15rem);color:var(--t3);letter-spacing:0}
+.step h3{font-size:clamp(1.1rem,2vw,1.5rem);font-weight:700;font-family:var(--fd);letter-spacing:-.025em;line-height:1.15}
+.step p{color:var(--t2);max-width:52ch}
+.step--pay{background:linear-gradient(90deg,rgba(201,162,39,.055),transparent 62%)}
+.step--pay .step-n{color:var(--brass)}
+.step .pct{color:var(--brass);font-size:1.35em;letter-spacing:-.04em;white-space:nowrap}
+@media (max-width:820px){
+  .step{grid-template-columns:auto 1fr;gap:10px 18px}
+  .step p{grid-column:1/-1}
+}
+
+/* ─────────────────────────────────────────────
+   ЦЕНЫ — светлая вставка
+   ───────────────────────────────────────────── */
+.price{background:var(--paper);color:var(--pt1);border-radius:var(--r);overflow:hidden;margin-block:clamp(20px,4vw,40px)}
+.price-in{padding:clamp(28px,5vw,72px)}
+.price-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:clamp(20px,4vw,56px);align-items:end;padding-bottom:clamp(26px,3.4vw,44px);border-bottom:1px solid var(--paper-line)}
+.price-num{
+  font-family:var(--fd);font-weight:800;letter-spacing:-.045em;line-height:.92;
+  font-size:clamp(1.9rem,5.6vw,4.4rem);color:var(--pt1);white-space:nowrap;
+}
+.price-num em{
+  font-style:normal;color:#8A8478;font-family:var(--fb);font-weight:500;
+  font-size:.5em;vertical-align:.22em;margin-inline:.3em;letter-spacing:0;
+}
+.price-what{font-size:clamp(1rem,1.5vw,1.2rem);color:var(--pt2);margin-top:14px;max-width:40ch}
+.price-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);padding-top:clamp(26px,3.4vw,44px)}
+.price-cols h3{font-family:var(--fd);font-weight:700;font-size:1rem;letter-spacing:-.01em;margin-bottom:16px;color:var(--pt1)}
+.price-cols li{display:flex;gap:12px;color:var(--pt2);padding-block:7px;line-height:1.5}
+.price-cols li::before{content:"";flex:none;width:14px;height:1px;background:#BFB6A4;margin-top:.72em}
+.price-foot{margin-top:clamp(24px,3.4vw,40px);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.price-foot p{color:var(--pt2);font-size:.95rem;max-width:46ch}
+@media (max-width:760px){.price-top{grid-template-columns:1fr}.price-cols{grid-template-columns:1fr;gap:26px}}
+
+/* ─────────────────────────────────────────────
+   КОНТАКТЫ
+   ───────────────────────────────────────────── */
+.contact{padding-block:clamp(64px,10vw,140px)}
+.contact h2{font-size:clamp(2rem,6.4vw,5rem);letter-spacing:-.045em}
+.contact-list{margin-top:clamp(32px,4.6vw,56px);border-top:1px solid var(--line-2)}
+.contact-row{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding-block:clamp(18px,2.6vw,28px);border-bottom:1px solid var(--line-2);
+  transition:padding-inline .5s var(--e),color .3s ease;
+}
+.contact-row:hover{padding-inline:14px;background:linear-gradient(90deg,rgba(201,162,39,.06),transparent)}
+.contact-k{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);flex:none;width:clamp(84px,12vw,150px)}
+.contact-v{font-family:var(--fd);font-weight:700;font-size:clamp(1.1rem,3vw,2rem);letter-spacing:-.03em;flex:1;min-width:0;word-break:break-word}
+.contact-row:hover .contact-v{color:var(--brass)}
+.contact-row svg{width:18px;height:18px;color:var(--t3);flex:none}
+.contact-row:hover svg{color:var(--brass)}
+
+footer{border-top:1px solid var(--line-2);padding-block:26px;color:var(--t3);font-size:.85rem}
+.foot-in{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+
+/* ─────────────────────────────────────────────
+   ДВИЖЕНИЕ — один авторский момент
+   ───────────────────────────────────────────── */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:scroll()){
+    .hero-in{
+      animation:heroOut linear both;
+      animation-timeline:scroll(root);
+      animation-range:0 92svh;
+      will-change:transform,opacity,filter;
+    }
+    @keyframes heroOut{
+      to{opacity:.12;transform:translateY(-7svh) scale(.955);filter:blur(7px)}
+    }
+  }
+  .rise{opacity:0;transform:translateY(26px);transition:opacity .9s var(--e),transform .9s var(--e)}
+  .rise.in{opacity:1;transform:none}
+  .rise.d1{transition-delay:.08s}
+  .rise.d2{transition-delay:.16s}
+}
+</style>
+</head>
+<body>
+
+<svg class="sr" aria-hidden="true"><symbol id="i-arrow" viewBox="0 0 16 16"><path d="M4.2 11.8 11.8 4.2M6.1 4.2h5.7v5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+
+<header class="nav">
+  <a class="mark" href="#top"><i></i>nedapi</a>
+  <nav class="nav-links" aria-label="Разделы">
+    <a href="#works">Работы</a>
+    <a href="#process">Как мы работаем</a>
+    <a href="#price">Цены</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+  <a class="btn btn--fill" href="https://t.me/nedapi" target="_blank" rel="noopener">Написать в Telegram</a>
+</header>
+
+<main id="top">
+
+  <!-- ПЕРВЫЙ ЭКРАН -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-index">
+        <p class="hero-index-t">Проекты</p>
+        <a class="hi" href="https://bonifirmaarm-design.github.io/auto-website/" target="_blank" rel="noopener">
+          <img src="assets/case-auto-desktop.webp" width="1600" height="1000" alt="" decoding="async">
+          <b>GRAND AVTO</b><span>Опубликован</span>
+        </a>
+        <a class="hi" href="#flowlove">
+          <img src="assets/flowlove-roses.webp" width="944" height="1181" alt="" decoding="async">
+          <b>FLOWLOVE</b><span>В работе</span>
+        </a>
+      </div>
+      <h1 class="hero-word">Портфолио</h1>
+      <div class="hero-grid">
+        <p class="lead">Сайты для бизнеса: лендинги, каталоги и страницы услуг. Дизайн, вёрстка, адаптив под телефон и готовая ссылка, которую можно отправлять клиентам.</p>
+        <div>
+          <div class="hero-actions">
+            <a class="btn btn--fill btn--lg" href="#works">Смотреть работы</a>
+            <a class="btn btn--ghost btn--lg" href="https://t.me/nedapi" target="_blank" rel="noopener">Обсудить проект<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <p class="hero-note"><b>2 проекта</b><i>·</i><b>лендинг от 3 000 ₽</b><i>·</i><b>предоплата 30 %</b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stage">
+
+    <!-- РАБОТЫ -->
+    <section class="sec" id="works">
+      <div class="wrap">
+        <div class="sec-head rise">
+          <h2 class="d">Работы</h2>
+          <p>Два проекта: один опубликован, второй в разработке. Оба сделаны с нуля: от структуры и дизайна до вёрстки и публикации.</p>
+        </div>
+
+        <!-- КЕЙС 1 -->
+        <article class="case rise">
+          <div class="case-top">
+            <div class="case-title">
+              <span class="tag">Опубликован · 2026</span>
+              <h3 class="d">GRAND AVTO</h3>
+            </div>
+            <p class="case-sub">Продажа и поставка техники с аукционов Японии, аренда автомобилей с выкупом. Владивосток и Находка.</p>
+          </div>
+
+          <a class="shot" href="https://bonifirmaarm-design.github.io/auto-website/" target="_blank" rel="noopener" aria-label="Открыть сайт GRAND AVTO в новой вкладке">
+            <div class="plate"><img src="assets/case-auto-desktop.webp" width="1600" height="1000" alt="Первый экран сайта GRAND AVTO: тёмная тема, автомобиль на горной дороге, заголовок «Продажа и поставка техники с аукционов Японии»." loading="lazy" decoding="async"></div>
+            <img class="phone" src="assets/case-auto-mobile.webp" width="620" height="1342" alt="Тот же сайт на экране телефона." loading="lazy" decoding="async">
+          </a>
+
+          <div class="case-body">
+            <div>
+              <ul class="did">
+                <li>Первый экран с крупным кадром и ключевыми цифрами по аукционам.</li>
+                <li>Разделы: аукционы, аренда с выкупом, авто из Китая и Кореи, контакты.</li>
+                <li>Этапы сделки разложены по шагам, чтобы клиент понимал, что будет дальше.</li>
+                <li>Адаптив под телефон и планшет, бургер-меню, кнопка звонка в шапке.</li>
+                <li>Публикация на GitHub Pages: сайт живёт по постоянной ссылке.</li>
+              </ul>
+              <div class="case-cta">
+                <a class="btn btn--fill" href="https://bonifirmaarm-design.github.io/auto-website/" target="_blank" rel="noopener">Открыть сайт<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </div>
+            <dl class="facts">
+              <div><dt>Роль</dt><dd>Дизайн и вёрстка целиком</dd></div>
+              <div><dt>Объём</dt><dd>Две страницы</dd></div>
+              <div><dt>Стек</dt><dd>HTML, CSS, JavaScript</dd></div>
+              <div><dt>Без конструкторов</dt><dd>Собственный код</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <!-- КЕЙС 2 -->
+        <article class="case rise" id="flowlove">
+          <div class="case-top">
+            <div class="case-title">
+              <span class="tag tag--work">В работе · 2026</span>
+              <h3 class="d">FLOWLOVE</h3>
+            </div>
+            <p class="case-sub">Интернет-магазин цветов и флористическая студия. Дизайн-система собрана, идёт вёрстка.</p>
+          </div>
+
+          <div class="collage">
+            <figure class="big"><img src="assets/flowlove-roses.webp" width="944" height="1181" alt="Букет красных роз в крафтовой бумаге на тёмном фоне — фотография для каталога." loading="lazy" decoding="async"></figure>
+            <figure><img src="assets/flowlove-dried.webp" width="944" height="1181" alt="Букет из сухоцветов и пампасной травы в кремовой упаковке." loading="lazy" decoding="async"></figure>
+            <div class="spec">
+              <div>
+                <p class="spec-h">Santa Catarina<br>+ Rothek</p>
+                <small>Дисплейный сериф для заголовков, гротеск для текста и интерфейса</small>
+              </div>
+              <div class="chips">
+                <span class="chip"><i style="background:#FFFCF2"></i>#FFFCF2</span>
+                <span class="chip"><i style="background:#BC0930"></i>#BC0930</span>
+                <span class="chip"><i style="background:#574040"></i>#574040</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-body">
+            <div>
+              <ul class="did">
+                <li>Палитра, шрифтовые пары и модульная сетка зафиксированы в документе дизайн-системы.</li>
+                <li>Структура: главная, каталог с фильтрами, карточка букета, корзина и оплата.</li>
+                <li>Мобильная и планшетная раскладки продуманы отдельно, а не сжаты из десктопа.</li>
+                <li>Подготовлен фотоконтент каталога — единый свет, фон и кадрирование.</li>
+                <li>Дальше: вёрстка каталога и корзины, подключение оплаты.</li>
+              </ul>
+            </div>
+            <dl class="facts">
+              <div><dt>Роль</dt><dd>Дизайн-система и вёрстка</dd></div>
+              <div><dt>Статус</dt><dd>В разработке</dd></div>
+              <div><dt>Экраны</dt><dd>Каталог, карточка, корзина</dd></div>
+              <div><dt>Контент</dt><dd>Фото букетов</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ПРОЦЕСС -->
+    <section class="sec" id="process">
+      <div class="wrap">
+        <div class="sec-head rise">
+          <h2 class="d">Как мы работаем</h2>
+          <p>Четыре шага без сюрпризов. Оплата делится на две части: 30 % на старте и 70 % после того, как сайт готов и принят.</p>
+        </div>
+
+        <ol class="steps rise">
+          <li class="step">
+            <span class="step-n">Шаг 1</span>
+            <h3>Обсуждаем задачу</h3>
+            <p>Вы рассказываете о бизнесе и показываете примеры, которые нравятся. Вместе фиксируем структуру сайта, объём работы и сроки. Этот этап бесплатный.</p>
+          </li>
+          <li class="step step--pay">
+            <span class="step-n">Шаг 2</span>
+            <h3>Предоплата <span class="pct">30 %</span></h3>
+            <p>После согласования вы вносите 30 % от стоимости — это старт работы. Сумма фиксируется вместе с объёмом, чтобы цена не менялась по ходу.</p>
+          </li>
+          <li class="step">
+            <span class="step-n">Шаг 3</span>
+            <h3>Разрабатываю сайт</h3>
+            <p>Собираю дизайн и вёрстку, показываю на живой ссылке — вы видите прогресс, а не ждёте финала. Правки вносим по ходу, пока результат не устроит.</p>
+          </li>
+          <li class="step step--pay">
+            <span class="step-n">Шаг 4</span>
+            <h3>Остальные <span class="pct">70 %</span> и передача</h3>
+            <p>Когда сайт готов и принят, вы вносите оставшиеся 70 %. Публикую сайт в интернете и передаю исходники и доступы — сайт полностью ваш.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ЦЕНЫ -->
+    <section class="sec" id="price">
+      <div class="wrap">
+        <div class="sec-head rise">
+          <h2 class="d">Сколько стоит</h2>
+        </div>
+
+        <div class="price rise">
+          <div class="price-in">
+            <div class="price-top">
+              <div>
+                <p class="price-num">3 000<em>—</em>7 000 ₽</p>
+                <p class="price-what">Разработка лендинга под ключ: от структуры и дизайна до опубликованного сайта.</p>
+              </div>
+              <a class="btn btn--ink btn--lg" href="https://t.me/nedapi" target="_blank" rel="noopener">Рассчитать стоимость<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="price-cols">
+              <div>
+                <h3>Что входит</h3>
+                <ul>
+                  <li>Структура страницы и текстовые блоки</li>
+                  <li>Дизайн первого экрана и всех секций</li>
+                  <li>Вёрстка вручную, без конструкторов</li>
+                  <li>Адаптив: телефон, планшет, десктоп</li>
+                  <li>Анимации и аккуратные микровзаимодействия</li>
+                  <li>Подготовка и оптимизация изображений</li>
+                  <li>Публикация в интернете и передача исходников</li>
+                </ul>
+              </div>
+              <div>
+                <h3>От чего зависит цена</h3>
+                <ul>
+                  <li>Сколько экранов и блоков на странице</li>
+                  <li>Сложность анимаций и интерактивных элементов</li>
+                  <li>Нужен ли подбор или генерация изображений</li>
+                  <li>Есть ли готовые тексты и фотографии</li>
+                  <li>Срочность: работа вне очереди считается отдельно</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="price-foot">
+              <p>Точную сумму называю после обсуждения задачи, до начала работы и без изменений по ходу.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <h2 class="d rise">Напишите — обсудим задачу</h2>
+        <div class="contact-list rise d1">
+          <a class="contact-row" href="https://t.me/nedapi" target="_blank" rel="noopener">
+            <span class="contact-k">Telegram</span>
+            <span class="contact-v">@nedapi</span>
+            <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="contact-row" href="tel:+79856040486">
+            <span class="contact-k">Телефон</span>
+            <span class="contact-v">+7 985 604‑04‑86</span>
+            <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap foot-in">
+        <span>© 2026 · Портфолио</span>
+        <span>Лендинг от 3 000 ₽ · предоплата 30 %</span>
+      </div>
+    </footer>
+
+  </div><!-- /stage -->
+</main>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.rise');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
