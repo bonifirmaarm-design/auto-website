@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Портфолио — сайты для бизнеса</title>
-<meta name="description" content="Портфолио веб-разработчика: лендинги, каталоги и сайты услуг. Дизайн, вёрстка, адаптив и публикация. Лендинг — от 3 000 до 7 000 ₽.">
+<title>nedapi studio — портфолио</title>
+<meta name="description" content="nedapi studio — сайты для бизнеса: лендинги, каталоги и интернет-магазины. Дизайн, вёрстка, адаптив и публикация. Лендинг от 3 000 до 7 000 ₽.">
 <meta name="theme-color" content="#0B0B0D">
-<meta property="og:title" content="Портфолио — сайты для бизнеса">
-<meta property="og:description" content="Лендинги, каталоги и сайты услуг под ключ. Предоплата 30%, остальное после сдачи.">
+<meta property="og:title" content="nedapi studio — портфолио">
+<meta property="og:description" content="Два готовых сайта, процесс работы и цены. Предоплата 30 %, остальное после сдачи.">
 <meta property="og:type" content="website">
 <link rel="preload" href="assets/fonts/unbounded-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -125,13 +125,22 @@ h3.d{font-size:clamp(1.35rem,2.4vw,2rem);letter-spacing:-.03em;font-weight:700}
   -webkit-backdrop-filter:blur(14px) saturate(140%);
   border-bottom:1px solid var(--line-2);
 }
-.mark{font-family:var(--fd);font-weight:700;font-size:.95rem;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:.55em}
+.mark{font-family:var(--fd);font-weight:700;font-size:.95rem;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:.55em;padding-block:10px;min-height:44px}
 .mark i{width:7px;height:7px;border-radius:99px;background:var(--brass);display:block}
 .nav-links{display:flex;gap:clamp(14px,2vw,30px);align-items:center}
 .nav-links a{font-size:.9rem;color:var(--t2);transition:color .25s ease}
 .nav-links a:hover{color:var(--t1)}
-.nav .btn{padding:.7em 1.15em;font-size:.88rem}
-@media (max-width:860px){.nav-links{display:none}}
+.nav .btn{padding:.72em 1.2em;font-size:.88rem;min-height:40px}
+.nav-short{display:none}
+@media (max-width:860px){
+  .nav{padding-block:10px}
+  .nav-links{display:none}
+  .nav .btn{min-height:44px;padding-inline:1.35em}
+}
+@media (max-width:520px){
+  .nav-full{display:none}
+  .nav-short{display:inline}
+}
 
 /* ─────────────────────────────────────────────
    ПЕРВЫЙ ЭКРАН
@@ -256,33 +265,16 @@ a.shot:hover .phone{transform:translateY(-10px)}
 .facts dd{font-size:.95rem;color:var(--t1);font-weight:500}
 .case-cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
 
-/* Кейс FLOWLOVE — коллаж */
-.collage{
-  display:grid;grid-template-columns:1.25fr .95fr;grid-template-rows:1fr 1fr;
-  gap:clamp(10px,1.4vw,18px);align-items:stretch;
-  height:clamp(380px,44vw,560px);
+/* Палитра проекта */
+.palette{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.sw{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.76rem;font-weight:600;letter-spacing:.02em;color:var(--t2);
+  background:var(--ink-2);border:1px solid var(--line-2);border-radius:99px;
+  padding:6px 12px 6px 7px;font-variant-numeric:tabular-nums;
 }
-.collage>*{min-height:0;overflow:hidden}
-.collage figure{border-radius:clamp(12px,1.6vw,20px);border:1px solid var(--line);background:var(--ink-2)}
-.collage .big{grid-row:span 2}
-.collage img{width:100%;height:100%;object-fit:cover}
-.spec{
-  background:#FFFCF2;color:#574040;border:1px solid rgba(0,0,0,.08);
-  border-radius:clamp(12px,1.6vw,20px);padding:clamp(15px,1.8vw,22px);
-  display:flex;flex-direction:column;justify-content:space-between;gap:14px;
-}
-.spec-h{font-family:var(--fd);font-weight:700;font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:.02em;color:#BC0930;line-height:1.05}
-.spec small{display:block;font-size:.78rem;color:#8C7373;margin-top:8px;letter-spacing:.02em}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{
-  display:flex;align-items:center;gap:7px;font-size:.73rem;font-weight:600;
-  color:#574040;background:#fff;border:1px solid #EBE2D2;border-radius:99px;padding:5px 10px 5px 6px;
-}
-.chip i{width:14px;height:14px;border-radius:99px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
-@media (max-width:720px){
-  .collage{grid-template-columns:1fr 1fr;grid-template-rows:1.15fr .85fr;height:auto;min-height:430px}
-  .collage .big{grid-row:1;grid-column:span 2}
-}
+.sw i{width:15px;height:15px;border-radius:99px;display:block;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.sw--type{padding-inline:12px;color:var(--t3)}
 
 /* ─────────────────────────────────────────────
    ПРОЦЕСС
@@ -377,14 +369,14 @@ footer{border-top:1px solid var(--line-2);padding-block:26px;color:var(--t3);fon
 <svg class="sr" aria-hidden="true"><symbol id="i-arrow" viewBox="0 0 16 16"><path d="M4.2 11.8 11.8 4.2M6.1 4.2h5.7v5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
 
 <header class="nav">
-  <a class="mark" href="#top"><i></i>nedapi</a>
+  <a class="mark" href="#top"><i></i>nedapi studio</a>
   <nav class="nav-links" aria-label="Разделы">
     <a href="#works">Работы</a>
     <a href="#process">Как мы работаем</a>
     <a href="#price">Цены</a>
     <a href="#contact">Контакты</a>
   </nav>
-  <a class="btn btn--fill" href="https://t.me/nedapi" target="_blank" rel="noopener">Написать в Telegram</a>
+  <a class="btn btn--fill" href="https://t.me/nedapi" target="_blank" rel="noopener"><span class="nav-full">Написать в Telegram</span><span class="nav-short">Telegram</span></a>
 </header>
 
 <main id="top">
@@ -398,20 +390,20 @@ footer{border-top:1px solid var(--line-2);padding-block:26px;color:var(--t3);fon
           <img src="assets/case-auto-desktop.webp" width="1600" height="1000" alt="" decoding="async">
           <b>GRAND AVTO</b><span>Опубликован</span>
         </a>
-        <a class="hi" href="#flowlove">
-          <img src="assets/flowlove-roses.webp" width="944" height="1181" alt="" decoding="async">
-          <b>FLOWLOVE</b><span>В работе</span>
+        <a class="hi" href="https://bonifirmaarm-design.github.io/flowers/" target="_blank" rel="noopener">
+          <img src="assets/case-flow-desktop.webp" width="1600" height="1000" alt="" decoding="async">
+          <b>ЦВЕТЫ</b><span>Опубликован</span>
         </a>
       </div>
       <h1 class="hero-word">Портфолио</h1>
       <div class="hero-grid">
-        <p class="lead">Сайты для бизнеса: лендинги, каталоги и страницы услуг. Дизайн, вёрстка, адаптив под телефон и готовая ссылка, которую можно отправлять клиентам.</p>
+        <p class="lead">nedapi studio. Сайты для бизнеса: лендинги, каталоги и интернет-магазины. Дизайн, вёрстка, адаптив под телефон и готовая ссылка, которую можно отправлять клиентам.</p>
         <div>
           <div class="hero-actions">
             <a class="btn btn--fill btn--lg" href="#works">Смотреть работы</a>
             <a class="btn btn--ghost btn--lg" href="https://t.me/nedapi" target="_blank" rel="noopener">Обсудить проект<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
-          <p class="hero-note"><b>2 проекта</b><i>·</i><b>лендинг от 3 000 ₽</b><i>·</i><b>предоплата 30 %</b></p>
+          <p class="hero-note"><b>2 сайта</b><i>·</i><b>оба опубликованы</b><i>·</i><b>лендинг от 3 000 ₽</b><i>·</i><b>предоплата 30 %</b></p>
         </div>
       </div>
     </div>
@@ -424,7 +416,7 @@ footer{border-top:1px solid var(--line-2);padding-block:26px;color:var(--t3);fon
       <div class="wrap">
         <div class="sec-head rise">
           <h2 class="d">Работы</h2>
-          <p>Два проекта: один опубликован, второй в разработке. Оба сделаны с нуля: от структуры и дизайна до вёрстки и публикации.</p>
+          <p>Два сайта, оба сделаны и опубликованы. Каждый собран с нуля: структура, дизайн, вёрстка, адаптив и публикация. Обе ссылки рабочие — можно открыть и потрогать.</p>
         </div>
 
         <!-- КЕЙС 1 -->
@@ -465,46 +457,44 @@ footer{border-top:1px solid var(--line-2);padding-block:26px;color:var(--t3);fon
         </article>
 
         <!-- КЕЙС 2 -->
-        <article class="case rise" id="flowlove">
+        <article class="case rise" id="flowers">
           <div class="case-top">
             <div class="case-title">
-              <span class="tag tag--work">В работе · 2026</span>
-              <h3 class="d">FLOWLOVE</h3>
+              <span class="tag">Опубликован · 2026</span>
+              <h3 class="d">ЦВЕТЫ</h3>
             </div>
-            <p class="case-sub">Интернет-магазин цветов и флористическая студия. Дизайн-система собрана, идёт вёрстка.</p>
+            <p class="case-sub">Бутик авторских букетов в Петрозаводске: каталог, конструктор букета и корзина.</p>
           </div>
 
-          <div class="collage">
-            <figure class="big"><img src="assets/flowlove-roses.webp" width="944" height="1181" alt="Букет красных роз в крафтовой бумаге на тёмном фоне — фотография для каталога." loading="lazy" decoding="async"></figure>
-            <figure><img src="assets/flowlove-dried.webp" width="944" height="1181" alt="Букет из сухоцветов и пампасной травы в кремовой упаковке." loading="lazy" decoding="async"></figure>
-            <div class="spec">
-              <div>
-                <p class="spec-h">Santa Catarina<br>+ Rothek</p>
-                <small>Дисплейный сериф для заголовков, гротеск для текста и интерфейса</small>
-              </div>
-              <div class="chips">
-                <span class="chip"><i style="background:#FFFCF2"></i>#FFFCF2</span>
-                <span class="chip"><i style="background:#BC0930"></i>#BC0930</span>
-                <span class="chip"><i style="background:#574040"></i>#574040</span>
-              </div>
-            </div>
-          </div>
+          <a class="shot" href="https://bonifirmaarm-design.github.io/flowers/" target="_blank" rel="noopener" aria-label="Открыть сайт ЦВЕТЫ в новой вкладке">
+            <div class="plate"><img src="assets/case-flow-desktop.webp" width="1600" height="1000" alt="Первый экран сайта ЦВЕТЫ: крупная засечная типографика поверх тёмной фотографии пионов, стеклянная навигация." loading="lazy" decoding="async"></div>
+            <img class="phone" src="assets/case-flow-mobile.webp" width="620" height="1342" alt="Тот же сайт на экране телефона." loading="lazy" decoding="async">
+          </a>
 
           <div class="case-body">
             <div>
               <ul class="did">
-                <li>Палитра, шрифтовые пары и модульная сетка зафиксированы в документе дизайн-системы.</li>
-                <li>Структура: главная, каталог с фильтрами, карточка букета, корзина и оплата.</li>
-                <li>Мобильная и планшетная раскладки продуманы отдельно, а не сжаты из десктопа.</li>
-                <li>Подготовлен фотоконтент каталога — единый свет, фон и кадрирование.</li>
-                <li>Дальше: вёрстка каталога и корзины, подключение оплаты.</li>
+                <li>Первый экран: имя магазина крупной засечной типографикой поверх фотографии, навигация стеклянной таблеткой.</li>
+                <li>Каталог букетов с фильтрами по типу, поводу и цене плюс подборка «Рекомендуем».</li>
+                <li>Конструктор: клиент собирает букет сам и сразу видит стоимость.</li>
+                <li>Корзина, оформление заказа и понятные уведомления о статусе.</li>
+                <li>Адаптив: бургер-меню, фильтры отдельным листом снизу, крупные цели для пальца.</li>
               </ul>
+              <div class="palette" aria-label="Палитра проекта">
+                <span class="sw"><i style="background:#2C1519"></i>#2C1519</span>
+                <span class="sw"><i style="background:#2B4231"></i>#2B4231</span>
+                <span class="sw"><i style="background:#F3E8E3"></i>#F3E8E3</span>
+                <span class="sw sw--type">Prata + Cormorant</span>
+              </div>
+              <div class="case-cta">
+                <a class="btn btn--fill" href="https://bonifirmaarm-design.github.io/flowers/" target="_blank" rel="noopener">Открыть сайт<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
             </div>
             <dl class="facts">
-              <div><dt>Роль</dt><dd>Дизайн-система и вёрстка</dd></div>
-              <div><dt>Статус</dt><dd>В разработке</dd></div>
-              <div><dt>Экраны</dt><dd>Каталог, карточка, корзина</dd></div>
-              <div><dt>Контент</dt><dd>Фото букетов</dd></div>
+              <div><dt>Роль</dt><dd>Дизайн и вёрстка целиком</dd></div>
+              <div><dt>Объём</dt><dd>Каталог, конструктор, корзина</dd></div>
+              <div><dt>Стек</dt><dd>HTML, CSS, JavaScript</dd></div>
+              <div><dt>Тема</dt><dd>Тёмная, зелёный акцент</dd></div>
             </dl>
           </div>
         </article>
@@ -615,7 +605,7 @@ footer{border-top:1px solid var(--line-2);padding-block:26px;color:var(--t3);fon
 
     <footer>
       <div class="wrap foot-in">
-        <span>© 2026 · Портфолио</span>
+        <span>© 2026 · nedapi studio</span>
         <span>Лендинг от 3 000 ₽ · предоплата 30 %</span>
       </div>
     </footer>
